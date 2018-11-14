@@ -1,0 +1,23 @@
+﻿{
+    "SiteCode":"廠別代號",
+    "SiteDescription":"廠別說明",
+    "Remarks":"備註",
+    "Status":"狀態",
+    "CreatePerson": "建立人員",
+    "CreateDate": "建立日期",
+    "LastModifyPerson":"最後修改人員",
+    "LastModifyDate":"最後修改日期",
+    "WarehouseCode":"倉庫代號",
+    "WarehouseName":"倉庫說明",
+    "HomeSite":"歸屬廠別",
+    "WarehouseCodeIsNull":"請填寫倉庫代號",
+    "WarehouseNameIsNull":"請填寫倉庫說明",
+    "Language":"語系",
+    "Public":"是否共用",
+    "Description":"說明",
+    "normal":"正常",
+    "invalid":"作廢",
+    "yes":"是",
+    "no":"否",
+    "PleaseSelectFile":"請選擇文件"
+}

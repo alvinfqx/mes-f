@@ -1,0 +1,358 @@
+﻿@{
+ 
+    Layout = null;
+}
+<script>
+    
+    function delCookie() {
+        sessionStorage.clear();
+    }
+
+    function logout() {
+        delCookie();
+        window.location.href = "/Logon";
+    }
+
+    function setProgram(text) {
+        var arr = text.split('/');
+        if (arr[arr.length - 1] == "Wellcome") {
+            document.getElementById("program").innerHTML = "";
+            return;
+        }
+        document.getElementById("program").innerHTML = "PN: " + arr[arr.length - 1];
+    }
+
+    var token = sessionStorage.getItem('token');
+    
+    (function Authorize() {
+        if (!token) { 
+            logout();
+        }
+    })();
+
+    var language = sessionStorage.getItem("language");
+    var username = sessionStorage.getItem("username");
+    var promptBtn, tips;
+
+</script>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="keywords" content="MonkeyFly,东莞市申翔网络系统有限公司,申翔网络,申翔,网络,系统,软件开发,ERP,DRP,CRM">
+    <meta name="description" content="MonkeyFly是一家专业的系统开发公司">
+    <title>MES System</title>
+    <link href="~/Content/images/logo/favicon.ico" rel="shortcut icon" type="image/x-icon" />  
+    <link href="~/Content/css/bootstrap.min14ed.css" rel="stylesheet">
+    <link href="~/Content/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="~/Content/css/animate.min.css" rel="stylesheet">
+    <link href="~/Content/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="~/Content/css/icon.css" rel="stylesheet" />
+    <link href="~/Content/css/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="~/Content/js/md5/screen.js"></script>
+    <script type="text/javascript" src="~/Content/js/md5/md5.js"></script>
+    
+</head>
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden;">
+    <div id="wrapper">
+        <!--左侧导航开始-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="nav-close">
+                <i class="fa fa-times-circle"></i>
+            </div>
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <span><img alt="image" class="img-circle" src="~/Content/img/b3.jpg" style="width:95px;height:95px;"/></span>
+                            <a data-toggle="dropdown" class="dropdown-toggle">
+                                <span class="clear">
+                                    <span class="block m-t-xs">
+                                        <strong id="username" class="font-bold" data-meaning="Name:">Name:</strong>
+                                        <b class="caret"></b>
+                                    </span>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li>
+                                    <a class="J_menuItem" data-meaning="Change Password" onclick="changePassword();">Change Password</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a onclick="logout()" data-meaning="Logout">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="logo-element"><i class="fa fa-home"></i></div>
+                    </li>
+
+                </ul>
+
+           
+            </div>
+        </nav>
+        <!--左侧导航结束-->
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-success" href="#"><i class="fa fa-bars"></i> </a>
+                        <div role="search" class="navbar-form-custom" >
+                            <div class="form-group">
+                                <input type="text" data-meaning="Please enter you need to find the content ..." placeholder="Please enter you need to find the content ..." class="form-control" name="top-search" id="top-search">
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="border:0px;" onclick="changeModel();">
+                                <i class="fa fa-exchange"></i>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="border:0px;">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-messages">
+                                <li>
+                                    <div class="text-center link-block" data-meaning="No message">
+                                        No message
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="border:0px;">
+                                <i class="fa fa-bell"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-alerts">
+                                <li>
+                                    <div class="text-center link-block" data-meaning="No message">
+                                        No message
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="row content-tabs">
+                <button class="roll-nav roll-left J_tabLeft">
+                    <i class="fa fa-backward"></i>
+                </button>
+                <nav class="page-tabs J_menuTabs">
+                    <div class="page-tabs-content">
+                        <a href="javascript:;" class="active J_menuTab" data-id="/Home/Wellcome" data-meaning="Home">Home</a>
+                    </div>
+                </nav>
+                <button class="roll-nav roll-right J_tabRight">
+                    <i class="fa fa-forward"></i>
+                </button>
+                <div class="btn-group roll-nav roll-right">
+                    <button class="dropdown J_tabClose" data-toggle="dropdown"><span data-meaning="Closed">Closed</span><span class="caret"></span></button>
+                    <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                        <li class="J_tabCloseAll">
+                            <a data-meaning="Close all tabs">Close all tabs</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="J_tabCloseOther">
+                            <a data-meaning="Close other tabs">Close other tabs</a>
+                        </li>
+                    </ul>
+                </div>
+                <a class="roll-nav roll-right J_tabExit" onclick="logout()"><i class="fa fa fa-sign-out"></i><font data-meaning="Logout">Logout</font></a>
+            </div>
+            <div class="row J_mainContent" id="content-main">
+                <iframe class="J_iframe" name="iframe0" style="width:100%;height:100%;" src="/Home/Wellcome" frameborder="0" data-id="/Home/Wellcome" seamless></iframe>
+            </div>
+            <div class="footer">
+                <div class="pull-left" id="program"></div>
+                <div class="pull-right">
+                    &copy; <span data-meaning="Copyright 2017-2020 EMO Management Technologies INC. All Rights Reserved.">Copyright 2017-2020 EMO Management Technologies INC. All Rights Reserved.</span>
+                </div>
+            </div>
+        </div>
+        <!--右侧部分结束-->
+
+        @*修改密码*@
+        <div class="modal inmodal" id="changePasswordDialog" tabindex="-1" role="dialog" aria-hidden="true"  data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog" style="width:500px;margin-top:15%;">
+                <div class="modal-content animated bounceInRight">
+                    <div class="modal-header" style="padding:5px 10px 5px 5px  !important">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span><span class="sr-only">x</span>
+                        </button>
+                        <h6 class="modal-title" data-meaning="Modify password">Modify password</h6>
+                    </div>
+                    <div class="modal-body" style="background-color:#fff;padding: 5px 10px 5px;">
+                        <form id="addForm" class="form-horizontal m-t">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">&nbsp&nbsp&nbsp<span style="color:red;">*</span>
+                                <span data-meaning="New password"> New password:</span></label>
+                                <div class="col-sm-7">
+                                    <input id="new_Password" type="password" class="form-control" maxlength="20" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"><span style="color:red;">*</span>
+                                <span data-meaning="Confirm password"> Confirm password:</span></label>
+                                <div class="col-sm-7">
+                                    <input id="conf_Password" type="password" class="form-control" maxlength="20" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label"></label>
+                                <div class="col-sm-7">
+                                    <span style="color:red;">*</span>
+                                    <span data-meaning="Set the password to a minimum of 6 digits and a maximum of 20 bits">Set the password to a minimum of 6 digits and a maximum of 20 bits</span>
+                                </div>                            
+                            </div>
+                        </form> 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal" data-meaning="Close">Close</button>
+                        <button type="button" id="savePassword" class="btn btn-success" data-meaning="Confirm" onclick="changePasswordConfirm();">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+
+
+
+    @System.Web.Optimization.Scripts.Render("~/Content/js/index");
+    <script src="~/Content/js/hplus/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/Content/js/hplus/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="~/Content/js/hplus/plugins/layer/layer.min.js"></script>
+    <script src="~/Content/js/hplus/hplus.min.js?v=4.1.0&t=@(DateTime.Now.ToString())"></script>
+    <script src="~/Content/js/hplus/contabs.min.js" type="text/javascript"></script>
+    <script src="~/Content/js/hplus/plugins/pace/pace.min.js"></script>
+    <script src="~/Content/js/hplus/plugins/sweetalert/sweetalert.min.js"></script>
+
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        setLanguage();
+        $("#username").text($("#username").text() + " " + username);
+        $.ajax({
+            url : "./Data/tips/Home/Home" + "-" + language + ".js",
+            async: false,
+            dataType: 'json',
+            success: function (items) {
+                tips = items;
+            }
+        });
+        $.ajax({
+            url: "./Data/options/prompt/prompt-" + language + ".js",
+            async: false,
+            dataType: 'json',
+            success: function (items) {
+                promptBtn = items;
+            }
+        });
+    });
+    //修改密码
+    var changePassword= function () {
+        $("#new_Password").val("");
+        $("#conf_Password").val("");
+        $("#changePasswordDialog").modal({ backdrop: 'static', keyboard: false });
+        $("#changePasswordDialog").modal('show');
+       
+    }
+    //确认修改密码
+    var changePasswordConfirm = function () {
+        
+        var newPassword=$("#new_Password").val();
+        var confPassword = $("#conf_Password").val();
+        
+        if (newPassword.length == 0 && confPassword.length == 0) {
+           
+            msg.info(tips.tips,tips.emptyPassword);
+            return;
+        }
+        if (confPassword.length < 6 && newPassword.length < 6) {
+            msg.info(tips.tips,tips.shortPassword);
+            return;
+        }
+        if (confPassword != newPassword) {
+            msg.error(tips.tips,tips.inequalityPassword);
+            return;
+        }
+        var post = {
+            NewPassword:hex_md5(newPassword),
+            ComfirmPassword: hex_md5(confPassword),
+            
+        };
+        mf.ajax({
+            type: 'Post',
+            url: '/IntelligentParameter/Inf00002ResetPassword',
+            data: JSON.stringify(post),
+            success: function (d) {
+                if (d.status == '200') {
+                    msg.success(tips.tips,tips.success, function () {
+                        logout();                        
+                    });
+                }
+                else {
+                    msg.info(tips.tips, tips.failed);
+                }                
+            }
+        });
+    }
+    //获取语系
+    function getLanguageURL(language) {
+        var url;
+        switch (language) {
+            case "zh-cn":
+                url = "/Data/language/Home/Home-ZH-CN.js"
+                break;
+            case "zh-tw":
+                url = "/Data/language/Home/Home-ZH-TW.js";
+                break;
+        }
+        return url;
+    }
+    //设置语系内容
+    function setLanguage(selection) {
+        var language = sessionStorage.getItem("language") ? sessionStorage.getItem("language") : "zh-tw";
+        if (language != "en") {
+            var url = getLanguageURL(language);
+            $.ajax({
+                url: url,
+                async: false,
+                contentType: 'application/json',
+                success: function (items) {
+                    items = eval(items);
+                    $('[data-meaning]').each(function (i, elem) {
+                        var $elem = $(elem);
+                        for (var i = 0; i < items.length; i++) {
+                            if ($elem.attr('data-meaning') == items[i].name) {
+                                if ($elem[0].tagName == "INPUT") {
+                                    if ($elem[0].type == "text") {
+                                        $elem.attr('placeholder', items[i].value);
+                                    }
+                                    else {
+                                        $elem.val(items[i].value);
+                                    }
+                                }
+                                else {
+                                    $elem.text(items[i].value);
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    }
+    //切换页面模式
+    function changeModel() {
+        //window.location.href = "/Home/Main";
+    }
+</script>

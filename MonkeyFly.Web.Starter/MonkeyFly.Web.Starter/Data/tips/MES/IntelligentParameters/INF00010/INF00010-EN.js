@@ -1,0 +1,22 @@
+﻿{
+    "SelectFirst":"Please select",
+    "SaveSuccess":"Save successfully",
+    "SaveOrNot":"Do you want to save the operation?",
+    "SaveData": "Please save",
+    "IsSave": "Please save the operation result",
+    "IsSelect":"Please select a type first",
+    "SaveFail":"Save failed",
+    "info":"Tips" ,
+    "DescriptionOne":"Description can not be empty",
+    "DeleteRecord":"Whether to delete the record",
+    "SuccessfulOperation":"Successful Operation",
+    "IsNumber": "Please enter a number",
+    "NothingToSave": "Nothing to save",
+    "WarningTitle": "Warning",
+    "IsDeleted": "Are you sure you want to delete the selected record?",
+    "TipTitle":"Tips" ,
+    "Browse":"Browse",
+    "Close":"Close",
+     "No file selected":"No file selected",
+    "NoDataExport": "No Data Export!"
+}

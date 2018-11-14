@@ -1,0 +1,9 @@
+﻿{
+    "Account":"帳戶",
+    "Name":"姓名",
+    "Position":"位置",
+    "Target":"對象",
+    "Type":"類型",
+    "Message":"數據",
+    "CreateTime":"時間"
+}

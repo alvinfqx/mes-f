@@ -1,0 +1,20 @@
+﻿{
+    "ClassCode":"ClassCode",
+    "ClassDescription":"ClassDescription",
+    "Remarks":"Remarks",
+    "Status":"Status",
+    "CreatePerson": "CreatePerson",
+    "CreateDate": "CreateDate",
+    "LastModifyPerson":"LastModifyPerson",
+    "LastModifyDate":"LastModifyDate",
+    "Language":"Language",
+    "Public":"Public",
+    "Description":"Description",
+    "Normal":"normal",
+    "Obsolete":"invalid",
+    "yes":"yes",
+    "no":"no",
+    "ClassCodeIsNull":"ClassCodeIsNull",
+    "ClassDescriptionIsNull":"ClassDescriptionIsNull",
+    "UseTheCalendar":"UseTheCalendar"
+}

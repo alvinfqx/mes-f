@@ -1,0 +1,21 @@
+﻿{
+    "unitCode":"Code",
+    "unitDescription":"Description",
+    "remarks":"Comments",
+    "state":"State",
+    "normal":"normal",
+    "Invalid":"Invalid",
+    "creator":"Creator",
+    "creationDate":"CreateTime",
+    "lastRevision":"Modifier",
+    "lastModifiedDate":"ModifiedTime",
+    "EmployeeCode":"Employee Name",
+    "Department":"Department",
+    "Language":"Language",
+    "unitCodeIsNull":"Unit Code can not be empty!",
+    "unitDescriptionIsNull":"Unit Description can not be empty!",
+     "AlreadyUsedCanNotDelete":" Code is Already Used ,Can Not Be Deleted",
+     "CodeIsSame":"CodeIsSame",
+      "Prompt":"Tips",
+      "NoFileSelected":" No File Selected"
+}

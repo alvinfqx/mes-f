@@ -1,0 +1,260 @@
+﻿@{
+    ViewBag.Title = "EMS00010";
+    Layout = "~/Views/Shared/_LayoutLang.cshtml";
+}
+
+@*設備保養資料維護*@
+<div id="tb_list" class="J-main">
+    <div id="container" class="J-toolbar"></div>
+    <div class="J-search">
+        <table class="MainForm">
+            <tr class="MainFormFirst">
+                <td class="td_label"><label data-meaning="MaintenanceType">Maintenance Type</label></td>
+                <td>
+                    <input type="text" id="MaintenanceType" data-bind="value:MaintenanceType" class="search-input" style="width: 100px;" autocomplete="off"/>
+                    <button type="button" class="btn btn-success btn-xs" style="margin-right:4px;" onclick="model.SearchCategoryCode()"><span class="fa fa-desktop"></span></button>
+                </td>
+                <td class="td_label"><label data-meaning="DocumentStatus">Document Status</label></td>
+                <td>
+                    <label class="checkbox-inline i-checks">
+                        <input type="checkbox" value="0" data-bind="event:{ifChecked:OPChecked,ifUnchecked:OPUnChecked}" />
+                        <span data-meaning="Issued">Issued</span>
+                    </label>
+                    <label class="checkbox-inline i-checks">
+                        <input type="checkbox" value="0" data-bind="event:{ifChecked:CLChecked,ifUnchecked:CLUnChecked}" />
+                        <span data-meaning="Closed">Closed</span>
+                    </label>
+                    @*<select class="search-select" style="width: 100px;" autocomplete="off" data-bind="options: StatusList, optionsText: 'text', optionsValue: 'value', optionsCaption: '', value: Status"></select>*@
+                </td>
+                <td class="td_label"><label data-meaning="MaintenanceEquipment">Maintenance Equipment</label></td>
+                <td>
+                    <input type="text" id="MaintenanceEquipment" data-bind="value:MaintenanceEquipment" class="search-input" style="width: 100px;" autocomplete="off"/>
+                    <button type="button" class="btn btn-success btn-xs" style="margin-right:4px;" onclick="model.SearchEquipmentMaster()"><span class="fa fa-desktop"></span></button>
+                </td>
+                <td class="td_label"><label data-meaning="MaintenanceUser">Maintenance User</label></td>
+                <td>
+                    <input type="text" id="MaintenanceUser" data-bind="value:MaintenanceUser" class="search-input" style="width: 100px;" autocomplete="off"/>
+                    <input type="text" id="MaintenanceUserID" data-bind="value:MaintenanceUserID" class="search-input" style="width: 100px;display:none" autocomplete="off"/>
+                    <button type="button" class="btn btn-success btn-xs" style="margin-right:4px;" onclick="model.SearchAccountMaster()"><span class="fa fa-desktop"></span></button>
+                </td>
+            </tr>
+            <tr>
+                <td class="td_label"><label data-meaning="StartMaintenanceNo">Start Maintenance No.</label></td>
+                <td>
+                    <input type="text" id="StartMaintenanceNo" data-bind="value:StartMaintenanceNo" class="search-input" style="width: 120px;" autocomplete="off" />
+                </td>
+                <td class="td_label"><label data-meaning="EndMaintenanceNo">End Maintenance No.</label></td>
+                <td>
+                    <input type="text" id="EndMaintenanceNo" data-bind="value:EndMaintenanceNo" class="search-input" style="width: 120px;" autocomplete="off" />
+                </td>
+                <td class="td_label"><label data-meaning="StartMaintenanceDate">Start Maintenance Date</label></td>
+                <td>
+                    <input id="StartMaintenanceDate" data-bind="value:StartMaintenanceDate" type="text" class="search-input" style="width: 120px;" autocomplete="off"/>
+                </td>
+                <td class="td_label"><label data-meaning="EndMaintenanceDate">End Maintenance Date</label></td>
+                <td>
+                    <input id="EndMaintenanceDate" data-bind="value:EndMaintenanceDate" type="text" class="search-input" style="width: 120px;" autocomplete="off"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="J-content">
+        <div id="MainContent">
+            <table id="MainTable"></table>
+        </div>
+        <div class="datagrid-pager page" id="paginagionMainBar"></div>
+        <div id="DetailContent">
+            <div style="margin-top:5px">
+                <table id="DetailTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionDetailBar"></div>
+        </div>
+    </div>
+</div>
+
+@*新增设备*@
+<div class="modal inmodal" id="AddEquipmentMaintenanceDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="width:800px;">
+            <div class="modal-content animated bounceInRight">
+                <div class="modal-header" style="padding:16px !important">
+                    <span style="font-size:20px" data-meaning="AddEquipmentMaintenanceDetails">Add Equipment Maintenance Details</span>
+                    <button id="close" type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                    </button>
+                </div>               
+                <div class="AddEquipmentMaintenanceDetailsContent" style="margin:8px 8px;">
+                    <table id="AddEquipmentMaintenanceDetailsTable"></table>
+                </div>
+                <div class="datagrid-pager page" id="paginagionMaintenanceDetails" style="margin:0 15px;"></div>               
+                <div style="text-align:right;padding:5px 10px;">
+                    <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" data-meaning="Cancel">Cancel</button>
+                    <button class="btn btn-success btn-sm" type="button" id="AddEquipmentMaintenanceDetailsBtn" data-meaning="Comfirm">Comfirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@*查询--保养类型*@
+<div class="modal inmodal" id="AddMaintenanceTypeDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:800px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <span style="font-size:20px" data-meaning="TypeDesc">Type Desc</span>
+                <button id="close" type="button" class="close" data-dismiss="modal" onclick="model.clearInput('#CategoryCode',null)">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+            </div>
+            <div class="J-search">
+                <label data-meaning="CategoryCode" style="margin:5px 5px 8px 10px;">Category Code</label>
+                <input type="text" id="CategoryCode" class="search-input" data-bind="value:searchCategoryCode" style="width: 130px;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" id="searchCategoryCodeClick" type="button" data-meaning="Search" value="Search">Search</button>
+            </div>
+            <div class="CategoryCode_Content" style="margin:0px 10px;">
+                <table id="CategoryCodeTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="CategoryCodePageBar"></div>
+            <div class="modal-footer" style="text-align:right;padding:5px 10px;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" data-meaning="Cancel" onclick="model.clearInput('#CategoryCode',null)">Cancel</button>
+                <button class="btn btn-success btn-sm" id="CategoryCodeComfirmClick" type="button" data-meaning="Comfirm">Comfirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*查询--保养设备*@
+<div class="modal inmodal" id="SearchEquipmentMasterFileDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:800px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <span style="font-size:20px" data-meaning="EquipmentMasterFile">Equipment Master File</span>
+                <button id="close" type="button" class="close" data-dismiss="modal" onclick="model.clearInput('#EquipmentCode', null)">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+            </div>
+            <div class="J-search">
+                <label data-meaning="EquipmentCode" style="margin:5px 5px 8px 10px;">Equipment Code</label>
+                <input type="text" id="EquipmentCode" class="search-input" data-bind="value:searchEquipmentCode" style="width: 130px;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" id="searchEquipmentCodeClick" type="button" data-meaning="Search" value="Search">Search</button>
+            </div>
+            <div class="EquipmentMaster_Content" style="margin:0px 10px;">
+                <table id="EquipmentMasterTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="EquipmentMasterPageBar"></div>
+            <div class="modal-footer" style="text-align:right;padding:5px 10px;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" data-meaning="Cancel" onclick="model.clearInput('#EquipmentCode', null)">Cancel</button>
+                <button class="btn btn-success btn-sm" id="EquipmentMasterComfirmClick" type="button" data-meaning="Comfirm">Comfirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*查询--保养人员*@
+<div class="modal inmodal" id="SearchAccountMasterDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:800px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <span style="font-size:20px" data-meaning="AccountMaster">Account Master</span>
+                <button id="close" type="button" class="close" data-dismiss="modal" onclick="model.clearInput('#WorkNumber', '#EmployeeName')">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+            </div>
+            <div class="J-search">
+                <label data-meaning="WorkNumber" style="margin:5px 5px 8px 10px;">Work Number</label>
+                <input type="text" id="WorkNumber" class="search-input" data-bind="value:searchWorkNumber" style="width: 130px;" autocomplete="off" />
+                <label data-meaning="Name" style="margin:5px 5px 8px 10px;">Name</label>
+                <input type="text" id="EmployeeName" class="search-input" data-bind="value:searchEmployeeName" style="width: 130px;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" id="searchWorkNumberClick" type="button" data-meaning="Search" value="Search">Search</button>
+            </div>
+            <div class="WorkNumber_Content" style="margin:0px 10px;">
+                <table id="WorkNumberTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="WorkNumberPageBar"></div>
+            <div class="modal-footer" style="text-align:right;padding:5px 10px;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" data-meaning="Cancel" onclick="model.clearInput('#WorkNumber', '#EmployeeName')">Cancel</button>
+                <button class="btn btn-success btn-sm" id="WorkNumberComfirmClick" type="button" data-meaning="Comfirm">Comfirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*导入*@
+<div class="modal inmodal" id="ImportDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" style="width:400px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Cancel">Cancel</span>
+                </button>
+                <h6 id="inputTitle" class="modal-title" data-meaning="Import">Import</h6>
+            </div>
+            <div class="modal-body">
+                <div class="form-group" style="width:100%;">
+                    <div style="width:15%; display:inherit; float:left; margin-left:20px;">
+                        <button class="btn btn-success btn-sm" id="BtnBrowse">
+                            <span data-meaning="Browse">Browse</span>
+                        </button>
+                        <input id="BtnFile" type="file" style="opacity:0" />
+                    </div>
+                    <div style="padding:5px; width:70%; display:inherit; float:left;">
+                        <span id="FileName"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal" data-meaning="Cancel">Cancel</button>
+                <button type="button" class="btn btn-success" id="BtnImport" data-meaning="Comfirm">Comfirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <style>
+        .mf-table-wrapper {
+            overflow-x: auto;
+        }
+
+        #MainContent .fix-table, #MainContent .fix-head {
+            width: 220%;
+        }
+
+        #DetailContent .fix-table, #DetailContent .fix-head {
+            width: 140%;
+        }
+
+        .ResourcesContent .fix-table, .ResourcesContent .fix-head {
+            width: 100%;
+        }
+
+        .MainForm {
+            width: 100%;
+        }
+
+        .MainFormFirst td {
+            padding-bottom: 5px;
+            vertical-align: middle;
+        }
+
+        .MainForm .td_label {
+            text-align: right;
+            padding-right: 5px;
+        }
+    </style>
+    <link href="~/Content/css/plugins/iCheck/blue.css" rel="stylesheet" />
+    <link href="~/Content/js/datetimepicker/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <script src="~/Content/js/datetimepicker/bootstrap-datetimepicker.zh-cn.js"></script>
+    <script src="~/Content/js/datetimepicker/bootstrap-datetimepicker.zh-tw.js"></script>
+    <script src="~/Content/js/hplus/plugins/iCheck/icheck.min.js"></script>
+    <script src="~/Content/js/knockout/knockout-3.0.0.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/pagination.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Rander.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Checker.js" type="text/javascript"></script>
+    <script src="~/ViewModels/MES/EquipmentManagement/EMS00010.js" type="text/javascript"></script>
+}
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>制程关系图</title>
+</head>
+<body>
+    <div> 
+        <div style="margin-bottom:10px;">
+            <button class="btn btn-success btn-sm" onclick="model.refreshClick()"><i class="fa icon-arrow_refresh"></i> <span data-meaning="Refresh">Refresh</span></button>
+            <button class="btn btn-success btn-sm" onclick="model.saveClick()"><i class="fa icon-save"></i> <span data-meaning="Save">Save</span></button>
+        </div>       
+        <div id="paper"></div>
+    </div>
+</body>
+</html>
+<link href="~/Content/joint/build/joint.css" rel="stylesheet" />
+<script src="~/Content/joint/node_modules/jquery/dist/jquery.js"></script>
+<script src="~/Content/joint/node_modules/lodash/index.js"></script>
+<script src="~/Content/joint/node_modules/backbone/backbone.js"></script>
+<script src="~/Content/joint/build/joint.js"></script>
+<script src="~/ViewModels/MES/IntelligentManufacturing/SFC00002ProcessRelaDiagramView.js" type="text/javascript"></script>
+<script src="~/ViewModels/MES/Util/JointChart.js"></script>

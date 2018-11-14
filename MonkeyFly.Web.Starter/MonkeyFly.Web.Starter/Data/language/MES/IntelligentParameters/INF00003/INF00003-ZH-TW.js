@@ -1,0 +1,21 @@
+﻿[
+    { "name": "Organization", "value": "組織結構" },
+    { "name": "AccountNo", "value": "工號" },
+    { "name": "Status", "value": "狀態" },
+    { "name": "EmployeeCode", "value": "員工代號" },
+    { "name": "normal", "value": "正常" },
+    { "name": "invalid", "value": "作廢" },
+    { "name": "Search", "value": " 查詢" },
+    { "name": "Comfirm", "value": "確認" },
+    { "name": "add", "value": " 新增" },
+    { "name": "Delete", "value": " 删除" },
+    { "name": "Comfirm", "value": "確認" },
+    { "name": "Cancel", "value": "取消" },
+    { "name": "save", "value": " 保存" },
+    { "name": "Import", "value": " 導入" },
+    { "name": "ClassCode", "value": "分類代號" },
+    { "name": "Browse", "value": "瀏覽" },
+    { "name": "Department", "value": "部門" },
+    { "name": "Account", "value": "帳號" },
+    { "name": "UserName", "value": "姓名" }
+]

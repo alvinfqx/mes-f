@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "INF00015SourceClass";
+    Layout = "~/Views/Shared/_LayoutLang.cshtml";
+}
+
+@*资源类别*@
+<div id="tb_list" class="J-main">
+    <div id="container" class="J-toolbar">
+        <button id="btn_refresh" class="btn btn-success btn-sm" title="Refresh" onclick="model.refreshClick()"><i class="fa icon-arrow_refresh"></i> <span data-meaning="Refresh"> Refresh</span></button>
+        <button id="btn_search" class="btn btn-success btn-sm" title="Search" onclick="model.searchClick()"><i class="fa fa-search"></i> <span data-meaning="Search"> Search</span></button>
+        <button id="btn_save" class="btn btn-success btn-sm" title="Save" onclick="model.saveClick()"><i class="fa icon-save"></i> <span data-meaning="Save"> Save</span></button>
+        <button id="btn_add" class="btn btn-success btn-sm" title="New" onclick="model.addClick()"><i class="fa icon-add"></i><span data-meaning="New"> Add</span></button>
+        <button id="btn_edit" class="btn btn-success btn-sm" title="Change" onclick="model.editClick()"><i class="fa icon-edit"></i> <span data-meaning="Change"> Edit</span></button>
+        <button id="btn_delete" class="btn btn-success btn-sm" title="Deletion" onclick="model.deleteClick()"><i class="fa icon-delete"></i> <span data-meaning="Deletion"> Delete</span></button>
+        <button id="btn_languages" class="btn btn-success btn-sm" title="Langwage" onclick="model.languagesClick()"><i class="fa fa-language"></i> <span data-meaning="Langwage"> Languages</span></button>
+        <button id="btn_import" class="btn btn-success btn-sm" title="Import" onclick="model.importClick()"><i class="fa icon-page_white_excel"></i><span data-meaning="Import"> Import</span></button>
+        <button id="btn_export" class="btn btn-success btn-sm" title="Export" onclick="model.exportClick()"><i class="fa icon-download"></i><span data-meaning="Export"> Export</span></button>
+    </div>
+    <div class="J-search">
+        <span data-meaning="SourceClassNumber">Source Class Number</span>
+        <input type="text" class="search-input" style="width: 170px;" data-bind="value: Code" />
+        &nbsp;&nbsp;
+        <span data-meaning="Status">Status</span>
+        <select class="search-select" style="width: 100px;" autocomplete="off" data-bind="options: StatusList, optionsText: 'text', optionsValue: 'value', optionsCaption: '', value: Status"></select>
+    </div>
+    <div class="J-content" id="table-body">
+        <table id="INF00015Table"></table>
+    </div>
+    <div class="datagrid-pager page" id="paginagionBar"></div>
+</div>
+
+@*导入*@
+<div class="modal inmodal" id="ImportDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <style>
+        .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+            border: 1px solid red;
+        }
+    </style>
+    <div class="modal-dialog" style="width:400px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <span style="font-size:20px" data-meaning="Import">Import</span>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Cancel">Cancel</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div>
+                        <button class="btn btn-success btn-sm" id="BtnBrowse">
+                            <span data-meaning="Browse">Browse</span>
+                        </button>
+                        <input id="BtnFile" type="file" style="opacity:0" />
+                    </div>
+                    <div style="padding:5px;">
+                        <span id="FileName"></span>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align:right;padding:5px 10px;">
+                <button class="btn btn-success btn-sm" data-dismiss="modal" data-meaning="Cancel">Cancel</button>
+                <button class="btn btn-success btn-sm" id="BtnImport" data-meaning="Comfirm">Comfirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <style>
+        .mf-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .fix-table, .fix-head {
+            width: 100%;
+        }
+    </style>
+    <script src="~/Content/js/knockout/knockout-3.0.0.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/pagination.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Rander.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Checker.js" type="text/javascript"></script>
+    <script src="~/ViewModels/MES/IntelligentParameters/INF00015SourceClass.js" type="text/javascript"></script>
+}
+

@@ -1,0 +1,276 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<script>
+    var date = new Date();
+    date.setTime(date.getTime() - 10000);
+</script>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="keywords" content="ERP">
+    <meta name="description" content="ERP">
+    <title>MES SYSTEM-登录</title>
+    <script type="text/javascript" src="~/Content/js/md5/screen.js"></script>
+    <script type="text/javascript" src="~/Content/js/md5/md5.js"></script>
+    <script src="~/Content/js/hplus/jquery.min.js"></script>
+    <script src="~/Content/js/knockout/knockout-2.2.0.js"></script>
+    <script src="~/Content/js/hplus/bootstrap.min.js"></script>
+    <script src="~/Content/js/hplus/plugins/switchery/switchery.js"></script>
+    <script type="text/javascript" src="/Content/Code/jquery.idcode.js"></script>
+    @*<script src="http://www.w3dev.cn/getip.ashx?js=1"></script>*@
+    @*<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>*@
+    <script>
+        var returnCitySN = '@ViewBag.IP';
+    </script>
+    <script src="~/ViewModels/Logon/logon.js"></script>
+
+    <link href="~/Content/images/logo/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Content/css/bootstrap.min14ed.css" rel="stylesheet">
+    <link href="~/Content/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="~/Content/css/animate.min.css" rel="stylesheet">
+    <link href="~/Content/css/plugins/switchery/switchery.css" rel="stylesheet" />
+    <link type="text/css" href="/Content/Code/jquery.idcode.css" rel="stylesheet" /> 
+    <link href="~/Content/css/style.min862f.css" rel="stylesheet">
+    <link href="~/Content/css/login.min.css" rel="stylesheet">
+</head>
+<body class="gray-bg" style="display:none;">
+    @* 登陆界面 *@
+    <div class="middle-box text-center loginscreen  animated fadeInDown " style="background-color:rgba(0,0,0,0.1);padding:20px ;">
+        <h3 style="text-align:center;color:#fff;" data-meaning="Welcome Use MES">Welcome Use MES</h3>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input id="Username" name="Username" type="text" class="form-control uname" data-bind="value:form.username" data-meaning="Account" placeholder="Account" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input id="password" name="password" type="password" class="form-control pword" data-bind="value:passwordLook" data-meaning="Password" placeholder="Password" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <select id="language" name="language" class="form-control" data-bind="options: languages, optionsText: 'text', optionsValue: 'value', optionsCaption: '', value: form.languageId" onchange="ChangeLanguange(this);"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <select id="ribbon" name="ribbon" class="form-control " data-bind="options: ribbon, optionsText: 'ribbonName', optionsValue: 'ribbonId', optionsCaption: '', value: form.ribbonId" onchange="setStorage(this, 'ribbonId');"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div id="idcode" class="row"></div>
+                </div>
+            </div>
+            <div style="text-align:left;margin-bottom:5%;">
+                <input type="checkbox" class="js-switch" checked />
+                <span style="padding-left:20px;font-size:14px;color:#fff;" data-meaning="Remember my account">Remember my account</span>
+            </div>
+            <input type="button" class="btn btn-success btn-block" data-bind="click:loginClick" data-meaning="Login" value="Login" />
+            <div style="margin-top:1%;color:white;"><span data-bind="text:message"></span></div>
+        </div>
+    </div>
+    <div style="position: fixed;bottom: 5px;right: 10px;color: black;background-color: white;padding: 3px 5px;border-radius: 3px;border:1px solid;"><span>V 1511-1106-1106</span></div>
+</body>
+</html>
+<script>
+    var model = new viewModel();
+
+    var tips;
+    function setTips(language, code) {
+        var url = "Data/tips/" + code + "/" + code + "-" + language + ".js";
+        $.getJSON(url, function (items) {
+            tips = items;
+        });
+    }
+    function getOptions(language, type) {
+        var options;
+        $.ajax({
+            url: "Data/options/"+ type + "/" + type + "-" + language + ".js",
+            async: false,
+            contentType: 'application/json',
+            success: function (data) {
+                options = eval(data);
+            }
+        });
+        return options;
+    }
+    
+   
+
+    function setStorage(obj, name) {
+        if (IsChanged) {
+            sessionStorage.setItem(name, $(obj).find("option:selected").val());
+           
+        }
+    }
+
+    function getLanguageURL(language) {
+        var url;
+
+        switch (language) {
+            case "zh-cn":
+                url = "/Data/language/Logon/Logon-ZH-CN.js"
+                break;
+            case "zh-tw":
+                url = "/Data/language/Logon/Logon-ZH-TW.js";
+                break;
+        }
+
+        return url;
+    }
+
+    function setLanguage(selection) {
+
+        var language = sessionStorage.getItem("language");
+       
+        if (selection == language) {
+            return;
+        }
+        sessionStorage.setItem("language", selection);
+      
+
+        setTips(selection, "Logon");
+        model.company(getOptions(selection, "company"));
+        model.ribbon(getOptions(selection, "ribbon"));
+
+        var url;
+        if (selection == "en") {
+            url = getLanguageURL(language);
+            $.ajax({
+                url: url,
+                async: false,
+                contentType: 'application/json',
+                success: function (items) {
+                    items = eval(items);
+                    $('[data-meaning]').each(function (i, elem) {
+                        var $elem = $(elem);
+                        for (var i = 0; i < items.length; i++) {
+                            if ($elem.attr('data-meaning') == items[i].name) {
+                                if ($elem[0].tagName == "INPUT") {
+                                    if ($elem[0].type == "text" || $elem[0].type == "password") {
+                                        $elem.attr('placeholder', items[i].name);
+                                    }
+                                    else {
+                                        $elem.val(items[i].name);
+                                    }
+                                }
+                                else {
+                                    $elem.text(items[i].name);
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+        }
+        else {
+            url = getLanguageURL(selection);
+            $.ajax({
+                url: url,
+                async: false,
+                contentType: 'application/json',
+                success: function (items) {
+                    items = eval(items);
+                    $('[data-meaning]').each(function (i, elem) {
+                        var $elem = $(elem);
+                        for (var i = 0; i < items.length; i++) {
+                            if ($elem.attr('data-meaning') == items[i].name) {
+                                if ($elem[0].tagName == "INPUT") {
+                                    if ($elem[0].type == "text" || $elem[0].type == "password") {
+                                        $elem.attr('placeholder', items[i].value);
+                                    }
+                                    else {
+                                        $elem.val(items[i].value);
+                                    }
+                                }
+                                else {
+                                    $elem.text(items[i].value);
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        model.message("");
+    }
+
+    var IsChanged = false;
+    function ChangeLanguange(obj) {
+        var selection = $(obj).find("option:selected").val();
+        if (IsChanged) {
+            setLanguage(selection);
+        }
+    }
+
+    var elem = document.querySelector('.js-switch');
+    var init = new Switchery(elem, { color: '#1a7bb9', size: 'small' });
+
+    $(document).ready(function () {
+        var language = sessionStorage.getItem("language") ? sessionStorage.getItem("language") : "zh-tw";       
+        sessionStorage.setItem("language","en");        
+        
+        $.idcode.setCode();
+        setTips(language, "Logon");
+        setLanguage(language);
+
+        model.company(getOptions(language, "company"));
+        model.ribbon(getOptions(language, "ribbon"));
+        model.form.languageId(language);
+        model.form.companyId(sessionStorage.getItem("companyId") ? sessionStorage.getItem("companyId") : 0);
+        model.form.ribbonId(sessionStorage.getItem("ribbonId") ? sessionStorage.getItem("ribbonId") : 1);
+        model.form.username(sessionStorage.getItem("account") != "undefined" ? sessionStorage.getItem("account") : "");
+        
+        ko.applyBindings(model);
+
+        $("#Username").change(function () {
+            console.log("Username:" + $("#Username").val());
+            //model.form.languageId("en");
+            //$("#language").change();
+        });
+
+        IsChanged = true;
+
+        //if (localStorage.getItem("backgroundCode")) {
+        //    var backgroundCode = Number(localStorage.getItem("backgroundCode")) + 1;
+        //    if (backgroundCode > 3) {
+        //        localStorage.setItem("backgroundCode", "1");
+        //    }
+        //    else {
+        //        localStorage.setItem("backgroundCode", "" + backgroundCode);
+        //    }
+        //}
+        //else {
+        //    localStorage.setItem("backgroundCode", "1");
+        //}
+        //$("body").css("background-image", "url(/Content/img/mes" + localStorage.getItem("backgroundCode") + ".jpg)");
+
+        //$("body").css("background-image", "url(/Content/img/mes.jpg)");
+       
+
+        var BackImgArray = [];
+        $.ajax({
+            type: 'Get',
+            async: false,
+            url: "https://202api.monkeyfly.net/MES/api/Util/GetMap",
+            success: function (data) {
+                for (var i = 0; i < data.length; i++) {                   
+                    BackImgArray[i] = "https://202api.monkeyfly.net/MES/" + data[i].Path;
+                }              
+            }
+        });
+        BackImgArray.unshift("/Content/img/mes.jpg");
+        var index = Math.floor(Math.random() * BackImgArray.length);
+        var currentImage = BackImgArray[index];
+        document.body.style.backgroundImage = "url(" + currentImage + ")";
+        document.body.style.display = "block";
+    });
+</script>
+

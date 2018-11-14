@@ -1,0 +1,21 @@
+﻿{
+    "Code":"客户代号",
+    "Name":"客户说明",
+    "Remarks":"备注",
+    "Status":"状态",
+    "CreatePerson": "建立人员",
+    "CreateDate": "建立日期",
+    "LastModifyPerson":"最后修改人员",
+    "LastModifyDate":"最后修改日期",
+    "Contact":"联络人",
+    "Email":"E-mail",
+    "ClerkCode":"业务员代号",
+    "ClerkName":"业务员姓名",
+    "ClassifyOne":"分类一",
+    "ClassifyTwo":"分类二",
+    "EmployeeCode":"员工代号",
+    "EmployeeName":"员工姓名",
+    "Department":"部门",
+    "CodeIsNull":"客户代号不能为空",
+    "NameIsNull":"客户说明不能为空"
+}

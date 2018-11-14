@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonkeyFly.Web.Starter", "MonkeyFly.Web.Starter\MonkeyFly.Web.Starter.csproj", "{75041BB5-5961-4292-88CB-19B586B8AC0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MF3C", "MF3C\MF3C.csproj", "{00EDCC13-17DD-4D12-9058-0B7732C58A8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MES", "MES\MES.csproj", "{C70BB308-9862-4280-A4A7-77738FD07CA1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75041BB5-5961-4292-88CB-19B586B8AC0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75041BB5-5961-4292-88CB-19B586B8AC0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75041BB5-5961-4292-88CB-19B586B8AC0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75041BB5-5961-4292-88CB-19B586B8AC0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00EDCC13-17DD-4D12-9058-0B7732C58A8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00EDCC13-17DD-4D12-9058-0B7732C58A8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00EDCC13-17DD-4D12-9058-0B7732C58A8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00EDCC13-17DD-4D12-9058-0B7732C58A8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C70BB308-9862-4280-A4A7-77738FD07CA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C70BB308-9862-4280-A4A7-77738FD07CA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C70BB308-9862-4280-A4A7-77738FD07CA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C70BB308-9862-4280-A4A7-77738FD07CA1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

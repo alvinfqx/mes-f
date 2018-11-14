@@ -1,0 +1,2246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{75041BB5-5961-4292-88CB-19B586B8AC0D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MonkeyFly.Web.Starter</RootNamespace>
+    <AssemblyName>MonkeyFly.Web.Starter</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
+    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BasicService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\3rd Lib\MFC-NEW\BasicService.dll</HintPath>
+    </Reference>
+    <Reference Include="dotless.Core, Version=1.5.2.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+      <HintPath>..\packages\dotless.1.5.2\lib\dotless.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MonkeyFly, Version=1.0.0.36, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\3rd Lib\MonkeyFly\MonkeyFly.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RazorGenerator.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorGenerator.Mvc.2.4.2\lib\net40\RazorGenerator.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.1.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AuthorizationConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\LanguageConfig.cs" />
+    <Compile Include="App_Start\LanguageItem.cs" />
+    <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AuthorizationController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LanguagesController.cs" />
+    <Compile Include="Controllers\LogonController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Authorization\Unauthorized.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Unauthorized.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\ChangePassword.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChangePassword.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Main.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Main.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Wellcome.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Wellcome.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Logon\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\_ViewStart.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ViewStart.cshtml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\backgroundImg.js" />
+    <Content Include="Content\Code\jquery.idcode.css" />
+    <Content Include="Content\Code\jquery.idcode.js" />
+    <Content Include="Content\Code\jquery.min.js" />
+    <Content Include="Content\content.min.js" />
+    <Content Include="Content\css\animate.min.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap.min14ed.css" />
+    <Content Include="Content\css\demo\webuploader-demo.min.css" />
+    <Content Include="Content\css\font-awesome.min93e3.css" />
+    <Content Include="Content\css\icon.css" />
+    <Content Include="Content\css\jquery-plugins\showloading\loading.gif" />
+    <Content Include="Content\css\login.min.css" />
+    <Content Include="Content\css\patterns\header-profile-skin-1.png" />
+    <Content Include="Content\css\patterns\header-profile-skin-3.png" />
+    <Content Include="Content\css\patterns\header-profile.png" />
+    <Content Include="Content\css\patterns\shattered.png" />
+    <Content Include="Content\css\plugins\awesome-bootstrap-checkbox\awesome-bootstrap-checkbox.css" />
+    <Content Include="Content\css\plugins\blueimp\css\blueimp-gallery.min.css" />
+    <Content Include="Content\css\plugins\blueimp\img\error.png" />
+    <Content Include="Content\css\plugins\blueimp\img\error.svg" />
+    <Content Include="Content\css\plugins\blueimp\img\loading.gif" />
+    <Content Include="Content\css\plugins\blueimp\img\play-pause.png" />
+    <Content Include="Content\css\plugins\blueimp\img\play-pause.svg" />
+    <Content Include="Content\css\plugins\blueimp\img\video-play.png" />
+    <Content Include="Content\css\plugins\blueimp\img\video-play.svg" />
+    <Content Include="Content\css\plugins\bootstrap-table\bootstrap-table-fixed-columns.css" />
+    <Content Include="Content\css\plugins\bootstrap-table\bootstrap-table.min.css" />
+    <Content Include="Content\css\plugins\chosen\chosen-sprite%402x.png" />
+    <Content Include="Content\css\plugins\chosen\chosen-sprite.png" />
+    <Content Include="Content\css\plugins\chosen\chosen.css" />
+    <Content Include="Content\css\plugins\clockpicker\clockpicker.css" />
+    <Content Include="Content\css\plugins\codemirror\ambiance.css" />
+    <Content Include="Content\css\plugins\codemirror\codemirror.css" />
+    <Content Include="Content\css\plugins\colorpicker\css\bootstrap-colorpicker.min.css" />
+    <Content Include="Content\css\plugins\colorpicker\img\bootstrap-colorpicker\alpha-horizontal.png" />
+    <Content Include="Content\css\plugins\colorpicker\img\bootstrap-colorpicker\alpha.png" />
+    <Content Include="Content\css\plugins\colorpicker\img\bootstrap-colorpicker\hue-horizontal.png" />
+    <Content Include="Content\css\plugins\colorpicker\img\bootstrap-colorpicker\hue.png" />
+    <Content Include="Content\css\plugins\colorpicker\img\bootstrap-colorpicker\saturation.png" />
+    <Content Include="Content\css\plugins\cropper\cropper.min.css" />
+    <Content Include="Content\css\plugins\datapicker\datepicker3.css" />
+    <Content Include="Content\css\plugins\dataTables\dataTables.bootstrap.css" />
+    <Content Include="Content\css\plugins\dropzone\basic.css" />
+    <Content Include="Content\css\plugins\dropzone\dropzone.css" />
+    <Content Include="Content\css\plugins\footable\fonts\footable.svg" />
+    <Content Include="Content\css\plugins\footable\footable.core.css" />
+    <Content Include="Content\css\plugins\fullcalendar\fullcalendar.css" />
+    <Content Include="Content\css\plugins\fullcalendar\fullcalendar.print.css" />
+    <Content Include="Content\css\plugins\iCheck\blue%402x.png" />
+    <Content Include="Content\css\plugins\iCheck\blue.css" />
+    <Content Include="Content\css\plugins\iCheck\blue.png" />
+    <Content Include="Content\css\plugins\iCheck\custom.css" />
+    <Content Include="Content\css\plugins\iCheck\green%402x.png" />
+    <Content Include="Content\css\plugins\iCheck\green.png" />
+    <Content Include="Content\css\plugins\images\sort_asc.png" />
+    <Content Include="Content\css\plugins\images\sort_desc.png" />
+    <Content Include="Content\css\plugins\images\sprite-skin-flat.png" />
+    <Content Include="Content\css\plugins\images\spritemap%402x.png" />
+    <Content Include="Content\css\plugins\images\spritemap.png" />
+    <Content Include="Content\css\plugins\ionRangeSlider\ion.rangeSlider.css" />
+    <Content Include="Content\css\plugins\ionRangeSlider\ion.rangeSlider.skinFlat.css" />
+    <Content Include="Content\css\plugins\jasny\jasny-bootstrap.min.css" />
+    <Content Include="Content\css\plugins\jqgrid\ui.jqgridffe4.css" />
+    <Content Include="Content\css\plugins\jsTree\32px.png" />
+    <Content Include="Content\css\plugins\jsTree\40px.png" />
+    <Content Include="Content\css\plugins\jsTree\style.min.css" />
+    <Content Include="Content\css\plugins\jsTree\throbber.gif" />
+    <Content Include="Content\css\plugins\kendo-ui\fonts\WebComponentsIcons.svg" />
+    <Content Include="Content\css\plugins\kendo-ui\images\back.png" />
+    <Content Include="Content\css\plugins\kendo-ui\images\kendoui.svg" />
+    <Content Include="Content\css\plugins\kendo-ui\images\wp8_icons.png" />
+    <Content Include="Content\css\plugins\kendo-ui\images\wp8_inverseicons.png" />
+    <Content Include="Content\css\plugins\kendo-ui\kendo.common.min.css" />
+    <Content Include="Content\css\plugins\kendo-ui\kendo.default.min.css" />
+    <Content Include="Content\css\plugins\kendo-ui\kendo.default.mobile.min.css" />
+    <Content Include="Content\css\plugins\markdown\bootstrap-markdown.min.css" />
+    <Content Include="Content\css\plugins\morris\morris-0.4.3.min.css" />
+    <Content Include="Content\css\plugins\nouslider\jquery.nouislider.css" />
+    <Content Include="Content\css\plugins\pagination\pagination.css" />
+    <Content Include="Content\css\plugins\plyr\plyr.css" />
+    <Content Include="Content\css\plugins\plyr\sprite.svg" />
+    <Content Include="Content\css\plugins\simditor\simditor.css" />
+    <Content Include="Content\css\plugins\steps\jquery.steps.css" />
+    <Content Include="Content\css\plugins\summernote\summernote-bs3.css" />
+    <Content Include="Content\css\plugins\summernote\summernote.css" />
+    <Content Include="Content\css\plugins\sweetalert\sweetalert.css" />
+    <Content Include="Content\css\plugins\switchery\switchery.css" />
+    <Content Include="Content\css\plugins\table\table.css" />
+    <Content Include="Content\css\plugins\toastr\toastr.min.css" />
+    <Content Include="Content\css\plugins\treeview\bootstrap-treeview.css" />
+    <Content Include="Content\css\plugins\webuploader\webuploader.css" />
+    <Content Include="Content\css\search.css" />
+    <Content Include="Content\css\style.min.css" />
+    <Content Include="Content\css\style.min862f.css" />
+    <Content Include="Content\exportCanvas\config\config.js" />
+    <Content Include="Content\exportCanvas\language\de.js" />
+    <Content Include="Content\exportCanvas\language\en.js" />
+    <Content Include="Content\fonts\fontawesome-webfont93e3.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\images\backgrounImg.jpg" />
+    <Content Include="Content\images\backgrounImg2.png" />
+    <Content Include="Content\images\drawimage\Browse.png" />
+    <Content Include="Content\images\drawimage\cancel.png" />
+    <Content Include="Content\images\drawimage\circle.png" />
+    <Content Include="Content\images\drawimage\download.png" />
+    <Content Include="Content\images\drawimage\fill.png" />
+    <Content Include="Content\images\drawimage\handwriting.png" />
+    <Content Include="Content\images\drawimage\line.png" />
+    <Content Include="Content\images\drawimage\line_size_1.png" />
+    <Content Include="Content\images\drawimage\line_size_3.png" />
+    <Content Include="Content\images\drawimage\line_size_5.png" />
+    <Content Include="Content\images\drawimage\line_size_7.png" />
+    <Content Include="Content\images\drawimage\next.png" />
+    <Content Include="Content\images\drawimage\noimg.png" />
+    <Content Include="Content\images\drawimage\pencil.png" />
+    <Content Include="Content\images\drawimage\rubber.png" />
+    <Content Include="Content\images\drawimage\save.png" />
+    <Content Include="Content\images\drawimage\square.png" />
+    <Content Include="Content\images\drawimage\xx.png" />
+    <Content Include="Content\images\homepage.png" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\logo\artwork-pattern.jpg" />
+    <Content Include="Content\images\logo\artwork-pattern.png" />
+    <Content Include="Content\images\logo\artwork-pattern1.jpg" />
+    <Content Include="Content\images\logo\btn_lookup_resolving.gif" />
+    <Content Include="Content\images\logo\favicon.ico" />
+    <Content Include="Content\images\logo\login-icon.png" />
+    <Content Include="Content\images\logo\logo48.png" />
+    <Content Include="Content\images\logo\logo64.png" />
+    <Content Include="Content\images\logo\logo800.png" />
+    <Content Include="Content\images\logo\logo_zfb.png" />
+    <Content Include="Content\images\logo\menu-dark-indicator.png" />
+    <Content Include="Content\images\logo\menu-indicator.png" />
+    <Content Include="Content\images\logo\MF-logo.png" />
+    <Content Include="Content\images\logo\separator-bg.png" />
+    <Content Include="Content\images\logo\tab-dashboard.png" />
+    <Content Include="Content\images\page_icons.png" />
+    <Content Include="Content\images\tree\Tree_Dot.gif" />
+    <Content Include="Content\images\tree\Tree_Empty.gif" />
+    <Content Include="Content\images\tree\Tree_Line.gif" />
+    <Content Include="Content\images\tree\Tree_Middle.gif" />
+    <Content Include="Content\images\tree\Tree_Vert.gif" />
+    <Content Include="Content\images\trend.png" />
+    <Content Include="Content\img\a5.jpg" />
+    <Content Include="Content\img\b1.jpg" />
+    <Content Include="Content\img\b2.jpg" />
+    <Content Include="Content\img\b3.jpg" />
+    <Content Include="Content\img\b5.jpg" />
+    <Content Include="Content\img\b6.jpg" />
+    <Content Include="Content\img\b7.jpg" />
+    <Content Include="Content\img\bg.png" />
+    <Content Include="Content\img\iconfont-logo.png" />
+    <Content Include="Content\img\icons.png" />
+    <Content Include="Content\img\loading-upload.gif" />
+    <Content Include="Content\img\locked.png" />
+    <Content Include="Content\img\login-background.jpg" />
+    <Content Include="Content\img\mes.jpg" />
+    <Content Include="Content\img\mes1.jpg" />
+    <Content Include="Content\img\mes2.jpg" />
+    <Content Include="Content\img\mes3.jpg" />
+    <Content Include="Content\img\no.png" />
+    <Content Include="Content\img\p1.jpg" />
+    <Content Include="Content\img\p2.jpg" />
+    <Content Include="Content\img\p3.jpg" />
+    <Content Include="Content\img\profile_small.jpg" />
+    <Content Include="Content\img\progress.png" />
+    <Content Include="Content\img\p_big1.jpg" />
+    <Content Include="Content\img\p_big2.jpg" />
+    <Content Include="Content\img\p_big3.jpg" />
+    <Content Include="Content\img\success.png" />
+    <Content Include="Content\img\toggle-off.png" />
+    <Content Include="Content\img\toggle-on.png" />
+    <Content Include="Content\img\user.png" />
+    <Content Include="Content\img\yes.png" />
+    <Content Include="Content\joint\build\joint.css" />
+    <Content Include="Content\joint\build\joint.js" />
+    <Content Include="Content\joint\build\joint.min.css" />
+    <Content Include="Content\joint\build\joint.min.js" />
+    <Content Include="Content\joint\erd\erd.css" />
+    <Content Include="Content\joint\erd\erd.js" />
+    <Content Include="Content\joint\node_modules\backbone\backbone.js" />
+    <Content Include="Content\joint\node_modules\jquery\dist\jquery.js" />
+    <Content Include="Content\joint\node_modules\lodash\index.js" />
+    <Content Include="Content\js\backgroundImg.js" />
+    <Content Include="Content\js\bootstrap-datepicker\css\bootstrap-datepicker.css" />
+    <Content Include="Content\js\bootstrap-datepicker\css\bootstrap-datepicker.min.css" />
+    <Content Include="Content\js\bootstrap-datepicker\css\bootstrap-datepicker.standalone.css" />
+    <Content Include="Content\js\bootstrap-datepicker\css\bootstrap-datepicker.standalone.min.css" />
+    <Content Include="Content\js\bootstrap-datepicker\css\bootstrap-datepicker3.css" />
+    <Content Include="Content\js\bootstrap-datepicker\css\bootstrap-datepicker3.min.css" />
+    <Content Include="Content\js\bootstrap-datepicker\css\bootstrap-datepicker3.standalone.css" />
+    <Content Include="Content\js\bootstrap-datepicker\css\bootstrap-datepicker3.standalone.min.css" />
+    <Content Include="Content\js\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="Content\js\bootstrap-datepicker\js\bootstrap-datepicker.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.ar-tn.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.ar.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.az.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.bg.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.br.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.bs.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.ca.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.cs.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.cy.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.da.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.de.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.el.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.en-AU.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.en-GB.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.en-IE.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.en-NZ.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.en-ZA.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.eo.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.es.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.et.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.eu.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.fa.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.fi.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.fo.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.fr-CH.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.fr.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.gl.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.he.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.hr.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.hu.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.hy.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.id.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.is.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.it-CH.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.it.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.ja.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.ka.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.kh.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.kk.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.km.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.ko.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.kr.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.lt.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.lv.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.me.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.mk.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.mn.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.ms.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.nb.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.nl-BE.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.nl.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.no.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.oc.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.pl.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.pt-BR.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.pt.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.ro.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.rs-latin.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.rs.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.ru.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.si.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.sk.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.sl.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.sq.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.sr-latin.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.sr.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.sv.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.sw.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.th.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.tr.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.uk.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.vi.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.zh-cn.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker\locales\bootstrap-datepicker.zh-tw.min.js" />
+    <Content Include="Content\js\content.min.js" />
+    <Content Include="Content\js\current\ajaxfileupload.js" />
+    <Content Include="Content\js\current\bar.js" />
+    <Content Include="Content\js\current\bootstrap-datepick-language.js" />
+    <Content Include="Content\js\current\Checker.js" />
+    <Content Include="Content\js\current\deal.js" />
+    <Content Include="Content\js\current\dialog.js" />
+    <Content Include="Content\js\current\draw.js" />
+    <Content Include="Content\js\current\drawingboard.js" />
+    <Content Include="Content\js\current\EditChecker.js" />
+    <Content Include="Content\js\current\EditRander.js" />
+    <Content Include="Content\js\current\format.js" />
+    <Content Include="Content\js\current\FrozenColumn.js" />
+    <Content Include="Content\js\current\koComponent.js" />
+    <Content Include="Content\js\current\koCustomBinding.js" />
+    <Content Include="Content\js\current\menu.js" />
+    <Content Include="Content\js\current\page_parameters.js" />
+    <Content Include="Content\js\current\pagination.js" />
+    <Content Include="Content\js\current\prompt.js" />
+    <Content Include="Content\js\current\Rander.js" />
+    <Content Include="Content\js\current\tab.js" />
+    <Content Include="Content\js\current\table.js" />
+    <Content Include="Content\js\current\trees.js" />
+    <Content Include="Content\js\current\verification.js" />
+    <Content Include="Content\js\datetimepicker\bootstrap-datetimepicker.css" />
+    <Content Include="Content\js\datetimepicker\bootstrap-datetimepicker.js" />
+    <Content Include="Content\js\datetimepicker\bootstrap-datetimepicker.zh-cn.js" />
+    <Content Include="Content\js\datetimepicker\bootstrap-datetimepicker.zh-tw.js" />
+    <Content Include="Content\js\datetimepicker\index.html" />
+    <Content Include="Content\js\export-canvas.js" />
+    <Content Include="Content\js\hplus\bootstrap.min.js" />
+    <Content Include="Content\js\hplus\contabs.min.js" />
+    <Content Include="Content\js\hplus\content.min.js" />
+    <Content Include="Content\js\hplus\demo\bootstrap-table-demo.min.js" />
+    <Content Include="Content\js\hplus\demo\echarts-demo.min.js" />
+    <Content Include="Content\js\hplus\demo\flot-demo.min.js" />
+    <Content Include="Content\js\hplus\demo\form-advanced-demo.min.js" />
+    <Content Include="Content\js\hplus\demo\form-validate-demo.min.js" />
+    <Content Include="Content\js\hplus\demo\layer-demo.min.js" />
+    <Content Include="Content\js\hplus\demo\morris-demo.min.js" />
+    <Content Include="Content\js\hplus\demo\peity-demo.min.js" />
+    <Content Include="Content\js\hplus\demo\rickshaw-demo.min.js" />
+    <Content Include="Content\js\hplus\demo\sparkline-demo.min.js" />
+    <Content Include="Content\js\hplus\demo\treeview-demo.min.js" />
+    <Content Include="Content\js\hplus\demo\webuploader-demo.min.js" />
+    <Content Include="Content\js\hplus\hplus.min.js" />
+    <Content Include="Content\js\hplus\jquery-ui-1.10.4.min.js" />
+    <Content Include="Content\js\hplus\jquery-ui.custom.min.js" />
+    <Content Include="Content\js\hplus\jquery.min.js" />
+    <Content Include="Content\js\hplus\plugins\beautifyhtml\beautifyhtml.js" />
+    <Content Include="Content\js\hplus\plugins\blueimp\jquery.blueimp-gallery.min.js" />
+    <Content Include="Content\js\hplus\plugins\bootstrap-table\bootstrap-table-fixed-columns.js" />
+    <Content Include="Content\js\hplus\plugins\bootstrap-table\bootstrap-table-mobile.min.js" />
+    <Content Include="Content\js\hplus\plugins\bootstrap-table\bootstrap-table.min.js" />
+    <Content Include="Content\js\hplus\plugins\bootstrap-table\locale\bootstrap-table-zh-CN.min.js" />
+    <Content Include="Content\js\hplus\plugins\chartJs\Chart.min.js" />
+    <Content Include="Content\js\hplus\plugins\chartJs\Moment.min.js" />
+    <Content Include="Content\js\hplus\plugins\chosen\chosen.jquery.js" />
+    <Content Include="Content\js\hplus\plugins\clockpicker\clockpicker.js" />
+    <Content Include="Content\js\hplus\plugins\codemirror\codemirror.js" />
+    <Content Include="Content\js\hplus\plugins\codemirror\mode\javascript\javascript.js" />
+    <Content Include="Content\js\hplus\plugins\colorpicker\bootstrap-colorpicker.min.js" />
+    <Content Include="Content\js\hplus\plugins\cropper\cropper.min.js" />
+    <Content Include="Content\js\hplus\plugins\datapicker\bootstrap-datepicker.js" />
+    <Content Include="Content\js\hplus\plugins\dataTables\dataTables.bootstrap.js" />
+    <Content Include="Content\js\hplus\plugins\dataTables\jquery.dataTables.js" />
+    <Content Include="Content\js\hplus\plugins\diff_match_patch\diff_match_patch.js" />
+    <Content Include="Content\js\hplus\plugins\dropzone\dropzone.js" />
+    <Content Include="Content\js\hplus\plugins\easypiechart\jquery.easypiechart.js" />
+    <Content Include="Content\js\hplus\plugins\EchartJs\echarts.min.js" />
+    <Content Include="Content\js\hplus\plugins\echarts\echarts-all.js" />
+    <Content Include="Content\js\hplus\plugins\fancybox\blank.gif" />
+    <Content Include="Content\js\hplus\plugins\fancybox\fancybox_loading%402x.gif" />
+    <Content Include="Content\js\hplus\plugins\fancybox\fancybox_loading.gif" />
+    <Content Include="Content\js\hplus\plugins\fancybox\fancybox_overlay.png" />
+    <Content Include="Content\js\hplus\plugins\fancybox\fancybox_sprite%402x.png" />
+    <Content Include="Content\js\hplus\plugins\fancybox\fancybox_sprite.png" />
+    <Content Include="Content\js\hplus\plugins\fancybox\jquery.fancybox.css" />
+    <Content Include="Content\js\hplus\plugins\fancybox\jquery.fancybox.js" />
+    <Content Include="Content\js\hplus\plugins\flot\curvedLines.js" />
+    <Content Include="Content\js\hplus\plugins\flot\jquery.flot.js" />
+    <Content Include="Content\js\hplus\plugins\flot\jquery.flot.pie.js" />
+    <Content Include="Content\js\hplus\plugins\flot\jquery.flot.resize.js" />
+    <Content Include="Content\js\hplus\plugins\flot\jquery.flot.spline.js" />
+    <Content Include="Content\js\hplus\plugins\flot\jquery.flot.symbol.js" />
+    <Content Include="Content\js\hplus\plugins\flot\jquery.flot.tooltip.min.js" />
+    <Content Include="Content\js\hplus\plugins\footable\footable.all.min.js" />
+    <Content Include="Content\js\hplus\plugins\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Content\js\hplus\plugins\gritter\images\gritter-light.png" />
+    <Content Include="Content\js\hplus\plugins\gritter\images\gritter.png" />
+    <Content Include="Content\js\hplus\plugins\gritter\images\ie-spacer.gif" />
+    <Content Include="Content\js\hplus\plugins\gritter\jquery.gritter.css" />
+    <Content Include="Content\js\hplus\plugins\gritter\jquery.gritter.min.js" />
+    <Content Include="Content\js\hplus\plugins\iCheck\icheck.js" />
+    <Content Include="Content\js\hplus\plugins\iCheck\icheck.min.js" />
+    <Content Include="Content\js\hplus\plugins\ionRangeSlider\ion.rangeSlider.min.js" />
+    <Content Include="Content\js\hplus\plugins\jasny\jasny-bootstrap.min.js" />
+    <Content Include="Content\js\hplus\plugins\jeditable\jquery.jeditable.js" />
+    <Content Include="Content\js\hplus\plugins\jqgrid\i18n\grid.locale-cnffe4.js" />
+    <Content Include="Content\js\hplus\plugins\jqgrid\jquery.jqGrid.minffe4.js" />
+    <Content Include="Content\js\hplus\plugins\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Content\js\hplus\plugins\jsKnob\jquery.knob.js" />
+    <Content Include="Content\js\hplus\plugins\jsTree\jstree.min.js" />
+    <Content Include="Content\js\hplus\plugins\jvectormap\jquery-jvectormap-1.2.2.min.js" />
+    <Content Include="Content\js\hplus\plugins\jvectormap\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.af-ZA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.af.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.am-ET.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.am.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ar-AE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ar-BH.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ar-DZ.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ar-EG.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ar-IQ.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ar-JO.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ar-KW.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ar-LB.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ar-LY.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ar-MA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ar-OM.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ar-QA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ar-SA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ar-SY.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ar-TN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ar-YE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ar.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.arn-CL.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.arn.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.as-IN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.as.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.az-Cyrl-AZ.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.az-Cyrl.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.az-Latn-AZ.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.az-Latn.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.az.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ba-RU.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ba.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.be-BY.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.be.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.bg-BG.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.bg.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.bn-BD.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.bn-IN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.bn.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.bo-CN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.bo.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.br-FR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.br.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.bs-Cyrl-BA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.bs-Cyrl.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.bs-Latn-BA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.bs-Latn.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.bs.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ca-ES-valencia.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ca-ES.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ca.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.chr-Cher-US.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.chr-Cher.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.chr.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.co-FR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.co.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.cs-CZ.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.cs.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.cy-GB.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.cy.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.da-DK.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.da.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.de-AT.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.de-CH.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.de-DE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.de-LI.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.de-LU.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.de.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.dsb-DE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.dsb.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.dv-MV.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.dv.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.el-GR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.el.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.en-029.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.en-AU.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.en-BZ.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.en-CA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.en-GB.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.en-HK.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.en-IE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.en-IN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.en-JM.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.en-MY.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.en-NZ.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.en-PH.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.en-SG.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.en-TT.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.en-US.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.en-ZA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.en-ZW.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.en.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-419.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-AR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-BO.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-CL.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-CO.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-CR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-DO.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-EC.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-ES.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-GT.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-HN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-MX.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-NI.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-PA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-PE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-PR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-PY.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-SV.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-US.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-UY.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es-VE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.es.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.et-EE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.et.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.eu-ES.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.eu.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fa-IR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fa.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ff-Latn-SN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ff-Latn.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ff.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fi-FI.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fi.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fil-PH.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fil.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fo-FO.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fo.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fr-BE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fr-CA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fr-CD.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fr-CH.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fr-CI.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fr-CM.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fr-FR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fr-HT.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fr-LU.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fr-MA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fr-MC.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fr-ML.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fr-RE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fr-SN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fr.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fy-NL.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.fy.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ga-IE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ga.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.gd-GB.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.gd.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.gl-ES.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.gl.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.gn-PY.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.gn.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.gsw-FR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.gsw.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.gu-IN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.gu.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ha-Latn-NG.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ha-Latn.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ha.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.haw-US.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.haw.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.he-IL.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.he.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.hi-IN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.hi.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.hr-BA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.hr-HR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.hr.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.hsb-DE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.hsb.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.hu-HU.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.hu.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.hy-AM.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.hy.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.id-ID.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.id.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ig-NG.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ig.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ii-CN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ii.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.is-IS.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.is.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.it-CH.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.it-IT.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.it.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.iu-Cans-CA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.iu-Cans.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.iu-Latn-CA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.iu-Latn.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.iu.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ja-JP.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ja.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.jv-Latn-ID.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.jv-Latn.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.jv.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ka-GE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ka.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.kk-KZ.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.kk.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.kl-GL.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.kl.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.km-KH.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.km.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.kn-IN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.kn.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ko-KR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ko.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.kok-IN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.kok.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ku-Arab-IQ.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ku-Arab.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ku.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ky-KG.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ky.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.lb-LU.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.lb.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.lo-LA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.lo.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.lt-LT.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.lt.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.lv-LV.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.lv.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.mg-MG.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.mg.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.mi-NZ.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.mi.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.mk-MK.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.mk.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ml-IN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ml.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.mn-Cyrl.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.mn-MN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.mn-Mong-CN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.mn-Mong-MN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.mn-Mong.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.mn.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.moh-CA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.moh.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.mr-IN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.mr.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ms-BN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ms-MY.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ms.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.mt-MT.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.mt.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.my-MM.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.my.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.nb-NO.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.nb.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ne-IN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ne-NP.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ne.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.nl-BE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.nl-NL.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.nl.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.nn-NO.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.nn.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.no.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.nqo-GN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.nqo.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.nso-ZA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.nso.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.oc-FR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.oc.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.om-ET.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.om.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.or-IN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.or.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.pa-Arab-PK.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.pa-Arab.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.pa-IN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.pa.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.pl-PL.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.pl.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.prs-AF.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.prs.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ps-AF.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ps.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.pt-AO.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.pt-BR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.pt-PT.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.pt.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.qut-GT.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.qut.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.quz-BO.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.quz-EC.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.quz-PE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.quz.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.rm-CH.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.rm.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ro-MD.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ro-RO.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ro.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ru-RU.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ru-UA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ru.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.rw-RW.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.rw.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sa-IN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sa.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sah-RU.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sah.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sd-Arab-PK.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sd-Arab.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sd.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.se-FI.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.se-NO.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.se-SE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.se.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.si-LK.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.si.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sk-SK.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sk.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sl-SI.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sl.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sma-NO.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sma-SE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sma.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.smj-NO.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.smj-SE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.smj.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.smn-FI.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.smn.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sms-FI.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sms.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sn-Latn-ZW.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sn-Latn.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sn.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.so-SO.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.so.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sq-AL.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sq.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sr-Cyrl-BA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sr-Cyrl-CS.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sr-Cyrl-ME.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sr-Cyrl-RS.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sr-Cyrl.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sr-Latn-BA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sr-Latn-CS.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sr-Latn-ME.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sr-Latn-RS.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sr-Latn.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sr.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.st-ZA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.st.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sv-FI.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sv-SE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sv.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sw-KE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.sw.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.syr-SY.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.syr.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ta-IN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ta-LK.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ta.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.te-IN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.te.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.tg-Cyrl-TJ.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.tg-Cyrl.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.tg.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.th-TH.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.th.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ti-ER.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ti-ET.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ti.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.tk-TM.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.tk.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.tn-BW.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.tn-ZA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.tn.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.tr-TR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.tr.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ts-ZA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ts.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.tt-RU.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.tt.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.tzm-Latn-DZ.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.tzm-Latn.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.tzm-Tfng-MA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.tzm-Tfng.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.tzm.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ug-CN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ug.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.uk-UA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.uk.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ur-IN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ur-PK.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.ur.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.uz-Cyrl-UZ.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.uz-Cyrl.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.uz-Latn-UZ.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.uz-Latn.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.uz.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.vi-VN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.vi.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.wo-SN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.wo.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.xh-ZA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.xh.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.yo-NG.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.yo.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.zgh-Tfng-MA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.zgh-Tfng.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.zgh.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.zh-CHS.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.zh-CHT.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.zh-CN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.zh-Hans.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.zh-Hant.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.zh-HK.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.zh-MO.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.zh-SG.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.zh-TW.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.zh.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.zu-ZA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\cultures\kendo.culture.zu.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\kendo.all.min.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.bg-BG.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.cs-CZ.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.da-DK.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.de-AT.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.de-CH.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.de-DE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.de-LI.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.el-GR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.en-AU.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.en-CA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.en-GB.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.en-US.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.es-AR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.es-BO.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.es-CL.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.es-CO.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.es-CR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.es-DO.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.es-EC.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.es-ES.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.es-GT.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.es-HN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.es-MX.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.es-NI.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.es-PA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.es-PE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.es-PR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.es-PY.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.es-US.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.es-UY.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.es-VE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.fa-IR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.fi-FI.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.fr-BE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.fr-CA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.fr-CD.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.fr-CH.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.fr-CI.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.fr-CM.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.fr-FR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.fr-HT.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.fr-LU.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.fr-MA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.fr-MC.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.fr-ML.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.fr-SN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.he-IL.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.hu-HU.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.hy-AM.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.it-CH.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.it-IT.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.ja-JP.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.nb-NO.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.nl-BE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.nl-NL.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.pl-PL.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.pt-BR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.pt-PT.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.ro-RO.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.ru-RU.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.sk-SK.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.sv-SE.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.tr-TR.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.uk-UA.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.zh-CN.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.zh-HK.js" />
+    <Content Include="Content\js\hplus\plugins\kendo-ui\messages\kendo.messages.zh-TW.js" />
+    <Content Include="Content\js\hplus\plugins\layer\extend\layer.ext.js" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate-v1.1\demo.html" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate-v1.1\laydate\laydate.js" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate-v1.1\laydate\need\laydate.css" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate-v1.1\laydate\skins\dahong\icon.png" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate-v1.1\laydate\skins\dahong\laydate.css" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate-v1.1\laydate\skins\default\icon.png" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate-v1.1\laydate\skins\default\laydate.css" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate-v1.1\laydate\skins\molv\icon.png" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate-v1.1\laydate\skins\molv\laydate.css" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate-v1.1\更新日志.txt" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate\laydate.js" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate\need\laydate.css" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate\skins\dahong\icon.png" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate\skins\dahong\laydate.css" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate\skins\danlan\icon.png" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate\skins\danlan\laydate.css" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate\skins\default\icon.png" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate\skins\default\laydate.css" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate\skins\molv\icon.png" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate\skins\molv\laydate.css" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate\skins\yahui\icon.png" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate\skins\yahui\laydate.css" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate\skins\yalan\icon.png" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate\skins\yalan\laydate.css" />
+    <Content Include="Content\js\hplus\plugins\layer\layer.min.js" />
+    <Content Include="Content\js\hplus\plugins\layer\layim\layim.css" />
+    <Content Include="Content\js\hplus\plugins\layer\layim\layim.js" />
+    <Content Include="Content\js\hplus\plugins\layer\layim\loading.gif" />
+    <Content Include="Content\js\hplus\plugins\layer\skin\layer.css" />
+    <Content Include="Content\js\hplus\plugins\layer\skin\layer.ext.css" />
+    <Content Include="Content\js\hplus\plugins\layer\skin\moon\style.css" />
+    <Content Include="Content\js\hplus\plugins\markdown\bootstrap-markdown.js" />
+    <Content Include="Content\js\hplus\plugins\markdown\bootstrap-markdown.zh.js" />
+    <Content Include="Content\js\hplus\plugins\markdown\markdown.js" />
+    <Content Include="Content\js\hplus\plugins\markdown\to-markdown.js" />
+    <Content Include="Content\js\hplus\plugins\metisMenu\jquery.metisMenu.js" />
+    <Content Include="Content\js\hplus\plugins\morris\morris.js" />
+    <Content Include="Content\js\hplus\plugins\morris\raphael-2.1.0.min.js" />
+    <Content Include="Content\js\hplus\plugins\nestable\jquery.nestable.js" />
+    <Content Include="Content\js\hplus\plugins\nouslider\jquery.nouislider.min.js" />
+    <Content Include="Content\js\hplus\plugins\pace\pace.min.js" />
+    <Content Include="Content\js\hplus\plugins\peity\jquery.peity.min.js" />
+    <Content Include="Content\js\hplus\plugins\plyr\plyr.js" />
+    <Content Include="Content\js\hplus\plugins\preetyTextDiff\jquery.pretty-text-diff.min.js" />
+    <Content Include="Content\js\hplus\plugins\prettyfile\bootstrap-prettyfile.js" />
+    <Content Include="Content\js\hplus\plugins\rickshaw\rickshaw.min.js" />
+    <Content Include="Content\js\hplus\plugins\rickshaw\vendor\d3.v3.js" />
+    <Content Include="Content\js\hplus\plugins\simditor\hotkeys.js" />
+    <Content Include="Content\js\hplus\plugins\simditor\module.js" />
+    <Content Include="Content\js\hplus\plugins\simditor\simditor.js" />
+    <Content Include="Content\js\hplus\plugins\simditor\uploader.js" />
+    <Content Include="Content\js\hplus\plugins\slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="Content\js\hplus\plugins\sparkline\jquery.sparkline.min.js" />
+    <Content Include="Content\js\hplus\plugins\staps\jquery.steps.min.js" />
+    <Content Include="Content\js\hplus\plugins\suggest\bootstrap-suggest.min.js" />
+    <Content Include="Content\js\hplus\plugins\summernote\summernote-zh-CN.js" />
+    <Content Include="Content\js\hplus\plugins\summernote\summernote.min.js" />
+    <Content Include="Content\js\hplus\plugins\sweetalert\sweetalert.min.js" />
+    <Content Include="Content\js\hplus\plugins\switchery\switchery.js" />
+    <Content Include="Content\js\hplus\plugins\toastr\toastr.min.js" />
+    <Content Include="Content\js\hplus\plugins\treeview\bootstrap-treeview.js" />
+    <Content Include="Content\js\hplus\plugins\validate\jquery.validate.min.js" />
+    <Content Include="Content\js\hplus\plugins\validate\messages_zh.min.js" />
+    <Content Include="Content\js\hplus\plugins\webuploader\index.html" />
+    <Content Include="Content\js\hplus\plugins\webuploader\webuploader.min.js" />
+    <Content Include="Content\js\hplus\welcome.min.js" />
+    <Content Include="Content\js\html2canvas.js" />
+    <Content Include="Content\js\initLanguage.js" />
+    <Content Include="Content\js\jquery-plugins\copy\ZeroClipboard.js" />
+    <Content Include="Content\js\jquery-plugins\copy\ZeroClipboard.swf" />
+    <Content Include="Content\js\jquery-plugins\daterange\jquery.daterange.css" />
+    <Content Include="Content\js\jquery-plugins\daterange\jquery.daterange.js" />
+    <Content Include="Content\js\jquery-plugins\fineuploader-3.7.1\edit.gif" />
+    <Content Include="Content\js\jquery-plugins\fineuploader-3.7.1\fineuploader-3.7.1.css" />
+    <Content Include="Content\js\jquery-plugins\fineuploader-3.7.1\fineuploader-3.7.1.min.css" />
+    <Content Include="Content\js\jquery-plugins\fineuploader-3.7.1\iframe.xss.response-3.7.1.js" />
+    <Content Include="Content\js\jquery-plugins\fineuploader-3.7.1\jquery.fineuploader-3.7.1.js" />
+    <Content Include="Content\js\jquery-plugins\fineuploader-3.7.1\jquery.fineuploader-3.7.1.min.js" />
+    <Content Include="Content\js\jquery-plugins\fineuploader-3.7.1\loading.gif" />
+    <Content Include="Content\js\jquery-plugins\fineuploader-3.7.1\processing.gif" />
+    <Content Include="Content\js\jquery-plugins\jnotify\images\ui-icons_217bc0_256x240.png" />
+    <Content Include="Content\js\jquery-plugins\jnotify\images\ui-icons_469bdd_256x240.png" />
+    <Content Include="Content\js\jquery-plugins\jnotify\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Content\js\jquery-plugins\jnotify\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="Content\js\jquery-plugins\jnotify\jquery.jnotify.css" />
+    <Content Include="Content\js\jquery-plugins\jnotify\jquery.jnotify.js" />
+    <Content Include="Content\js\jquery-plugins\jquery-ui\css\images\ui-icons_217bc0_256x240.png" />
+    <Content Include="Content\js\jquery-plugins\jquery-ui\css\images\ui-icons_469bdd_256x240.png" />
+    <Content Include="Content\js\jquery-plugins\jquery-ui\css\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Content\js\jquery-plugins\jquery-ui\css\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="Content\js\jquery-plugins\jquery-ui\css\jquery-ui.css" />
+    <Content Include="Content\js\jquery-plugins\jquery-ui\js\jquery-ui-datepick.min.js" />
+    <Content Include="Content\js\jquery-plugins\jquery-ui\js\jquery-ui.min.js" />
+    <Content Include="Content\js\jquery-plugins\showloading\images\loading-bars.gif" />
+    <Content Include="Content\js\jquery-plugins\showloading\images\loading.gif" />
+    <Content Include="Content\js\jquery-plugins\showloading\jquery.showLoading.js" />
+    <Content Include="Content\js\jquery-plugins\showloading\jquery.showLoading.min.js" />
+    <Content Include="Content\js\jquery-plugins\showloading\showLoading.css" />
+    <Content Include="Content\js\jquery-plugins\smartwizard\jquery.smartWizard.js" />
+    <Content Include="Content\js\jquery-plugins\smartwizard\loader.gif" />
+    <Content Include="Content\js\jquery-plugins\smartwizard\smart_wizard.css" />
+    <Content Include="Content\js\jquery-plugins\smartwizard\smart_wizard_vertical.css" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor-1.1.14-zh-cn.min.js" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\angry.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\awkward.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\bye.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\config.txt" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\crazy.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\cry.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\curse.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\cute.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\despise.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\doubt.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\envy.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\fastcry.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\knock.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\laugh.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\mad.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\ohmy.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\panic.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\proud.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\quiet.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\sad.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\shutup.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\shy.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\sleep.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\smile.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\struggle.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\titter.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\tongue.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\wail.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\default\wronged.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\alien.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\angel.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\angry.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\bandit.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\biglaugh.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\blink.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\blush.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\config.txt" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\cool.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\cry.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\depres.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\devil.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\glare.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\heart.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\joyful.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\kiss.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\laugh.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\magician.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\ninja.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\pinch.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\police.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\sad.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\sick.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\sideways.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\sleep.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\smile.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\surprised.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\tongue.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\unsure.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\w00t.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\whistling.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\wondering.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\ipb\wub.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\1.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\10.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\11.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\12.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\13.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\14.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\15.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\16.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\17.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\18.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\19.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\2.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\20.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\21.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\22.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\23.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\24.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\25.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\26.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\27.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\28.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\29.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\3.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\30.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\31.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\32.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\33.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\34.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\35.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\36.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\37.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\38.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\39.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\4.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\40.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\5.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\6.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\7.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\8.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\msn\9.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\angry.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\bad.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\blush.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\brokenheart.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\bye.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\coffee.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\config.txt" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\cool.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\cry.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\curse.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\cute.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\devil.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\envy.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\gift.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\good.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\kiss.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\laugh.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\love.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\music.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\question.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\rose.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\sad.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\shocked.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\shout.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\sick.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\sleepy.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\smile.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\soccer.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\sweat.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\tired.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\tongue.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\victory.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_emot\pidgin\wink.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_plugins\multiupload\img\add.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_plugins\multiupload\img\bg1.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_plugins\multiupload\img\bg2.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_plugins\multiupload\img\btnbg.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_plugins\multiupload\img\btnbgr.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_plugins\multiupload\img\clear.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_plugins\multiupload\img\progressbg.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_plugins\multiupload\img\start.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_plugins\multiupload\multiupload.css" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_plugins\multiupload\multiupload.html" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_plugins\multiupload\multiupload.js" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_plugins\multiupload\swfupload\swfupload.js" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_plugins\multiupload\swfupload\swfupload.swf" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_plugins\ubb.min.js" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\blank.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\iframe.css" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\img\anchor.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\img\close.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\img\flash.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\img\icons.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\img\loading.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\img\progress.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\img\progressbg.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\img\tag-address.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\img\tag-div.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\img\tag-h1.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\img\tag-h2.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\img\tag-h3.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\img\tag-h4.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\img\tag-h5.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\img\tag-h6.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\img\tag-p.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\img\tag-pre.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\img\waiting.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\img\wmp.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\img\wordimg.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\default\ui.css" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\iframe.css" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\img\anchor.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\img\close.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\img\flash.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\img\icons.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\img\loading.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\img\progress.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\img\progressbg.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\img\tag-address.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\img\tag-div.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\img\tag-h1.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\img\tag-h2.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\img\tag-h3.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\img\tag-h4.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\img\tag-h5.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\img\tag-h6.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\img\tag-p.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\img\tag-pre.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\img\waiting.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\img\wmp.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\img\wordimg.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\nostyle\ui.css" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\iframe.css" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\anchor.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\buttonbg.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\close.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\flash.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\icons.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\loading.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\progress.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\progressbg.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\tag-address.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\tag-div.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\tag-h1.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\tag-h2.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\tag-h3.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\tag-h4.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\tag-h5.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\tag-h6.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\tag-p.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\tag-pre.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\waiting.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\wmp.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\img\wordimg.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007blue\ui.css" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\iframe.css" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\anchor.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\buttonbg.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\close.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\flash.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\icons.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\loading.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\progress.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\progressbg.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\tag-address.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\tag-div.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\tag-h1.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\tag-h2.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\tag-h3.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\tag-h4.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\tag-h5.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\tag-h6.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\tag-p.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\tag-pre.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\waiting.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\wmp.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\img\wordimg.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\o2007silver\ui.css" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\iframe.css" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\anchor.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\buttonbg.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\close.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\flash.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\icons.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\loading.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\progress.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\progressbg.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\tag-address.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\tag-div.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\tag-h1.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\tag-h2.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\tag-h3.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\tag-h4.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\tag-h5.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\tag-h6.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\tag-p.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\tag-pre.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\titlebg.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\waiting.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\wmp.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\img\wordimg.gif" />
+    <Content Include="Content\js\jquery-plugins\xheditor\xheditor_skin\vista\ui.css" />
+    <Content Include="Content\js\jquery-plugins\ztree\3.5\img\diy\1_close.png" />
+    <Content Include="Content\js\jquery-plugins\ztree\3.5\img\diy\1_open.png" />
+    <Content Include="Content\js\jquery-plugins\ztree\3.5\img\diy\2.png" />
+    <Content Include="Content\js\jquery-plugins\ztree\3.5\img\diy\3.png" />
+    <Content Include="Content\js\jquery-plugins\ztree\3.5\img\diy\4.png" />
+    <Content Include="Content\js\jquery-plugins\ztree\3.5\img\diy\5.png" />
+    <Content Include="Content\js\jquery-plugins\ztree\3.5\img\diy\6.png" />
+    <Content Include="Content\js\jquery-plugins\ztree\3.5\img\diy\7.png" />
+    <Content Include="Content\js\jquery-plugins\ztree\3.5\img\diy\8.png" />
+    <Content Include="Content\js\jquery-plugins\ztree\3.5\img\diy\9.png" />
+    <Content Include="Content\js\jquery-plugins\ztree\3.5\img\line_conn.gif" />
+    <Content Include="Content\js\jquery-plugins\ztree\3.5\img\loading.gif" />
+    <Content Include="Content\js\jquery-plugins\ztree\3.5\img\zTreeStandard.gif" />
+    <Content Include="Content\js\jquery-plugins\ztree\3.5\img\zTreeStandard.png" />
+    <Content Include="Content\js\jquery-plugins\ztree\3.5\jquery.ztree.all-3.5.min.js" />
+    <Content Include="Content\js\jquery-plugins\ztree\3.5\zTreeStyle.css" />
+    <Content Include="Content\js\jquery.localize.js" />
+    <Content Include="Content\js\jquery.localize.min.js" />
+    <Content Include="Content\js\jquery.qrcode.min.js" />
+    <Content Include="Content\js\jquery\jquery-1.10.2.js" />
+    <Content Include="Content\js\jquery\jquery-1.10.2.min.js" />
+    <Content Include="Content\js\jquery\jquery-1.8.1.js" />
+    <Content Include="Content\js\jquery\jquery-1.8.1.min.js" />
+    <Content Include="Content\js\jquery\jquery-2.0.3.js" />
+    <Content Include="Content\js\jquery\jquery-2.0.3.min.js" />
+    <Content Include="Content\js\JsBarcode.all.js" />
+    <Content Include="Content\js\kindeditor4.1.10\asp.net\bin\LitJSON.dll" />
+    <Content Include="Content\js\kindeditor4.1.10\asp.net\demo.aspx" />
+    <Content Include="Content\js\kindeditor4.1.10\asp.net\README.txt" />
+    <Content Include="Content\js\kindeditor4.1.10\asp\demo.asp" />
+    <Content Include="Content\js\kindeditor4.1.10\asp\file_manager_json.asp" />
+    <Content Include="Content\js\kindeditor4.1.10\asp\JSON_2.0.4.asp" />
+    <Content Include="Content\js\kindeditor4.1.10\asp\UpLoad_Class.asp" />
+    <Content Include="Content\js\kindeditor4.1.10\asp\upload_json.asp" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\auto-height.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\colorpicker.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\custom-plugin.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\custom-theme.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\default.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\dialog.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\dynamic-load.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\file-dialog.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\file-manager.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\filter-mode.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\image-dialog.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\index.css" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\index.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\jquery-ui.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\jquery-ui\css\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\jquery-ui\css\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\jquery-ui\css\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\jquery-ui\css\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\jquery-ui\css\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\jquery-ui\css\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\jquery-ui\css\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\jquery-ui\css\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\jquery-ui\css\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\jquery-ui\css\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\jquery-ui\css\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\jquery-ui\css\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\jquery-ui\css\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\jquery-ui\css\smoothness\jquery-ui-1.9.2.custom.css" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\jquery-ui\css\smoothness\jquery-ui-1.9.2.custom.min.css" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\jquery-ui\js\jquery-ui-1.9.2.custom.js" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\jquery-ui\js\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\jquery.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\jquery.js" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\multi-image-dialog.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\multi-language.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\newline.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\node.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\paste-type.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\qqstyle.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\readonly.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\simple.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\uploadbutton.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\url-type.html" />
+    <Content Include="Content\js\kindeditor4.1.10\examples\word-count.html" />
+    <Content Include="Content\js\kindeditor4.1.10\jsp\lib\commons-fileupload-1.2.1.jar" />
+    <Content Include="Content\js\kindeditor4.1.10\jsp\lib\commons-io-1.4.jar" />
+    <Content Include="Content\js\kindeditor4.1.10\jsp\lib\json_simple-1.1.jar" />
+    <Content Include="Content\js\kindeditor4.1.10\jsp\README.txt" />
+    <Content Include="Content\js\kindeditor4.1.10\kindeditor-all-min.js" />
+    <Content Include="Content\js\kindeditor4.1.10\kindeditor-all.js" />
+    <Content Include="Content\js\kindeditor4.1.10\kindeditor-min.js" />
+    <Content Include="Content\js\kindeditor4.1.10\kindeditor.js" />
+    <Content Include="Content\js\kindeditor4.1.10\lang\ar.js" />
+    <Content Include="Content\js\kindeditor4.1.10\lang\en.js" />
+    <Content Include="Content\js\kindeditor4.1.10\lang\ko.js" />
+    <Content Include="Content\js\kindeditor4.1.10\lang\zh_CN.js" />
+    <Content Include="Content\js\kindeditor4.1.10\lang\zh_TW.js" />
+    <Content Include="Content\js\kindeditor4.1.10\license.txt" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\anchor\anchor.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\autoheight\autoheight.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\baidumap\baidumap.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\baidumap\index.html" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\baidumap\map.html" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\clearhtml\clearhtml.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\code\code.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\code\prettify.css" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\code\prettify.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\emoticons.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\0.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\1.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\10.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\100.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\101.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\102.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\103.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\104.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\105.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\106.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\107.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\108.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\109.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\11.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\110.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\111.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\112.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\113.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\114.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\115.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\116.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\117.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\118.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\119.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\12.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\120.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\121.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\122.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\123.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\124.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\125.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\126.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\127.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\128.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\129.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\13.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\130.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\131.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\132.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\133.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\134.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\14.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\15.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\16.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\17.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\18.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\19.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\2.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\20.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\21.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\22.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\23.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\24.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\25.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\26.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\27.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\28.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\29.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\3.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\30.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\31.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\32.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\33.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\34.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\35.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\36.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\37.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\38.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\39.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\4.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\40.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\41.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\42.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\43.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\44.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\45.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\46.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\47.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\48.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\49.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\5.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\50.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\51.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\52.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\53.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\54.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\55.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\56.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\57.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\58.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\59.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\6.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\60.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\61.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\62.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\63.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\64.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\65.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\66.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\67.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\68.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\69.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\7.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\70.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\71.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\72.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\73.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\74.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\75.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\76.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\77.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\78.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\79.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\8.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\80.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\81.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\82.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\83.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\84.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\85.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\86.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\87.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\88.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\89.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\9.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\90.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\91.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\92.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\93.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\94.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\95.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\96.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\97.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\98.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\99.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\emoticons\images\static.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\filemanager\filemanager.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\filemanager\images\file-16.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\filemanager\images\file-64.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\filemanager\images\folder-16.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\filemanager\images\folder-64.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\filemanager\images\go-up.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\flash\flash.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\image\image.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\image\images\align_left.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\image\images\align_right.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\image\images\align_top.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\image\images\refresh.png" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\insertfile\insertfile.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\lineheight\lineheight.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\link\link.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\map\map.html" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\map\map.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\media\media.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\multiimage\images\image.png" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\multiimage\images\select-files-en.png" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\multiimage\images\select-files-zh_CN.png" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\multiimage\images\swfupload.swf" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\multiimage\multiimage.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\pagebreak\pagebreak.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\plainpaste\plainpaste.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\preview\preview.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\quickformat\quickformat.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\table\table.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\template\html\1.html" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\template\html\2.html" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\template\html\3.html" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\template\template.js" />
+    <Content Include="Content\js\kindeditor4.1.10\plugins\wordpaste\wordpaste.js" />
+    <Content Include="Content\js\kindeditor4.1.10\themes\common\anchor.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\themes\common\blank.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\themes\common\flash.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\themes\common\loading.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\themes\common\media.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\themes\common\rm.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\themes\default\background.png" />
+    <Content Include="Content\js\kindeditor4.1.10\themes\default\default.css" />
+    <Content Include="Content\js\kindeditor4.1.10\themes\default\default.png" />
+    <Content Include="Content\js\kindeditor4.1.10\themes\qq\editor.gif" />
+    <Content Include="Content\js\kindeditor4.1.10\themes\qq\qq.css" />
+    <Content Include="Content\js\kindeditor4.1.10\themes\simple\simple.css" />
+    <Content Include="Content\js\knockout\knockout-2.2.0.debug.js" />
+    <Content Include="Content\js\knockout\knockout-2.2.0.js" />
+    <Content Include="Content\js\knockout\knockout-2.2.1.debug.js" />
+    <Content Include="Content\js\knockout\knockout-2.2.1.js" />
+    <Content Include="Content\js\knockout\knockout-3.0.0.debug.js" />
+    <Content Include="Content\js\knockout\knockout-3.0.0.js" />
+    <Content Include="Content\js\knockout\knockout-3.4.1.js" />
+    <Content Include="Content\js\knockout\knockout.bindings.js" />
+    <Content Include="Content\js\knockout\knockout.mapping-2.4.1.debug.js" />
+    <Content Include="Content\js\knockout\knockout.mapping-2.4.1.js" />
+    <Content Include="Content\js\language_cookie.js" />
+    <Content Include="Content\js\md5\md5.js" />
+    <Content Include="Content\js\md5\screen.js" />
+    <Content Include="Content\js\mock-min.js" />
+    <Content Include="Content\js\monkeyfly\monkeyfly.js" />
+    <Content Include="Content\js\uploadify\bg1.jpg" />
+    <Content Include="Content\js\uploadify\jquery-1.8.2.min.js" />
+    <Content Include="Content\js\uploadify\jquery.uploadify.js" />
+    <Content Include="Content\js\uploadify\jquery.uploadify.min.js" />
+    <Content Include="Content\js\uploadify\uploadify-cancel.png" />
+    <Content Include="Content\js\uploadify\uploadify.css" />
+    <Content Include="Content\js\uploadify\uploadify.swf" />
+    <Content Include="Content\plugins\fullavatareditor\scripts\fullAvatarEditor.js" />
+    <Content Include="Content\plugins\fullavatareditor\scripts\jQuery.Cookie.js" />
+    <Content Include="Content\plugins\fullavatareditor\scripts\swfobject.js" />
+    <Content Include="Content\plugins\fullavatareditor\scripts\test.js" />
+    <Content Include="Data\language\Home\Home-ZH-CN.js" />
+    <Content Include="Data\language\Home\Home-ZH-TW.js" />
+    <Content Include="Data\language\Logon\Logon-ZH-CN.js" />
+    <Content Include="Data\language\Logon\Logon-ZH-TW.js" />
+    <Content Include="Data\language\MES-MFC\Log\Log-ZH-CN.js" />
+    <Content Include="Data\language\MES-MFC\Log\Log-ZH-TW.js" />
+    <Content Include="Data\language\MES-MFC\Menu\Menu-ZH-CN.js" />
+    <Content Include="Data\language\MES-MFC\Menu\Menu-ZH-TW.js" />
+    <Content Include="Data\language\MES-MFC\Organization\Organization-ZH-CN.js" />
+    <Content Include="Data\language\MES-MFC\Organization\Organization-ZH-TW.js" />
+    <Content Include="Data\language\MES-MFC\Role\Role-ZH-CN.js" />
+    <Content Include="Data\language\MES-MFC\Role\Role-ZH-TW.js" />
+    <Content Include="Data\language\MES-MFC\System\System-ZH-CN.js" />
+    <Content Include="Data\language\MES-MFC\System\System-ZH-TW.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\INF00003\INF00003-ZH-CN.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\INF00003\INF00003-ZH-TW.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\INF00011\INF00011-ZH-CN.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\INF00011\INF00011-ZH-TW.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\INF00012\INF00012-ZH-CN.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\INF00012\INF00012-ZH-TW.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\INF00008\INF00008-ZH-CN.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\INF00008\INF00008-ZH-TW.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\INF00007\INF00007-ZH-CN.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\INF00007\INF00007-ZH-TW.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\INF00001\INF00001-ZH-CN.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\INF00001\INF00001-ZH-TW.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\INF00009\INF00009-ZH-CN.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\INF00009\INF00009-ZH-TW.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\INF00010\INF00010-ZH-CN.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\INF00010\INF00010-ZH-TW.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\INF00013\INF00013-ZH-CN.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\INF00013\INF00013-ZH-TW.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\INF00019\INF00019-ZH-CN.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\INF00019\INF00019-ZH-TW.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\LAN00000\LAN00000-ZH-CN.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\LAN00000\LAN00000-ZH-TW.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\SCP00004\SCP00004-ZH-CN.js" />
+    <Content Include="Data\language\MES\IntelligentParameters\SCP00004\SCP00004-ZH-TW.js" />
+    <Content Include="Data\language\MES\Util\Languages-ZH-CN.js" />
+    <Content Include="Data\language\MES\Util\Languages-ZH-TW.js" />
+    <Content Include="Data\language\MES\Util\Parameters-ZH-CN.js" />
+    <Content Include="Data\language\MES\Util\Parameters-ZH-TW.js" />
+    <Content Include="Data\options\action\action-zh-cn.js" />
+    <Content Include="Data\options\action\action-zh-tw.js" />
+    <Content Include="Data\options\bootstrap-datepicker\bootstrap-datepicker-en.js" />
+    <Content Include="Data\options\bootstrap-datepicker\bootstrap-datepicker-zh-cn.js" />
+    <Content Include="Data\options\bootstrap-datepicker\bootstrap-datepicker-zh-tw.js" />
+    <Content Include="Data\options\button\button-zh-cn.js" />
+    <Content Include="Data\options\button\button-zh-tw.js" />
+    <Content Include="Data\options\company\company-en.js" />
+    <Content Include="Data\options\company\company-zh-cn.js" />
+    <Content Include="Data\options\company\company-zh-tw.js" />
+    <Content Include="Data\options\home\home-en.js" />
+    <Content Include="Data\options\home\home-zh-cn.js" />
+    <Content Include="Data\options\home\home-zh-tw.js" />
+    <Content Include="Data\options\menu\menu-zh-cn.js" />
+    <Content Include="Data\options\menu\menu-zh-tw.js" />
+    <Content Include="Data\options\prompt\prompt-en.js" />
+    <Content Include="Data\options\prompt\prompt-zh-cn.js" />
+    <Content Include="Data\options\prompt\prompt-zh-tw.js" />
+    <Content Include="Data\options\ribbon\ribbon-en.js" />
+    <Content Include="Data\options\ribbon\ribbon-zh-cn.js" />
+    <Content Include="Data\options\ribbon\ribbon-zh-tw.js" />
+    <Content Include="Data\options\table\table-en.js" />
+    <Content Include="Data\options\table\table-zh-cn.js" />
+    <Content Include="Data\options\table\table-zh-tw.js" />
+    <Content Include="Data\options\vicestatus\vicestatus-en.js" />
+    <Content Include="Data\options\vicestatus\vicestatus-zh-cn.js" />
+    <Content Include="Data\options\vicestatus\vicestatus-zh-tw.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00003\INF00003-en.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00003\INF00003-zh-cn.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00003\INF00003-zh-tw.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00012\INF00012-en.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00012\INF00012-zh-cn.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00012\INF00012-zh-tw.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00001\INF00001-en.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00001\INF00001-zh-cn.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00001\INF00001-zh-tw.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00008\INF00008-en.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00008\INF00008-zh-cn.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00008\INF00008-zh-tw.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00007\INF00007-en.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00007\INF00007-zh-cn.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00007\INF00007-zh-tw.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00009\INF00009-en.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00009\INF00009-zh-cn.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00009\INF00009-zh-tw.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00011\INF00011-en.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00011\INF00011-zh-cn.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00011\INF00011-zh-tw.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00010\INF00010-en.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00010\INF00010-zh-cn.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00010\INF00010-zh-tw.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00013\INF00013-en.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00013\INF00013-zh-cn.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00013\INF00013-zh-tw.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00019\INF00019-en.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00019\INF00019-zh-cn.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\INF00019\INF00019-zh-tw.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\LAN00000\LAN00000-en.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\LAN00000\LAN00000-zh-cn.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\LAN00000\LAN00000-zh-tw.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\SCP00004\SCP00004-en.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\SCP00004\SCP00004-zh-cn.js" />
+    <Content Include="Data\tables\MES\IntelligentParameters\SCP00004\SCP00004-zh-tw.js" />
+    <Content Include="Data\tables\MES\Util\Languages\Languages-en.js" />
+    <Content Include="Data\tables\MES\Util\Languages\Languages-zh-cn.js" />
+    <Content Include="Data\tables\MES\Util\Languages\Languages-zh-tw.js" />
+    <Content Include="Data\tables\MES\Util\Parameters\Parameters-en.js" />
+    <Content Include="Data\tables\MES\Util\Parameters\Parameters-zh-cn.js" />
+    <Content Include="Data\tables\MES\Util\Parameters\Parameters-zh-tw.js" />
+    <Content Include="Data\tips\MES\IntelligentParameters\INF00001\INF00001-EN.js" />
+    <Content Include="Data\tips\MES\IntelligentParameters\INF00001\INF00001-ZH-CN.js" />
+    <Content Include="Data\tips\MES\IntelligentParameters\INF00001\INF00001-ZH-TW.js" />
+    <Content Include="Data\tips\MES\IntelligentParameters\INF00009\INF00009-EN.js" />
+    <Content Include="Data\tips\MES\IntelligentParameters\INF00009\INF00009-ZH-CN.js" />
+    <Content Include="Data\tips\MES\IntelligentParameters\INF00009\INF00009-ZH-TW.js" />
+    <Content Include="Data\tips\MES\IntelligentParameters\INF00010\INF00010-EN.js" />
+    <Content Include="Data\tips\MES\IntelligentParameters\INF00010\INF00010-ZH-CN.js" />
+    <Content Include="Data\tips\MES\IntelligentParameters\INF00010\INF00010-ZH-TW.js" />
+    <Content Include="Data\tips\MES\IntelligentParameters\INF00013\INF00013-EN.js" />
+    <Content Include="Data\tips\MES\IntelligentParameters\INF00013\INF00013-ZH-CN.js" />
+    <Content Include="Data\tips\MES\IntelligentParameters\INF00013\INF00013-ZH-TW.js" />
+    <Content Include="Data\tips\MES\IntelligentParameters\INF00019\INF00019-EN.js" />
+    <Content Include="Data\tips\MES\IntelligentParameters\INF00019\INF00019-ZH-CN.js" />
+    <Content Include="Data\tips\MES\IntelligentParameters\INF00019\INF00019-ZH-TW.js" />
+    <Content Include="Data\tips\MES\IntelligentParameters\Languages\Languages-EN.js" />
+    <Content Include="Data\tips\MES\IntelligentParameters\Languages\Languages-ZH-CN.js" />
+    <Content Include="Data\tips\MES\IntelligentParameters\Languages\Languages-ZH-TW.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00001.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00001ConditionSet.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00001EquipmentItemMaintenance.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00001EquipmentMasterFile.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00001EquipmentPicture.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00002.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00003.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00004.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00005.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00008.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00008MaintenanceItem.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00008MaintenanceList.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00008MaintenanceType.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00009.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00009Add.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00009Edit.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00010.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00011.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00006.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00007.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00007Equipment.js" />
+    <Content Include="ViewModels\MES\EquipmentManagement\EMS00007Reason.js" />
+    <Content Include="ViewModels\MES\IntelligentCouplet\IOT00002.js" />
+    <Content Include="ViewModels\MES\IntelligentCouplet\IOT00002Machine.js" />
+    <Content Include="ViewModels\MES\IntelligentCouplet\IOT00003.js" />
+    <Content Include="ViewModels\MES\IntelligentCouplet\IOT00001.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00001AlternativeProcess.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00001BOM.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00001OperationMaterials.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00001OperationRelationship.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00001OperationRelationshipChart.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00001OperationResources.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00001OperationResourcesArtificial.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00001OperationResourcesEquipment.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00001OperationResourcesOther.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00001ProcessMaterials.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00001ProcessProcess.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00001ProcessRelationship.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00001ProcessRelationshipChart.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00001ProcessResources.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00001ProcessResourcesArtificial.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00001ProcessResourcesEquipment.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00001ProcessResourcesOther.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00001Resource.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00002.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00002AlternativeProcess.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00002BOM.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00002OperationMaterials.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00002OperationRelationship.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00002OperationRelationshipDiagram.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00002OperationResources.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00002OperationResourcesArtificial.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00002OperationResourcesEquipment.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00002OperationResourcesOther.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00002ProcessMaterials.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00002ProcessProcess.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00002ProcessRelaDiagram.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00002ProcessRelaDiagramView.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00002ProcessRelationship.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00002ProcessResources.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00002ProcessResourcesArtificial.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00002ProcessResourcesEquipment.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00002ProcessResourcesOther.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00002Resource.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00003.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00001.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00004.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00004Artificial.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00004Equipment.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00004Other.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00004Print.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00004Resources.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00004TaskAssignment.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00005.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00005Print.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00006Abnormal.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00006Artificial.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00006Equipment.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00006Finish.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00006Material.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00006Other.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00006Print.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00006Resource.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00007.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00006.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00008.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00010.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00012.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00011.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00013.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00014.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00015.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00016.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00017.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00017Print.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00018.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00018Print.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00019.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00019Print.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00019Product.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00019WorkCenter.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00020.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00021Print.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00021.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00022.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00022Material.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00022Reason.js" />
+    <Content Include="ViewModels\MES\IntelligentManufacturing\SFC00023.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00002.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00003Edit.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00003PersonalAuthority.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00010Languages.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00003.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00003Add.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00005.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00007.js" />
+    <Content Include="Data\tables\MFC\Log\Log-en.js" />
+    <Content Include="Data\tables\MFC\Log\Log-zh-cn.js" />
+    <Content Include="Data\tables\MFC\Log\Log-zh-tw.js" />
+    <Content Include="Data\tables\MFC\Menu\Menu-en.js" />
+    <Content Include="Data\tables\MFC\Menu\Menu-zh-cn.js" />
+    <Content Include="Data\tables\MFC\Menu\Menu-zh-tw.js" />
+    <Content Include="Data\tables\MFC\Role\Role-en.js" />
+    <Content Include="Data\tables\MFC\Role\Role-zh-cn.js" />
+    <Content Include="Data\tables\MFC\Role\Role-zh-tw.js" />
+    <Content Include="Data\tips\Home\Home-EN.js" />
+    <Content Include="Data\tips\Home\Home-ZH-CN.js" />
+    <Content Include="Data\tips\Home\Home-ZH-TW.js" />
+    <Content Include="Data\tips\Logon\Logon-EN.js" />
+    <Content Include="Data\tips\Logon\Logon-ZH-CN.js" />
+    <Content Include="Data\tips\Logon\Logon-ZH-TW.js" />
+    <Content Include="Data\tips\MES-MFC\Menu\Menu-EN.js" />
+    <Content Include="Data\tips\MES-MFC\Menu\Menu-ZH-CN.js" />
+    <Content Include="Data\tips\MES-MFC\Menu\Menu-ZH-TW.js" />
+    <Content Include="Data\tips\MES-MFC\Organization\Organization-EN.js" />
+    <Content Include="Data\tips\MES-MFC\Organization\Organization-ZH-CN.js" />
+    <Content Include="Data\tips\MES-MFC\Organization\Organization-ZH-TW.js" />
+    <Content Include="Data\tips\MES-MFC\Role\Role-EN.js" />
+    <Content Include="Data\tips\MES-MFC\Role\Role-ZH-CN.js" />
+    <Content Include="Data\tips\MES-MFC\Role\Role-ZH-TW.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\css\plugins\footable\fonts\footable.eot" />
+    <Content Include="Content\css\plugins\footable\fonts\footable.ttf" />
+    <Content Include="Content\css\plugins\footable\fonts\footable.woff" />
+    <Content Include="Content\css\plugins\footable\fonts\footabled41d.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont93e3.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont93e3.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont93e3.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont93e3.woff2" />
+    <Content Include="Content\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate-v1.1.zip" />
+    <Content Include="Content\js\hplus\plugins\layer\laydate-v1.1\layDate官网.url" />
+    <Content Include="Content\js\jquery-plugins\fineuploader-3.7.1\LICENSE" />
+    <Content Include="Content\js\kindeditor4.1.10\asp.net\file_manager_json.ashx" />
+    <Content Include="Content\js\kindeditor4.1.10\asp.net\upload_json.ashx" />
+    <Content Include="Content\js\kindeditor4.1.10\jsp\demo.jsp" />
+    <Content Include="Content\js\kindeditor4.1.10\jsp\file_manager_json.jsp" />
+    <Content Include="Content\js\kindeditor4.1.10\jsp\upload_json.jsp" />
+    <Content Include="Content\js\kindeditor4.1.10\php\demo.php" />
+    <Content Include="Content\js\kindeditor4.1.10\php\file_manager_json.php" />
+    <Content Include="Content\js\kindeditor4.1.10\php\JSON.php" />
+    <Content Include="Content\js\kindeditor4.1.10\php\upload_json.php" />
+    <Content Include="Content\js\bootstrap-datepicker\css\bootstrap-datepicker.css.map" />
+    <Content Include="Content\js\bootstrap-datepicker\css\bootstrap-datepicker.standalone.css.map" />
+    <Content Include="Content\js\bootstrap-datepicker\css\bootstrap-datepicker3.css.map" />
+    <Content Include="Content\js\bootstrap-datepicker\css\bootstrap-datepicker3.standalone.css.map" />
+    <Content Include="Content\js\lang\text-en.json" />
+    <Content Include="Content\js\lang\text-ja.json" />
+    <Content Include="LanguageData\en.json" />
+    <Content Include="LanguageData\zh-cn.json" />
+    <Content Include="LanguageData\zh-tw.json" />
+    <Content Include="Content\css\plugins\kendo-ui\images\kendoui.ttf" />
+    <Content Include="Content\css\plugins\kendo-ui\images\kendoui.woff" />
+    <Content Include="Content\css\plugins\kendo-ui\fonts\WebComponentsIcons.eot" />
+    <Content Include="Content\css\plugins\kendo-ui\fonts\WebComponentsIcons.ttf" />
+    <Content Include="Content\css\plugins\kendo-ui\fonts\WebComponentsIcons.woff" />
+    <None Include="Properties\PublishProfiles\EMO-F.pubxml" />
+    <None Include="Properties\PublishProfiles\EMO.pubxml" />
+    <None Include="Properties\PublishProfiles\MES-F.pubxml" />
+    <None Include="Properties\PublishProfiles\MES.pubxml" />
+    <None Include="Properties\PublishProfiles\MFOS-F-New.pubxml" />
+    <Content Include="ViewModels\Logon\logon.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00001.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00001Languages.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00001PlantArea.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00001Site.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00007Languages.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00008.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00009.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00009ClassificationCode.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00009ClassificationCodeLang.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00009ClassificationGroup.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00009ClassificationGroupLang.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00010.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00011.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00011Languages.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00012.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00013.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00013Languages.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00014.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00015.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00015SourceClass.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00015SourceCode.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00015SourceGroup.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00016.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00016DocumentSetup.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00016DocumentType.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00017.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00017ReasonCode.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00017ReasonGroupCode.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00018.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00018ProcessMaster.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00018WorkCenter.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00018WorkCenterProcess.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00018WorkOrderMaster.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00019.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00020.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00020Lang.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00021.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00023.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\INF00024.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\LAN00000.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\TRN00001.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\SCP00004.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\TRN00002.js" />
+    <Content Include="ViewModels\MES\IntelligentParameters\USE00001.js" />
+    <Content Include="ViewModels\MES\QualityManagement\QCS00004Same.js" />
+    <Content Include="ViewModels\MES\QualityManagement\QCS00005.js" />
+    <Content Include="ViewModels\MES\QualityManagement\QCS00007.js" />
+    <Content Include="ViewModels\MES\QualityManagement\QCS00008.js" />
+    <Content Include="ViewModels\MES\QualityManagement\QCS00006.js" />
+    <Content Include="ViewModels\MES\QualityManagement\QCS00009.js" />
+    <Content Include="ViewModels\MES\QualityManagement\QCS00010.js" />
+    <Content Include="ViewModels\MES\QualityManagement\QCS00001.js" />
+    <Content Include="ViewModels\MES\QualityManagement\QCS00002.js" />
+    <Content Include="ViewModels\MES\QualityManagement\QCS00002IdentifyCategory.js" />
+    <Content Include="ViewModels\MES\QualityManagement\QCS00002TestItems.js" />
+    <Content Include="ViewModels\MES\QualityManagement\QCS00003.js" />
+    <Content Include="ViewModels\MES\QualityManagement\QCS00004.js" />
+    <Content Include="ViewModels\MES\QualityManagement\QCS00004CheckGroupCode.js" />
+    <Content Include="ViewModels\MES\QualityManagement\QCS00004PartNo.js" />
+    <Content Include="ViewModels\MES\QualityManagement\QCS00011.js" />
+    <Content Include="ViewModels\MES\Util\CNCLanguages.js" />
+    <Content Include="ViewModels\MES\Util\JointChart.js" />
+    <Content Include="ViewModels\MES\Util\Languages.js" />
+    <Content Include="ViewModels\MES\Util\Parameters.js" />
+    <Content Include="ViewModels\MFC\EditPermission.js" />
+    <Content Include="ViewModels\MFC\Log.js" />
+    <Content Include="ViewModels\MFC\ManageMember.js" />
+    <Content Include="ViewModels\MFC\Menu.js" />
+    <Content Include="ViewModels\MFC\MenuActions.js" />
+    <Content Include="ViewModels\MFC\MenuButtons.js" />
+    <Content Include="ViewModels\MFC\MenuSetCompany.js" />
+    <Content Include="ViewModels\MFC\Organization.js" />
+    <Content Include="ViewModels\MFC\Parameter.js" />
+    <Content Include="ViewModels\MFC\ParameterType.js" />
+    <Content Include="ViewModels\MFC\Role.js" />
+    <Content Include="ViewModels\MFC\RoleLang.js" />
+    <Content Include="ViewModels\MFC\System.js" />
+    <Content Include="ViewModels\MFC\User.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Logon\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Home\ChangePassword.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ChangePassword.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Home\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Home\Wellcome.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Wellcome.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Home\Main.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Main.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Authorization\Unauthorized.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Unauthorized.generated.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\js\jquery-plugins\tbodyscroll\" />
+    <Folder Include="Content\js\kindeditor4.1.10\attached\" />
+    <Folder Include="Content\pics\" />
+    <Folder Include="Data\options\organization\" />
+    <Folder Include="Data\testJSON\" />
+    <Folder Include="Views\Languages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MES\MES.csproj">
+      <Project>{c70bb308-9862-4280-a4a7-77738fd07ca1}</Project>
+      <Name>MES</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MF3C\MF3C.csproj">
+      <Project>{00edcc13-17dd-4d12-9058-0b7732c58a8d}</Project>
+      <Name>MF3C</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2962</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:25555/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

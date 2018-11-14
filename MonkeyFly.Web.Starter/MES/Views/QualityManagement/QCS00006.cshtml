@@ -1,0 +1,374 @@
+﻿@{
+    ViewBag.Title = "QCS00006";
+    Layout = "~/Views/Shared/_LayoutLang.cshtml";
+}
+@*检验群组码设定*@
+<div id="tb_list" class="J-main">
+    <div id="container" class="J-toolbar"></div>
+    <div class="J-search">
+        <div class="search-Item">
+            <table>
+                <tr>
+                    <td class="td_right"><span data-meaning="InspectionNoStart"></span></td>
+                    <td class="td_padding">
+                        <input id="InspectionNoStart" name="InspectionNoStart" type="text" data-bind="value:InspectionNoStart" class="search-input" style="width: 100px;" autocomplete="off"/>
+                        <button class="btn btn-success btn-xs" type="button" onclick="model.InspectionNoWindow('#InspectionNoStart')"><span class="fa fa-desktop"></span></button>
+                    </td>
+                    <td class="td_right"><span data-meaning="InspectionNoEnd"></span></td>
+                    <td class="td_padding">
+                        <input id="InspectionNoEnd" name="InspectionNoEnd" type="text" data-bind="value:InspectionNoEnd" class="search-input" style="width: 100px;" autocomplete="off"/>
+                        <button class="btn btn-success btn-xs" type="button" onclick="model.InspectionNoWindow('#InspectionNoEnd')"><span class="fa fa-desktop"></span></button>
+                    </td>
+                    <td class="td_right"><span data-meaning="RCNoStart"></span></td>
+                    <td class="td_padding">
+                        <input id="RCNoStart" name="RCNoStart" type="text" data-bind="value:RCNoStart" class="search-input" style="width: 100px;" autocomplete="off"  />
+                        <button class="btn btn-success btn-xs" type="button" onclick="model.RCNoWindow('#RCNoStart')"><span class="fa fa-desktop"></span></button>
+                    </td>
+                    <td class="td_right"><span data-meaning="RCNoEnd"></span></td>
+                    <td class="td_padding">
+                        <input id="RCNoEnd" name="RCNoEnd" type="text" data-bind="value:RCNoEnd" class="search-input" style="width: 100px;" autocomplete="off"/>
+                        <button class="btn btn-success btn-xs" type="button" onclick="model.RCNoWindow('#RCNoEnd')"><span class="fa fa-desktop"></span></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td_right"><span data-meaning="TheStartingMaterial"></span></td>
+                    <td class="td_padding">
+                        <input id="TheStartingMaterial" name="TheStartingMaterial" type="text" data-bind="value:TheStartingMaterial" class="search-input" style="width: 100px;" autocomplete="off" />
+                        <button class="btn btn-success btn-xs" type="button" onclick="model.MaterialWindow('#TheStartingMaterial')"><span class="fa fa-desktop"></span></button>
+                    </td>
+                    <td class="td_right"><span data-meaning="TheEndOfTheMaterial"></span></td>
+                    <td class="td_padding">
+                        <input id="TheEndOfTheMaterial" name="TheEndOfTheMaterial" type="text" data-bind="value:TheEndOfTheMaterial" class="search-input" style="width: 100px;" autocomplete="off" />
+                        <button class="btn btn-success btn-xs" type="button" onclick="model.MaterialWindow('#TheEndOfTheMaterial')"><span class="fa fa-desktop"></span></button>
+                    </td>
+                    <td class="td_right"><span data-meaning="StartDateOfInspection"></span></td>
+                    <td class="td_padding">
+                        <input id="SDate" name="SDate" type="text" class="search-input" style="width: 100px;" autocomplete="off" readonly="readonly" />
+                        <button class="btn btn-success btn-xs" type="button" onclick="model.DateWindow('#SDate')"><span class="fa fa-desktop"></span></button>
+                    </td>
+                    <td class="td_right"><span data-meaning="EndDateOfInspection"></span></td>
+                    <td class="td_padding">
+                        <input id="EDate" name="EDate" type="text" class="search-input" style="width: 100px;" autocomplete="off" readonly="readonly" />
+                        <button class="btn btn-success btn-xs" type="button" onclick="model.DateWindow('#EDate')"><span class="fa fa-desktop"></span></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td_right"><span data-meaning="InspectionType"></span></td>
+                    <td>
+                        <input id="InspectionType" name="InspectionType" type="text" data-bind="value:InspectionType" class="search-input" style="width: 100px;" autocomplete="off" readonly="readonly" />
+                        <button class="btn btn-success btn-xs" type="button" onclick="model.InspectionTypeWindow('#InspectionType')"><span class="fa fa-desktop"></span></button>
+                    </td>
+                    <td class="td_right"><span data-meaning="InspectionEmployee"></span></td>
+                    <td>
+                        <input id="InspectionAccount" name="InspectionAccount" type="text" data-bind="value:InspectionAccount" class="search-input" style="width: 100px;" autocomplete="off" readonly="readonly" />
+                        <input id="InspectionName" name="InspectionName" type="text" data-bind="value:InspectionName" class="search-input" style="width: 100px;" autocomplete="off" readonly="readonly" />
+                        <button class="btn btn-success btn-xs" type="button" onclick="model.InspectionEmployeeWindow('#InspectionAccount', '#InspectionName')"><span class="fa fa-desktop"></span></button>
+                        <input id="InspectionId" name="InspectionName" type="hidden" autocomplete="off" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="J-content" id="table-body">
+        <table id="MainSearch"></table>
+    </div>
+    <div class="datagrid-pager page" id="paginagionBar"></div>
+</div>
+
+@*查詢條件-檢驗種類*@
+<div class="modal inmodal" id="InspectionTypeDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:550px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button id="close" type="button" class="close" data-dismiss="modal" onclick="model.clearInput('#InspectionTypeCondition', null)">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="InspectionTypeDesc">Inspection Type Desc</h6>
+            </div>
+            <div class="J-search">
+                <span data-meaning="InspectionType" style="margin:5px 5px 8px 10px; width:60px;">Inspection Type</span>
+                <input id="InspectionTypeCondition" type="text" class="search-input" style="width: 130px; margin:5px 5px 8px 0;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" type="button" onclick="model.InspectionTypeWindow2()" data-meaning="Search" value="Search">Search</button>
+            </div>
+            <div style="margin:0 10px 5px 10px;">
+                <table id="InspectionTypeTable"></table>
+            </div>
+            <div id="paginagionInspectionTypeBar" class="datagrid-pager page"></div>
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="Cancel" data-meaning="Cancel" value="Cancel" onclick="model.clearInput('#InspectionTypeCondition', null)">Cancel</button>
+
+                <button class="btn btn-success btn-sm" type="button" id="InspectionTypeComfirm" data-meaning="Comfirm" value="Comfirm" onclick="model.clearInput('#InspectionTypeCondition', null)">Comfirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*@*查詢條件-檢驗人員*@
+<div class="modal inmodal" id="InspectionEmployeeDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:550px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button id="close" type="button" class="close" data-dismiss="modal" onclick="model.clearInput('#InspectionEmployeeCondition', null)">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="AccountMaintenance">Account Maintenance</h6>
+            </div>
+            <div class="J-search">
+                <span data-meaning="LoginAccount" style="margin:5px 5px 8px 10px; width:60px;">Login Account</span>
+                <input id="InspectionEmployeeCondition" type="text" class="search-input" style="width: 130px; margin:5px 5px 8px 0;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" type="button" onclick="model.InspectionEmployeeWindow()" data-meaning="Search" value="Search">Search</button>
+            </div>
+            <div style="margin:0 10px 5px 10px;">
+                <table id="InspectionEmployeeTable"></table>
+            </div>
+            <div id="paginagionInspectionEmployeeBar" class="datagrid-pager page"></div>
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="Cancel" data-meaning="Cancel" value="Cancel" onclick="model.clearInput('#InspectionEmployeeCondition', null)">Cancel</button>
+
+                <button class="btn btn-success btn-sm" type="button" id="InspectionEmployeeComfirm" data-meaning="Comfirm" value="Comfirm" onclick="model.clearInput('#InspectionEmployeeCondition', null)">Comfirm</button>
+              </div>
+        </div>
+    </div>
+</div>
+@*@*查詢條件-檢驗單號*@
+<div class="modal inmodal" id="InspectionNoDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:550px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button id="close" type="button" class="close" data-dismiss="modal" onclick="model.clearInput('#InspectionNoCondition', null)">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="Inspection">Inspection</h6>
+            </div>
+            <div class="J-search">
+                <span data-meaning="InspectionNo" style="margin:5px 5px 8px 10px; width:60px;">Customer No</span>
+                <input id="InspectionNoCondition" type="text" class="search-input" style="width: 130px; margin:5px 5px 8px 0;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" type="button" onclick="model.InspectionNoWindow()" data-meaning="Search" value="Search">Search</button>
+            </div>
+            <div style="margin:0 10px 5px 10px;">
+                <table id="InspectionNoTable"></table>
+            </div>
+            <div id="paginagionInspectionNoBar" class="datagrid-pager page"></div>
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="Cancel" data-meaning="Cancel" value="Cancel" onclick="model.clearInput('#InspectionNoCondition', null)">Cancel</button>
+
+                <button class="btn btn-success btn-sm" type="button" id="InspectionNoComfirm" data-meaning="Comfirm" value="Comfirm" onclick="model.clearInput('#InspectionNoCondition', null)">Comfirm</button>
+                 </div>
+        </div>
+    </div>
+</div>
+@*@*查詢條件-檢驗料號*@
+<div class="modal inmodal" id="MaterialDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:550px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button id="close" type="button" class="close" data-dismiss="modal" onclick="model.clearInput('#MaterialCondition', null)">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="ItemInformation"> ItemInformation</h6>
+            </div>
+            <div class="J-search">
+                <span data-meaning="ItemNo" style="margin:5px 5px 8px 10px; width:60px;">Item No</span>
+                <input id="MaterialCondition" type="text" class="search-input" style="width: 130px; margin:5px 5px 8px 0;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" type="button" onclick="model.MaterialWindow()" data-meaning="Search" value="Search">Search</button>
+            </div>
+            <div style="margin:0 10px 5px 10px;">
+                <table id="MaterialTable"></table>
+            </div>
+            <div id="paginagionMaterialBar" class="datagrid-pager page"></div>
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="Cancel" data-meaning="Cancel" value="Cancel" onclick="model.clearInput('#MaterialCondition', null)">Cancel</button>
+
+                <button class="btn btn-success btn-sm" type="button" id="MaterialComfirm" data-meaning="Comfirm" value="Comfirm" onclick="model.clearInput('#MaterialCondition', null)">Comfirm</button>
+           </div>
+        </div>
+    </div>
+</div>
+@*@*查詢條件-RC單號*@
+<div class="modal inmodal" id="RCNoDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:650px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button id="close" type="button" class="close" data-dismiss="modal" onclick="model.clearInput('#RCNoCondition', null)">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="RCtitle">RC</h6>
+            </div>
+            <div class="J-search">
+                <span data-meaning="RCNo" style="margin:5px 5px 8px 10px; width:60px;">RC Documents</span>
+                <input id="RCNoCondition" type="text" class="search-input" style="width: 130px; margin:5px 5px 8px 0;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" type="button" onclick="model.RCNoWindow()" data-meaning="Search" value="Search">Search</button>
+            </div>
+            <div style="margin:0 10px 5px 10px;">
+                <table id="RCNoTable"></table>
+            </div>
+            <div id="paginagionRCNoBar" class="datagrid-pager page"></div>
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="Cancel" data-meaning="Cancel" value="Cancel" onclick="model.clearInput('#RCNoCondition', null)">Cancel</button>
+
+                <button class="btn btn-success btn-sm" type="button" id="RCNoComfirm" data-meaning="Comfirm" value="Comfirm" onclick="model.clearInput('#RCNoCondition', null)">Comfirm</button>
+           </div>
+        </div>
+    </div>
+</div>
+@*查詢條件-單據日期*@
+<div class="modal inmodal" id="DateDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:550px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button id="close" type="button" class="close" data-dismiss="modal" onclick="model.clearInput('#DateCondition', null)">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="Inspection">Inspection</h6>
+            </div>
+            <div class="J-search">
+                <span data-meaning="InspectionNo" style="margin:5px 5px 8px 10px; width:60px;">Inspection No</span>
+                <input id="DateCondition" type="text" class="search-input" style="width: 130px; margin:5px 5px 8px 0;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" type="button" onclick="model.DateWindow()" data-meaning="Search" value="Search">Search</button>
+            </div>
+            <div style="margin:0 10px 5px 10px;">
+                <table id="DateTable"></table>
+            </div>
+            <div id="paginagionDateBar" class="datagrid-pager page"></div>
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="Cancel" data-meaning="Cancel" value="Cancel" onclick="model.clearInput('#DateCondition', null)">Cancel</button>
+
+                <button class="btn btn-success btn-sm" type="button" id="DateComfirm" data-meaning="Comfirm" value="Comfirm" onclick="model.clearInput('#DateCondition', null)">Comfirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*檢驗明細*@
+<div class="modal inmodal" id="InspectionDetailDialog" tabindex="0" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:850px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:5px 10px 5px 5px  !important">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Shut</span>
+                </button>
+                <h6 class="modal-title" data-meaning="InspectionDetail">Inspection Detail</h6>
+            </div>
+            <div class="J-search">
+                <div>
+                    <span data-meaning="ItemNo" style="margin:5px 5px 8px 10px; width:60px;">Item No</span>
+                    <input id="DetailPart" type="text" class="search-input" disabled style="width: 130px; margin:5px 5px 8px 0;" autocomplete="off" readonly="readonly" />
+                    <span data-meaning="NameSpecification" style="margin:5px 5px 8px 10px; width:60px;">NameSpecification</span>
+                    <input id="DetailPartDesc" type="text" class="search-input" disabled style="width: 130px; margin:5px 5px 8px 0;" autocomplete="off" readonly="readonly" />
+
+                    <span data-meaning="ProcessNo" style="margin:5px 5px 8px 10px; width:60px;">Process No</span>
+                    <input id="DetailProcess" type="text" class="search-input" disabled style="width: 130px; margin:5px 5px 8px 0;" autocomplete="off" readonly="readonly" />
+                    <span data-meaning="ProcessDescription" style="margin:5px 5px 8px 10px; width:60px;">Process Description</span>
+                    <input id="DetailProcessDesc" type="text" class="search-input" disabled style="width: 130px; margin:5px 5px 8px 0;" autocomplete="off" readonly="readonly" />
+                </div>
+                <div>
+                    <span data-meaning="WorkOrderNo" style="margin:5px 5px 8px 10px; width:60px;">Work Order No</span>
+                    <input id="DetailOperation" type="text" class="search-input" disabled style="width: 130px; margin:5px 5px 8px 0;" autocomplete="off" readonly="readonly" />
+                    <span data-meaning="OperationDesc" style="margin:5px 5px 8px 10px; width:60px;">Operation Desc</span>
+                    <input id="DetailPOperationDesc" type="text" class="search-input" disabled style="width: 130px; margin:5px 5px 8px 0;" autocomplete="off" readonly="readonly" />
+                </div>
+            </div>
+            <div class="modal-body" style="padding: 0px 5px 2px!important" id="table_body_process_data">
+                <table id="InspectionDetailTable" data-toggle="true" data-mobile-responsive="true"></table>
+            </div>
+            <div id="paginagionInspectionDetailBar" class="datagrid-pager page" style="padding-bottom:5px!important"></div>
+            <div class="modal-footer" style="padding: 5px !important">
+                <button type="button" class="btn btn-success btn-sm" data-dismiss="modal" data-meaning="Close">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*不良原因明細*@
+<div class="modal inmodal" id="BadReasonDialog" tabindex="0" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:550px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:5px 10px 5px 5px  !important">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Shut</span>
+                </button>
+                <h6 class="modal-title" data-meaning="BadReasonDetail">Bad Reason Detail</h6>
+            </div>
+            <div class="modal-body" style="padding: 0px 5px 2px!important" id="table_body_process_data">
+                <table id="BadReasonTable" data-toggle="true" data-mobile-responsive="true"></table>
+            </div>
+            <div id="paginagionBadReasonBar" class="datagrid-pager page" style="padding-bottom:5px!important"></div>
+            <div class="modal-footer" style="padding: 5px !important">
+                <button type="button" class="btn btn-success btn-sm" data-dismiss="modal" data-meaning="Close">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*結果說明明細*@
+<div class="modal inmodal" id="ResultDescriptionDialog" tabindex="0" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:550px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:5px 10px 5px 5px  !important">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Shut</span>
+                </button>
+                <h6 class="modal-title" data-meaning="ResultDescription">Result Description</h6>
+            </div>
+            <div class="modal-body" style="padding: 0px 5px 2px!important" id="table_body_process_data">
+                <table id="ResultDescriptionTable" data-toggle="true" data-mobile-responsive="true"></table>
+            </div>
+            <div id="paginagionResultDescriptionBar" class="datagrid-pager page" style="padding-bottom:5px!important"></div>
+            <div class="modal-footer" style="padding: 5px !important">
+                <button type="button" class="btn btn-success btn-sm" data-dismiss="modal" data-meaning="Close">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+<style>
+    .mf-table-wrapper {
+        overflow-x: auto;
+    }
+
+    #tb_list .fix-table, #tb_list .fix-head {
+        width: 400%;
+    }
+    #ResultDescriptionDialog .fix-table, #ResultDescriptionDialog .fix-head {
+        width: 100%;
+    }
+     #BadReasonDialog .fix-table, #BadReasonDialog .fix-head {
+        width: 100%;
+    }
+    /*#table_body_process_data .fix-table, #table_body_process_data .fix-head {
+        width: 200%;
+    }*/
+
+    /*#table-bodyData .fix-table, #table-bodyData .fix-head {
+        width: 250%;
+    }*/
+
+    #RCNoDialog .fix-table, #RCNoDialog .fix-head {
+        width: 220%;
+    }
+
+    #InspectionDetailDialog .fix-table, #InspectionDetailDialog .fix-head {
+        width: 300%;
+    }
+
+    .search-Item table {
+        width: 100%;
+    }
+
+    .search-Item .td_padding {
+        padding-bottom: 5px;
+    }
+
+    .search-Item .td_right {
+        text-align: right;
+        padding-right: 5px;
+    }
+</style>
+<script src="~/Content/js/hplus/plugins/layer/laydate/laydate.js"></script>
+<script src="~/Content/js/knockout/knockout-3.0.0.js" type="text/javascript"></script>
+<script src="~/Content/js/current/pagination.js" type="text/javascript"></script>
+<script src="~/Content/js/current/Rander.js" type="text/javascript"></script>
+<script src="~/Content/js/current/Checker.js" type="text/javascript"></script>
+<script src="~/Content/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script src="~/Content/js/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="~/Content/js/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+<script src="~/Content/js/bootstrap-datepicker/locales/bootstrap-datepicker.zh-TW.min.js"></script>
+<script src="~/ViewModels/MES/QualityManagement/QCS00006.js" type="text/javascript"></script>
+
+}

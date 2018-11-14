@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="bootstrap-datetimepicker.js"></script>
+    <link rel="stylesheet" href="bootstrap-datetimepicker.css">
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+</head>
+
+<body>
+<input id="datetimepicker" class="form-control dateTime" type="text"/>
+<script type="text/javascript">
+    $('#datetimepicker').datetimepicker({
+        format: 'yyyy/mm',  
+         weekStart: 1,  
+         autoclose: true,  
+         startView: 3,  
+         minView: 3,  
+         forceParse: false,  
+         language: 'zh-CN'  
+    });
+</script>
+</body>
+</html>

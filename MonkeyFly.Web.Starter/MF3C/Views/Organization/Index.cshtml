@@ -1,0 +1,294 @@
+﻿@{
+    ViewBag.Title = "组织结构";
+    ViewBag.LanguageURL = "/Data/Language/MES-MFC/Organization/Organization";
+    ViewBag.TipURL = "/Data/tips/MES-MFC/Organization/Organization";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*组织结构图*@
+<div class="gray-bg" style="height:100%;">
+    <div class="animated fadeIn" style="box-sizing: content-box;height:calc(100% - 0px);">
+        <div class="row mf-layer">
+            <div class="col-sm-12">
+                <div class=" ibox float-e-margins" style="padding-right:20px;">
+                    <div class="ibox-title">
+                        <div id="container"></div>
+                    </div>
+                    <div class="ibox-content">
+                        <div id="gridlist" class="wrapper" style="width: 100%; height: 100%; margin-top:15px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@*添加新单位*@
+<div class="modal inmodal" id="AddDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <style>
+        .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+            border: 1px solid red;
+        }
+    </style>
+    <div class="modal-dialog" style="width:800px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="Add Unit">Add Unit</h6>
+            </div>
+            <div class="modal-body" style="height:300px;">
+                <div class="col-md-2 mf-isTree" style="width: 200px; height: 260px;">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5 data-meaning="Organizational Structure">Organizational Structure</h5>
+                        </div>
+                        <div class="ibox-content" style="padding:15px 0px 20px; ">
+                            <div id="AddOrgTree"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mf-layer">
+                    <div class="col-md-8">
+                        <div class="ibox float-e-margins" style="margin-bottom: 0px !important;">
+                            <div class="ibox-title">
+                                <span id="addTip" style="color:red;"></span>
+                            </div>
+                            <div class="ibox-content" style="height:216px;">
+                                <form class="form-horizontal m-t" id="commentForm">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" data-meaning="Parent Bodies:">Parent Bodies:</label>
+                                        <div class="col-sm-8">
+                                            <input id="addParentID" name="addParentID" type="text" class="form-control" required="" aria-required="true" readonly="readonly" data-meaning="Please select the parent bodies" placeholder="Please select the parent bodies">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" data-meaning="Institution Name:">Institution Name:</label>
+                                        <div class="col-sm-8">
+                                            <input id="addName" name="addName" type="text" class="form-control" required="" aria-required="true" data-meaning="Please fill in the name of the institution" placeholder="Please fill in the name of the institution">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" data-meaning="Remarks:">Remarks:</label>
+                                        <div class="col-sm-8">
+                                            <textarea id="addComments" name="addComments" class="form-control" required="" aria-required="true"></textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal" data-meaning="Close">Close</button>
+                <button type="button" class="btn btn-success" id="addSave" data-meaning="Save">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*编辑单位*@
+<div class="modal inmodal" id="EditDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <style>
+        .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+            border: 1px solid red;
+        }
+    </style>
+    <div class="modal-dialog" style="width:800px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 id="editTitle" class="modal-title" data-meaning="Edit Unit">Edit Unit</h6>
+            </div>
+            <div class="modal-body" style="height:300px;">
+                <div class="col-md-2 mf-isTree" style="width: 200px; height: 260px;">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5 data-meaning="Organizational Structure">Organizational Structure</h5>
+                        </div>
+                        <div class="ibox-content" style="padding:15px 0px 20px; ">
+                            <div id="EditOrgTree"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mf-layer">
+                    <div class="col-md-8">
+                        <div class="ibox float-e-margins" style="margin-bottom: 0px !important;">
+                            <div class="ibox-title">
+                                <span id="editTip" style="color:red;"></span>
+                            </div>
+                            <div class="ibox-content" style="height:216px;">
+                                <form class="form-horizontal m-t" id="commentForm">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" data-meaning="Parent Bodies:">Parent Bodies:</label>
+                                        <div class="col-sm-8">
+                                            <input id="editParentID" name="editParentID" type="text" class="form-control" required="" aria-required="true" readonly="readonly" data-meaning="Please select the parent bodies" placeholder="Please select the parent bodies">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" data-meaning="Institution Name:">Institution Name:</label>
+                                        <div class="col-sm-8">
+                                            <input id="editName" name="editName" type="text" class="form-control" required="" aria-required="true" data-meaning="Please fill in the name of the institution" placeholder="Please fill in the name of the institution">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label" data-meaning="Remarks:">Remarks:</label>
+                                        <div class="col-sm-8">
+                                            <textarea id="editComments" name="editComments" class="form-control" required="" aria-required="true"></textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal" data-meaning="Close">Close</button>
+                <button type="button" class="btn btn-success" id="editSave" data-meaning="Save">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*设置角色*@
+<div class="modal inmodal" id="SetRoleDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <style>
+        .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+            border: 1px solid red;
+        }
+    </style>
+    <div class="modal-dialog" style="width:800px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 id="editTitle" class="modal-title" data-meaning="Setting Role">Setting Role</h6>
+            </div>
+            <div class="modal-body">
+                <div id="setRoles">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal" data-meaning="Close">Close</button>
+                <button type="button" class="btn btn-success" id="setRoleSave" data-meaning="Save">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*设置主管*@
+<div class="modal inmodal" id="SetDirectorDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <style>
+        .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+            border: 1px solid red;
+        }
+    </style>
+    <div class="modal-dialog" style="width:800px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 id="editTitle" class="modal-title" data-meaning="Setting Supervisor">Setting Supervisor</h6>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal m-t" id="commentForm">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" data-meaning="Supervisor:">Supervisor:</label>
+                        <div class="col-md-4">
+                            <select id="setDirector" class="form-control" data-bind="options:users,optionsValue:'value',optionsText:'text',optionsCaption:'',value:form.DirectorID, event: { change:DirectorClick }"></select>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="setDirectorStatus" class="form-control" data-bind="options:status,optionsValue:'value',optionsText:'text',optionsCaption:'',value:form.Status"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" data-meaning="Deputy Head:">Deputy Head:</label>
+                        <div class="col-md-4">
+                            <select id="setViceDirector" class="form-control" data-bind="options:users,optionsValue:'value',optionsText:'text',optionsCaption:'',value:form.ViceDirectorID, event: { change:ViceDirectorClick }"></select>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="setViceDirectorStatus" class="form-control" data-bind="options:status,optionsValue:'value',optionsText:'text',optionsCaption:'',value:form.ViceStatus"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" data-meaning="TemporaryUser:">TemporaryUser:</label>
+                        <div class="col-md-8">
+                            <select id="setTemporaryUser" class="form-control" data-bind="options:users,optionsValue:'value',optionsText:'text',optionsCaption:'',value:form.TemporaryUserID, event: { change:TemporaryUserClick }"></select>
+                            <span class="help-block m-b-none"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;<font data-meaning="In the state supervisor and deputy supervisor is not normal, you must choose a temporary principal.">In the state supervisor and deputy supervisor is not normal, you must choose a temporary principal.</font></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal" data-meaning="Close">Close</button>
+                <button type="button" class="btn btn-success" id="setDirectorSave" data-meaning="Save">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <style>
+        .mf-layer {
+            box-sizing: content-box;
+            height: 100%;
+        }
+
+            .mf-layer .col-sm-12 {
+                box-sizing: content-box;
+                height: 100%;
+                padding-right: 20px;
+            }
+
+
+            .mf-layer .ibox {
+                box-sizing: content-box;
+                height: calc(100% - 25px);
+            }
+
+            .mf-layer .ibox-content {
+                height: calc(100% - 35px);
+                overflow-y: auto;
+            }
+
+        .mf-isTree {
+            box-sizing: content-box;
+            height: 100%;
+        }
+
+        .col-md-2 {
+            box-sizing: content-box;
+            height: 100%;
+            padding-right: 0px !important;
+            padding-left: 0px !important;
+        }
+
+        .mf-isTree .ibox {
+            box-sizing: content-box;
+            height: calc(100% - 25px);
+        }
+
+        .mf-isTree .ibox-content {
+            height: calc(100% - 20px);
+            overflow-y: auto;
+        }
+    </style>
+    <link href="~/Content/css/plugins/jsTree/style.min.css" rel="stylesheet">
+    <link href="~/Content/css/plugins/iCheck/blue.css" rel="stylesheet">
+    <script src="~/Content/js/jquery/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="~/Content/js/knockout/knockout-3.0.0.js" type="text/javascript"></script>
+    <script src="~/Content/js/hplus/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/Content/js/hplus/plugins/jsTree/jstree.min.js" type="text/javascript"></script>
+    <script src="~/Content/js/hplus/plugins/iCheck/icheck.min.js"></script>
+    <script src="~/ViewModels/MFC/Organization.js" type="text/javascript"></script>
+}

@@ -1,0 +1,21 @@
+﻿{
+    "unitCode":"單位代號",
+    "unitDescription":"單位說明",
+    "remarks":"備註",
+    "state":"狀態",
+    "normal":"正常",
+    "Invalid":"作廢",
+    "creator":"建立人員",
+    "creationDate":"建立日期",
+    "lastRevision":"最後修改人員",
+    "lastModifiedDate":"最後修改日期",
+    "Department":"部門",
+    "Language":"語系",
+    "Public":"是否共用",
+    "unitCodeIsNull":"單位代號不能为空！",
+    "unitDescriptionIsNull":"單位說明不能为空！" ,
+     "AlreadyUsedCanNotDelete":"（代號）已使用，無法刪除",
+     "CodeIsSame":"單位代號相同，請重新輸入！",
+      "Prompt":"提示",
+      "NoFileSelected":" 未選擇文件"
+}

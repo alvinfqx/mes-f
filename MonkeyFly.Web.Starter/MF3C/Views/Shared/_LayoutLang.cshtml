@@ -1,0 +1,96 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8;no-cache" />
+    <title>@ViewBag.Title</title>
+    <script>
+        var token = window.top.token;
+        (function Authorize() {
+            if (!token) {
+                try {
+                    window.top.logout();
+                }
+                catch (e) {
+                    window.location.href = "/Logon";
+                }
+            }
+        })();
+
+        var language = window.top.language,
+            username = window.top.username,
+            promptBtn = window.top.promptBtn,
+            title = "@ViewBag.Title",
+            words = null,
+            fields = null,
+            initPage = null;
+
+        //console.log(title + ", words: " + words);
+        var GetField = function (url, name) {
+            if (!language || !(url && name)) return;
+
+            var data;
+            var url = url + "/" + name + "-" + language + ".js";
+
+            $.ajax({
+                url: url,
+                async: false,
+                dataType: 'json',
+                success: function (items) {
+                    data = items;
+                },
+                error: function (data) {
+                    console.error("GetField: can't get " + url + ":" + name);
+                }
+            });
+
+            return data;
+        };
+
+    </script>
+    @System.Web.Optimization.Scripts.Render("~/Content/js/index")
+    @RenderSection("head", required: false)
+    @System.Web.Optimization.Styles.Render("~/Content/css/index")
+</head>
+<body style="display:none;">
+    @RenderBody()
+    @System.Web.Optimization.Scripts.Render("~/Content/js/librarys")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "post",
+            url: "/Languages/getLanguages",
+            data: JSON.stringify({ Code: language, Words: words }),
+            dataType: "json",
+            contentType: 'application/json',
+            success: function (ret) {
+                if (words.length > 0) {
+                    fields = JSON.parse(ret.list);
+                    $('[data-meaning]').each(function (i, elem) {
+                        var $elem = $(elem);
+                        for (var key in fields) {
+                            if ($elem.attr('data-meaning') == key) {
+                                if ($elem[0].tagName == "INPUT") {
+                                    if ($elem[0].type == "text") {
+                                        $elem.attr('placeholder', fields[key]);
+                                    }
+                                    else {
+                                        $elem.val(fields[key]);
+                                    }
+                                }
+                                else {
+                                    $elem.text(fields[key]);
+                                }
+                            }
+                        }
+                    });
+                }
+                
+                initPage && initPage();
+                $("body").show();
+            }
+        });
+    });
+</script>

@@ -1,0 +1,17 @@
+﻿{
+    "Account":"帐户",
+    "Account":"帐户",
+    "UserName":"姓名",
+    "HostIP":"登录IP",
+    "HostName":"登录机器名P",
+    "LogonCity":"登录位置",
+    "LogonTime":"登录时间",
+    "Position":"位置",
+    "Target":"对象",
+    "Type":"类型",
+    "Message":"数据",
+    "CreateTime":"时间",
+    "filename":"文件名称",
+    "size":"大小",
+    "id":"操作"
+    }

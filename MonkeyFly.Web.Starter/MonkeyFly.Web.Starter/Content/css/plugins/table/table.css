@@ -1,0 +1,77 @@
+﻿/*.mf-table-wrapper {
+    width: 100%;    
+    border: 1px solid #EBEBEB;
+}
+    .fix-table, .fix-head {
+    }
+    .mf-head-table, .mf-body-table {
+        margin-bottom: 0;
+    }
+
+    .fix-table {
+        overflow: auto;
+    }
+
+  .mf-head-table > thead > tr > th {
+            background-color: white;
+        }
+
+        .mf-head-table > thead > tr > th,
+        .mf-body-table > tbody > tr > td {
+            padding: 3px;
+        }*/
+
+
+.mf-table-wrapper {
+    width: 100%;
+    border: 1px solid #EBEBEB;
+}
+
+.fix-table, .fix-head {
+}
+
+.mf-head-table, .mf-body-table {
+    margin-bottom: 0;
+    table-layout: fixed;
+}
+
+.fix-table {   
+    overflow-y: auto;  
+}
+
+.mf-head-table > thead > tr > th {
+    background-color: white;
+}
+
+.mf-head-table > thead > tr > th,
+.mf-body-table > tbody > tr > td {
+    padding: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/*SAM 2016年12月19日15:55:24*/
+/*从bootstrap.min.css复制过来*/
+/*相对来说去除了输入框的边框部分*/
+.mf-form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    /*border: 1px solid #ccc;*/
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    /*box-shadow: inset 0 1px 1px rgba(0,0,0,.075);*/
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+

@@ -1,0 +1,167 @@
+﻿
+@{
+    ViewBag.Title = "QCS00003";
+    Layout = "~/Views/Shared/_LayoutLang.cshtml";
+}
+
+@*检验群组码设定*@
+<div id="tb_list" class="J-main">
+    <div id="container" class="J-toolbar">
+    </div>
+    <div class="J-search">
+        <span data-meaning="CheckGroupCode">Check Group No.</span>
+        <input id="Code" name="Code" type="text" class="search-input" style="width: 170px;" autocomplete="off" />
+        &nbsp;&nbsp;
+        <span data-meaning="Status">Status</span>
+        <select id="Status" style="width: 100px;" autocomplete="off">
+            <option></option>
+            <option value="1" data-meaning="Normal">Normal</option>
+            <option value="0" data-meaning="Invalid">Invalid</option>
+        </select>
+    </div>
+    <div class="J-content" id="table-body">
+        <table id="QCS00003Table"></table>
+    </div>
+    <div class="datagrid-pager page" id="paginagionBar"></div>
+</div>
+
+@*料品设定开窗*@
+<div class="modal inmodal" id="ItemSetDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:950px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button id="close" type="button" class="close" data-dismiss="modal" onclick="model.clearData()">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="ItemSetting">Item Setting</h6>
+            </div>
+            <div class="J-search" style="margin:5px 0 8px 0;">
+                <span data-meaning="CheckGroupCode" style="margin:5px 2px 8px 12px; width:60px;">Check Group No.</span>
+                <input id="CheckGroupCode" type="text" class="search-input" style="width: 120px; margin:5px 5px 8px 0;" autocomplete="off" disabled />
+                <span data-meaning="CheckGroupName" style="margin:5px 2px 8px 4px; width:60px;">Check Group Description</span>
+                <input id="CheckGroupName" type="text" class="search-input" style="width: 140px; margin:5px 5px 8px 0;" autocomplete="off" disabled />
+                <span data-meaning="StartItemCode" style="margin:10px 5px 10px 10px;">Start Item No.</span>
+                <input id="StartCode" type="text" class="search-input" style="width: 120px;" autocomplete="off" />
+                <span data-meaning="EndItemCode" style="margin:10px 5px 10px 5px;">End Item No.</span>
+                <input id="EndCode" type="text" class="search-input" style="width: 120px; margin-right:3px;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" type="button" onclick="model.ItemSearchClick()" data-meaning="Search" value="Search"> Search</button>                    
+            </div>
+            <div style="width:100%; height:100%;">
+                <div style="display: inline-block;width: 46%; height:100%;margin:3px 5px 3px 15px;float:left;">
+                    <div style="margin:5px 8px 5px 5px;">
+                        <span data-meaning="NotAttribution">Not Attribution</span>
+                    </div>
+                    <div style="margin:0px 8px 5px 5px;  height:400px;">
+                        <table id="NoItemSetTable"></table>
+                    </div>
+                    <div class="datagrid-pager page" id="paginagionNoItemSetBar"></div>
+                </div>
+                <div style="float:left;display: inline-block;width: 4%;margin-top:16%;">
+                    <div style="margin-bottom:20%;">
+                        <button class="btn btn-success btn-sm" type="button" onclick="model.ProcessMoveRightClick();"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button>
+                    </div>
+                    <div>
+                        <button class="btn btn-success btn-sm" type="button" onclick="model.ProcessMoveLeftClick();"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span></button>
+                    </div>
+                </div>
+                <div style="display: inline-block;width: 46%; height:100%;margin:3px 5px;float:left;">
+                    <div style="margin:5px 8px 5px 5px;">
+                        <span data-meaning="Attribution">Attribution</span>
+                    </div>
+                    <div style="margin:0px 8px 5px 5px; height:430px;">
+                        <table id="ItemSetTable"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="text-align:right; padding:0px 10px 5px 10px;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="cancel" data-meaning="Cancel" value="Cancel" onclick="model.clearData()">Cancel</button>
+                <button class="btn btn-success btn-sm" type="button" id="detailSave" data-meaning="Comfirm" onclick="model.detailSaveClick()">Comfirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*导入*@
+<div class="modal inmodal" id="inputDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <style>
+        .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+            border: 1px solid red;
+        }
+    </style>
+    <div class="modal-dialog" style="width:400px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Cancel">Cancel</span>
+                </button>
+                <h6 id="inputTitle" class="modal-title" data-meaning="Import">Import</h6>
+            </div>
+            <div class="modal-body">
+                <div class="form-group" style="width:100%;">
+                    <div style="width:15%; display:inherit; float:left; margin-left:20px;">
+                        <button class="btn btn-success btn-sm" id="BtnBrowse">
+                            <span data-meaning="Browse">Browse</span>
+                        </button>
+                        <input id="BtnFile" type="file" style="opacity:0" />
+                    </div>
+                    <div style="padding:5px; width:70%; display:inherit; float:left;">
+                        <span id="FileName"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal" data-meaning="Cancel">Cancel</button>
+                <button type="button" class="btn btn-success" id="addFile" data-meaning="Save">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <style>
+        .checkbox-cell {
+            height: 25.5px;
+        }
+
+        #table-body .mf-table-wrapper {
+            overflow-x: auto;
+        }
+
+        /*#table-body .fix-table, #table-body .fix-head {
+            width: 108%;
+        }*/
+
+        .mf-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .fix-table, .fix-head {
+            width: 100%;
+        }
+
+        select {
+            height: 25.5px;
+            font-size: 12px;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            width: 50px;
+        }
+    </style>
+    <script src="~/Content/js/hplus/plugins/layer/laydate/laydate.js"></script>
+    <script src="~/Content/js/knockout/knockout-3.0.0.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/pagination.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Rander.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Checker.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/table.js" type="text/javascript"></script>
+    <script src="~/ViewModels/MES/QualityManagement/QCS00003.js" type="text/javascript"></script>
+
+}
+

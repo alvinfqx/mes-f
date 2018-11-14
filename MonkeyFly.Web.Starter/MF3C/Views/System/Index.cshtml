@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "系统信息";
+    ViewBag.LanguageURL = "/Data/Language/MES-MFC/System/System";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*系统信息*@
+<div class="gray-bg" style="height:100%;">
+    <div class="wrapper wrapper-content animated fadeIn" style="box-sizing: content-box; height: calc(100% - 60px); padding: 15px">
+        <div class="row mf-layer">
+            <div class="col-md-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5 data-meaning="System Message">System Message</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="form-horizontal m-t">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" data-meaning="System code：">System code：</label>
+                                <div class="col-sm-8">
+                                    <label id="SystemID" class="control-label"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" data-meaning="System Name：">System Name：</label>
+                                <div class="col-sm-8">
+                                    <label id="SystemName" class="control-label"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" data-meaning="English Name：">English Name：</label>
+                                <div class="col-sm-8">
+                                    <label id="SystemNameEN" class="control-label"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" data-meaning="Customer：">Customer：</label>
+                                <div class="col-sm-8">
+                                    <label id="CustomerName" class="control-label"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" data-meaning="Status：">Status：</label>
+                                <div class="col-sm-8">
+                                    <label id="Status" class="control-label"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" data-meaning="Comments：">Comments：</label>
+                                <div class="col-sm-8">
+                                    <label id="Comments" class="control-label"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/ViewModels/MFC/System.js"></script>
+    <style>
+        .mf-layer {
+            box-sizing: content-box;
+            height: 100%;
+        }
+
+            .mf-layer .col-md-12 {
+                box-sizing: content-box;
+                height: 96%;
+                width: 97%;
+            }
+
+
+            .mf-layer .ibox {
+                box-sizing: content-box;
+                margin-bottom: 0px;
+                height: 100%;
+            }
+
+            .mf-layer .ibox-content {
+                height: 100%;
+                overflow-y: auto;
+            }
+    </style>
+}

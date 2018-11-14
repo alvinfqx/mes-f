@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>MES 授权</title>
+    <link href="Content/images/logo/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="Content/css/bootstrap.min14ed.css" rel="stylesheet">
+    <script type="text/javascript" src="Content/js/jquery/jquery-2.0.3.min.js"></script>
+    <script>
+        var submit = function () {
+            $("#Prompt").text("");
+
+            var Name = $("#Name").val();
+            if (!(Name && Name.length > 0)) {
+                $("#Prompt").text("请填写主机名");
+                return;
+            }
+            console.log(Name);
+            var IP = $("#IP").val();
+            if (!(IP && IP.length > 0)) {
+                $("#Prompt").text("请填写IP地址");
+                return;
+            }
+            console.log(IP);
+            var HID = $("#HID").val();
+            if (!(HID && HID.length > 0)) {
+                $("#Prompt").text("请填写HID");
+                return;
+            }
+            console.log(HID);
+            var Count = $("#Count").val();
+            if (!(Count && Count.length > 0)) {
+                $("#Prompt").text("请填写用户数");
+                return;
+            }
+            console.log(Count);
+            $("#Confirm").attr("disabled", true);
+            $.ajax({
+                type: "POST",
+                url: "/Authorization/Confirmation",
+                data: JSON.stringify({
+                    Name: Name,
+                    IP: IP,
+                    HID: HID
+                }),
+                dataType: "json",
+                contentType: "application/json",
+                success: function (ret) {
+                    $("#Confirm").attr("disabled", false);
+                    if (ret.status == '200') {
+                        $("#Prompt").text("授权成功");
+                        window.location.href = '/Authorization';
+                    } else {
+                        $("#Prompt").text("授权失败");
+                    }
+                },
+                beforeSend: function () {
+                    $("#Prompt").text("正在处理中，请稍等……");
+                }
+            });
+        }
+    </script>
+    <style>
+        body {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-image: url(/Content/img/mes.jpg);
+        }
+        table td {
+            padding:5px;
+        }
+        .Form {
+            background: rgba(255,255,255,0.9);
+            display: inline-block;    
+            position: absolute;
+            left: 43%;
+            top: 30%;
+            padding: 20px;
+            border-radius:3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="Form">
+        <table>
+            <tr>
+                <td style="text-align:right;">* 主机名：</td>
+                <td>
+                    <input type="text" id="Name" style="width:160px;" />
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:right;">* IP地址：</td>
+                <td>
+                    <input type="text" id="IP" style="width:160px;" />
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:right;">* SN：</td>
+                <td>
+                    <input type="text" id="HID" style="width:160px;" />
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:right;">* 用户数：</td>
+                <td>
+                    <input type="text" id="Count" style="width:160px;" />
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:right;"></td>
+                <td>
+                    <span id="Prompt" style="color:red;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:center;">
+                    <input type="button" class="btn btn-success" id="Confirm" value="确认"  onclick="submit()">
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

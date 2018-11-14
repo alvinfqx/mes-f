@@ -1,0 +1,126 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8;no-cache" />
+    <title>@ViewBag.Title</title>
+    <script>
+        var token = window.top.token;
+        (function Authorize() {
+            if (!token) {
+                try{
+                    window.top.logout();
+                }
+                catch(e){
+                    window.location.href = "/Logon";
+                }
+            }
+        })();
+
+        var language = window.top.language;
+        var promptBtn = window.top.promptBtn;
+
+        var GetField = function (url, name) {
+            if (!language || !(url && name)) return;
+
+            var data;
+            var url = url + "/" + name + "-" + language + ".js";
+            
+            $.ajax({
+                url: url,
+                async: false,
+                dataType: 'json',
+                success: function (items) {                    
+                    data = items;
+                },
+                error: function (data) {
+                    console.error("GetField: can't get " + url + ":" + name);
+                }
+            });
+                         
+            return data;
+        };
+
+        var tips;
+
+        document.onkeydown = function (event) {
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            if (e && e.keyCode == 13) {
+                try {
+                    AddByKey();
+                }
+                catch (e) {
+                    console.log(e);
+                }
+            }
+        };
+
+    </script>    
+    @System.Web.Optimization.Scripts.Render("~/Content/js/index")   
+    @RenderSection("head", required: false)
+    @System.Web.Optimization.Styles.Render("~/Content/css/index")
+    @* 只有在debug状态下才加载测试数据 *@
+    @MonkeyFly.Web.Mvc.Common.MockJsHelper.LoadMockJsAndTestJson()
+</head>
+<body style="display:none;">
+    @RenderBody()
+    <!--加载脚本库-->
+    @System.Web.Optimization.Scripts.Render("~/Content/js/librarys")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+<script>
+    $(document).ready(function () {
+        var url;
+
+        var languageURL = "@ViewBag.LanguageURL";
+        
+        if (languageURL) {
+
+            if (window.top.language != "en") {
+                url = languageURL + "-" + window.top.language.toUpperCase() + ".js";
+
+                $.ajax({
+                    url: url,
+                    async: false,
+                    contentType: 'application/json',
+                    success: function (items) {
+                        items = eval(items);
+                        $('[data-meaning]').each(function (i, elem) {
+                            var $elem = $(elem);
+                            for (var i = 0; i < items.length; i++) {
+                                if ($elem.attr('data-meaning') == items[i].name) {
+                                    if ($elem[0].tagName == "INPUT") {
+                                        if ($elem[0].type == "text") {
+                                            $elem.attr('placeholder', items[i].value);
+                                        }
+                                        else {
+                                            $elem.val(items[i].value);
+                                        }
+                                    }
+                                    else {
+                                        $elem.text(items[i].value);
+                                    }
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+
+        }
+        var tipURL = "@ViewBag.TipURL";
+
+        if (tipURL) {
+            url = tipURL + "-" + window.top.language.toUpperCase() + ".js";
+
+            $.getJSON(url, function (items) {
+
+                tips = items;
+
+            });
+        }             
+
+        $("body").show();
+    });
+</script>

@@ -1,0 +1,20 @@
+﻿[
+   { "name": "Name:", "value": "用户名:", "description": "" },
+   { "name": "Please enter you need to find the content ...", "value": "请输入要查询的内容...", "description": "" },
+   { "name": "No message", "value": "暂无消息", "description": "" },
+   { "name": "Home", "value": "首页", "description": "" },
+   { "name": "Closed", "value": "关闭操作", "description": "" },
+   { "name": "Close all tabs", "value": "关闭所有选项卡", "description": "" },
+   { "name": "Close other tabs", "value": "关闭其他选项卡", "description": "" },
+   { "name": "Logout", "value": "退出", "description": "" },
+   { "name": "Change Password", "value": "修改密码", "description": "" },
+   { "name": "Copyright 2016-2017 EMO Management Technologies INC. All Rights Reserved.", "value": "2016-2017 EMO管理技术股份有限公司 版权所有" },
+   { "name": "Co. No.", "value": "公司代码：" },
+   { "name": "Co. Name", "value": "公司名称：" },
+   { "name": "Modify password", "value": "修改密码", "description": "" },
+   { "name": "New password", "value": "新密码", "description": "" },
+   { "name": "Confirm password", "value": "确认密码", "description": "" },
+   { "name": "Close", "value": "取消", "description": "" },
+   { "name": "Confirm", "value": "确认", "description": "" },
+   { "name": "Set the password to a minimum of 6 digits and a maximum of 20 bits", "value": "设置密码的长度最少要6位，最长为20位", "description": "" }
+]

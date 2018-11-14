@@ -1,0 +1,163 @@
+﻿
+@{
+    ViewBag.Title = "廠商主檔維護";
+    Layout = "~/Views/Shared/_LayoutLang.cshtml";
+}
+
+@*廠商主檔維護*@
+<div id="tb_list" class="J-main">
+    <div id="container" class="J-toolbar"></div>
+    <div class="J-search">
+        <span data-meaning="VendorNo">Vendor No.</span>
+        <input type="text" class="search-input" style="width: 160px;" autocomplete="off" data-bind="value: Code" />
+        &nbsp;
+        <span data-meaning="Class">Class</span>
+        <select class="search-select" style="width: 160px;" autocomplete="off" data-bind="options: TypeList, optionsText: 'text', optionsValue: 'value', optionsCaption: '', value: Type" ></select>
+    </div>
+    <div class="J-content" id="table-body">
+        <table id="INF00008Table" ></table>
+    </div>
+    <div class="datagrid-pager page" id="paginagionBar"></div>
+</div>
+
+@*导入*@
+<div class="modal inmodal" id="ImportDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <style>
+        .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+            border: 1px solid red;
+        }
+    </style>
+    <div class="modal-dialog" style="width:400px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <span style="font-size:20px" data-meaning="Import">Import</span>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Cancel">Cancel</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div>
+                        <button class="btn btn-success btn-sm" id="BtnBrowse" >
+                            <span data-meaning="Browse">Browse</span>
+                        </button>
+                        <input id="BtnFile" type="file" style="opacity:0" />
+                    </div>
+                    <div style="padding:5px;">
+                        <span id="FileName"></span>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align:right;padding:5px 10px;">
+                <button class="btn btn-success btn-sm" data-dismiss="modal" data-meaning="Cancel">Cancel</button>
+                <button class="btn btn-success btn-sm" id="BtnImport" data-meaning="Comfirm">Comfirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*采购员开窗*@
+<div class="modal inmodal" id="MESUserDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:600px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <span style="font-size:20px" data-meaning="EmployeeInformation">Employee Information</span>
+                <button id="close" type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+            </div>
+            <div class="J-search">
+                <span style="margin:5px 5px 8px 10px; width:60px;" data-meaning="EmployeeCode">Employee Code</span>
+                <input type="text" class="search-input" style="width: 160px; margin:5px 5px 8px 0;" id="UserCode" autocomplete="off" />
+                <button class="btn btn-success btn-sm" id="MESUserSearch" data-meaning="Search">Search</button>
+            </div>
+            <div id="MESUserContent" style="margin:0 15px;">
+                <table id="MESUserTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionMESUserBar" style="margin:0 15px;"></div>
+            <div style="text-align:right;padding:5px 10px;">
+                <button class="btn btn-success btn-sm" type="button" id="MESUserConfirmBtn" data-meaning="Comfirm">Comfirm</button>
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" data-meaning="Cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*分类一开窗*@
+<div class="modal inmodal" id="ClassOneDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:500px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <span style="font-size:20px" data-meaning="ClassCode">Class Code</span>
+                <button id="close" type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+            </div>
+            <div class="J-search">
+                <span style="margin:5px 5px 8px 10px;width:60px;" data-meaning="ClassCode" >Class Code</span>
+                <input type="text" class="search-input" id="OneCode" style="width: 130px; margin:5px 5px 8px 0;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" id="ClassOneSearch" data-meaning="Search" >Search</button>
+            </div>
+            <div class="ClassTable" style="margin:0 15px;">
+                <table id="ClassOneTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionClassOneBar" style="margin:0 15px;"></div>
+            <div style="text-align:right;padding:5px 10px;">
+                <button class="btn btn-success btn-sm" type="button" id="ClassOneCommit" data-meaning="Comfirm">Comfirm</button>
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" data-meaning="Cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*分类二开窗*@
+<div class="modal inmodal" id="ClassTwoDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:500px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <span style="font-size:20px" data-meaning="ClassCode">Class Code</span>
+                <button id="close" type="button" class="close" data-dismiss="modal" onclick="model.clearInput('#ClassTwoCode')">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+            </div>
+            <div class="J-search">
+                <span data-meaning="ClassCode" style="margin:5px 5px 8px 10px; width:60px;">Classify Code</span>
+                <input type="text" class="search-input" id="TwoCode" style="width: 130px; margin:5px 5px 8px 0;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" id="ClassTwoSearch" data-meaning="Search" >Search</button>
+            </div>
+            <div class="ClassTable" style="margin:0 15px;">
+                <table id="ClassTwoTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionClassTwoBar" style="margin:0 15px;"></div>
+            <div style="text-align:right;padding:5px 10px;">
+                <button class="btn btn-success btn-sm" type="button" id="ClassTwoCommit" data-meaning="Comfirm">Commit</button>
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" data-meaning="Cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <style>
+        .mf-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .fix-table, .fix-head {
+            width: 200%;
+        }
+
+        #MESUserContent .fix-table, #MESUserContent .fix-head {
+            width: 100%;
+        }
+
+        .ClassTable .fix-table, .ClassTable .fix-head {
+            width: 100%;
+        }
+    </style>
+    <script src="~/Content/js/knockout/knockout-3.0.0.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/pagination.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Rander.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Checker.js" type="text/javascript"></script>
+    <script src="~/ViewModels/MES/IntelligentParameters/INF00008.js" type="text/javascript"></script>
+}

@@ -1,0 +1,23 @@
+﻿{
+    "SiteCode":"厂别代号",
+    "SiteDescription":"厂别说明",
+    "Remarks":"备注",
+    "Status":"状态",
+    "CreatePerson": "建立人员",
+    "CreateDate": "建立日期",
+    "LastModifyPerson":"最后修改人员",
+    "LastModifyDate":"最后修改日期",
+    "WarehouseCode":"仓库代号",
+    "WarehouseName":"仓库说明",
+    "HomeSite":"归属厂别",
+    "WarehouseCodeIsNull":"请填写仓库代号",
+    "WarehouseNameIsNull":"请填写仓库说明",
+    "Language":"语系",
+    "Public":"是否共用",
+    "Description":"说明",
+    "normal":"正常",
+    "invalid":"作废",
+    "yes":"是",
+    "no":"否",
+    "PleaseSelectFile":"请选择文件"
+}

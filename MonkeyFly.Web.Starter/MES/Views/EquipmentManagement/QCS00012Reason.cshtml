@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "QCS00012Reason";
+    Layout = "~/Views/Shared/_LayoutLang.cshtml";
+}
+
+@*原因分析*@
+<div id="tb_list" class="J-main">
+    <div id="container" class="J-toolbar">
+        <button id="btn_refresh" class="btn btn-success btn-sm" title="Refresh" onclick="model.refreshClick()"><i class="fa icon-arrow_refresh"></i> <span data-meaning="Refresh"> Refresh</span></button>
+        <button id="btn_search" class="btn btn-success btn-sm" title="Search" onclick="model.searchClick()"><i class="fa fa-search"></i> <span data-meaning="Search"> Search</span></button>
+        <button id="btn_pieChart" class="btn btn-success btn-sm" title="PieChart" onclick="model.pieChartClick()"><i class="fa icon-save"></i> <span data-meaning="PieChart"> PieChart</span></button>
+    </div>
+    <div class="J-search">
+        <span data-meaning="StartReasonCode">起始原因代号</span>
+        <input id="StartReasonCode" name="StartReasonCode" type="text" class="search-input" style="width: 170px;" autocomplete="off" />
+        <span data-meaning="EndReasonCode">结束原因代号</span>
+        <input id="EndReasonCode" name="EndReasonCode" type="text" class="search-input" style="width: 170px;" autocomplete="off" />
+        <span data-meaning="StartCallFixDate">起始叫修日期</span>
+        <input id="StartCallFixDate" name="StartCallFixDate" type="text" class="search-input" style="width: 170px;" autocomplete="off" readonly="readonly"/>
+        <span data-meaning="EndCallFixDate">结束叫修日期</span>
+        <input id="EndCallFixDate" name="EndCallFixDate" type="text" class="search-input" style="width: 170px;" autocomplete="off" readonly="readonly"/>
+        
+        <span data-meaning="StartEquipmentNo">起始设备代号</span>
+        <input id="StartEquipmentNo" name="StartEquipmentNo" type="text" class="search-input" style="width: 170px;" autocomplete="off" />
+        <span data-meaning="EndEquipmentNo">结束设备代号</span>
+        <input id="EndEquipmentNo" name="EndEquipmentNo" type="text" class="search-input" style="width: 170px;" autocomplete="off" />
+        <span data-meaning="ResourceType">资源类别</span>
+        <input id="ResourceType" name="ResourceType" type="text" class="search-input" style="width: 170px;" autocomplete="off" />
+
+    </div>
+    <div class="J-content" id="table-body">
+        <table id="ReasonTable" data-toggle="true" data-mobile-responsive="true"></table>
+    </div>
+    <div class="datagrid-pager page" id="paginagionBar"></div>
+</div>
+
+@*抽检设定弹窗*@
+<div class="modal inmodal" id="SamplingSetDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:850px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button id="close" type="button" class="close" onclick="model.CleartableClick()">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="SamplingSet">Sampling Set</h6>
+            </div>
+            <div class="J-search">
+                <span data-meaning="CategoryCode" style="margin:5px 5px 8px 10px; width:40px;">Category Code</span>
+                <input id="CategoryCode" type="text" class="search-input" style="width: 160px; margin:3px 2px 5px 0;" autocomplete="off" disabled />
+                <span data-meaning="CategoryDec" style="margin:5px 5px 8px 10px; width:40px;">Category Dec.</span>
+                <input id="CategoryDec" type="text" class="search-input" style="width: 160px; margin:3px 2px 5px 0;" autocomplete="off" disabled />
+            </div>
+            <div style="margin:5px 10px 5px 10px;">
+                <div id="ScrollBar">
+                    <table id="SamplingSetTable"></table>
+                </div>
+            </div>
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button" data-meaning="Cancel" onclick="model.CleartableClick()" value="Cancel">Cancel</button>
+                <button class="btn btn-success btn-sm" type="button" data-meaning="Change" onclick="model.ChangeSamplingSetClick()" value="Change">Change</button>
+                <button class="btn btn-success btn-sm" type="button" data-meaning="Comfirm" onclick="model.SaveSamplingSetClick()" value="Comfirm">Comfirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*导入*@
+<div class="modal inmodal" id="inputDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <style>
+        .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+            border: 1px solid red;
+        }
+    </style>
+    <div class="modal-dialog" style="width:400px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Cancel">Cancel</span>
+                </button>
+                <h6 id="inputTitle" class="modal-title" data-meaning="Import">Import</h6>
+            </div>
+            <div class="modal-body">
+                <div class="form-group" style="width:100%;">
+                    <div style="width:15%; display:inherit; float:left; margin-left:20px;">
+                        <button class="btn btn-success btn-sm" id="BtnBrowse">
+                            <span data-meaning="Browse">Browse</span>
+                        </button>
+                        <input id="BtnFile" type="file" style="opacity:0" />
+                    </div>
+                    <div style="padding:5px; width:70%; display:inherit; float:left;">
+                        <span id="FileName"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal" data-meaning="Cancel">Cancel</button>
+                <button type="button" class="btn btn-success" id="addFile" data-meaning="Save">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <style>
+        #table-body .mf-table-wrapper {
+            overflow-x: auto;
+        }
+
+        #table-body .fix-table, #table-body .fix-head {
+            width: 108%;
+        }
+
+        #ScrollBar .mf-table-wrapper {
+            overflow-x: auto;
+        }
+
+        #ScrollBar .fix-table, #ScrollBar .fix-head {
+            width: 127%;
+        }
+
+        select {
+            height: 25.5px;
+            font-size: 12px;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        }
+    </style>
+    <script src="~/Content/js/knockout/knockout-3.0.0.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/pagination.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Rander.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Checker.js" type="text/javascript"></script>
+    <script src="~/ViewModels/MES/EquipmentManagement/QCS00012Reason.js" type="text/javascript"></script>
+}
+

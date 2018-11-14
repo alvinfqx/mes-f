@@ -1,0 +1,183 @@
+﻿@{
+    ViewBag.Title = "SFC00002";
+    Layout = "~/Views/Shared/_LayoutLang.cshtml";
+}
+
+@*制令单明细-拆解替代*@
+<div id="tb_list" class="J-main">
+    <div id="container" class="J-toolbar">
+        <button class="btn btn-success btn-sm" onclick="model.backClick()"><i class="fa icon-arrow-left"></i> <span data-meaning="Back">Back</span></button>
+        <button class="btn btn-success btn-sm" onclick="model.refreshClick()"><i class="fa icon-arrow_refresh"></i> <span data-meaning="Refresh">Refresh</span></button>
+        <button class="btn btn-success btn-sm" onclick="model.addClick()"><i class="fa icon-add"></i> <span data-meaning="New">New</span></button>
+        <button class="btn btn-success btn-sm" onclick="model.editClick()"><i class="fa icon-edit"></i> <span data-meaning="Change">Change</span></button>
+        <button class="btn btn-success btn-sm" onclick="model.saveClick()"><i class="fa icon-save"></i> <span data-meaning="Save">Save</span></button>
+    </div>
+    <div class="J-search">
+        <table class="MainForm">
+            <tr class="MainFormFirst">
+                <td class="td_label"><span data-meaning="OrderNum">Order Num.</span></td>
+                <td><input id="OrderNum" type="text" class="search-input" style="width: 130px;" autocomplete="off" disabled="disabled" /></td>
+                <td class="td_label"><span data-meaning="SequenceNo">Sequence No.</span></td>
+                <td><input id="SequenceNo" type="text" class="search-input" style="width: 130px;" autocomplete="off" disabled="disabled" /></td>
+                <td class="td_label"><span data-meaning="ProductCode">ProductCode</span></td>
+                <td><input id="ItemCode" type="text" class="search-input" style="width: 130px;" autocomplete="off" disabled="disabled" /></td>
+                <td class="td_label"><span data-meaning="NameSpecification">NameSpecification</span></td>
+                <td><input id="ItemName" type="text" class="search-input" style="width: 130px;" autocomplete="off" disabled="disabled" /></td>
+            </tr>
+            <tr class="MainFormFirst">
+                <td class="td_label"><span data-meaning="Qty">Quantity</span></td>
+                <td><input id="Quantity" type="text" 
+                           data-bind="value:Quantity" class="search-input" style="width: 130px;" autocomplete="off" disabled="disabled" /></td>
+                <td class="td_label"><span data-meaning="ManufacturingUnit">Manufacturing Unit</span></td>
+
+                <td>
+                    <select class="search-select" style="width:130px;" data-bind="options:parameters.PT0191213000058,optionsValue:'text',optionsText:'text',
+                        value:ManufacturingUnit,attr:{disabled:true}"></select>
+                </td>
+                <td class="td_label"><span data-meaning="WorkCenterNo">WorkCenterNo</span></td>
+                <td><input id="WorkCenterCode" type="text" class="search-input" style="width: 130px;" autocomplete="off" disabled="disabled" /></td>
+                <td class="td_label"><span data-meaning="WorkCenterDescription">WorkCenterDescription</span></td>
+                <td><input id="WorkCenterName" type="text" class="search-input" style="width: 130px;" autocomplete="off" disabled="disabled" /></td>
+            </tr>
+            <tr>
+                <td class="td_label"><span data-meaning="ProcessNo">ProcessNo</span></td>
+                <td><input id="ProcessCode" type="text" class="search-input" style="width: 130px;" autocomplete="off" disabled="disabled" /></td>
+                <td class="td_label"><span data-meaning="ProcessDescription">ProcessDescription</span></td>
+                <td><input id="ProcessName" type="text" class="search-input" style="width: 130px;" autocomplete="off" disabled="disabled" /></td>
+                <td class="td_label"><span data-meaning="NumberOfUndistributed">Number Of Undistributed</span></td>
+                <td><input id="NumberOfUndistributed" type="text" class="search-input" style="width: 130px;"
+                           data-bind="value:OutProQuantity" autocomplete="off" disabled="disabled" /></td>
+                <td class="td_label"><span data-meaning="AfterDismantling">After Dismantling</span></td>
+                <td><input id="AfterDismantling" type="text" class="search-input" 
+                           data-bind="value:AfterSeparateQuantity" style="width: 130px;" autocomplete="off" disabled="disabled" /></td>
+            </tr>
+        </table>
+    </div>
+    <div class="J-content">
+        <div id="MainContent">
+            <table id="MainTable"></table>
+        </div>
+        <div class="datagrid-pager page" id="MainPageBar"></div>
+    </div>
+</div>
+
+@*制程开窗*@
+<div class="modal inmodal" id="ProcessDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:600px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <span style="font-size:20px" data-meaning="ProcessInformation">Process Information</span>
+                <button id="close" type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+            </div>
+            <div class="J-search">
+                <span style="margin:5px 5px 8px 10px; width:60px;" data-meaning="ProcessNo">ProcessNo</span>
+                <input type="text" class="search-input" style="width: 160px; margin:5px 5px 8px 0;" id="ProcessNo" autocomplete="off" />
+                <button class="btn btn-success btn-sm" id="ProcessSearch" data-meaning="Search">Search</button>
+            </div>
+            <div class="ProcessContent" style="margin:0 15px;">
+                <table id="ProcessTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionProcessBar" style="margin:0 15px;"></div>
+            <div style="text-align:right;padding:5px 10px;">
+                
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" data-meaning="Cancel">Cancel</button>
+                <button class="btn btn-success btn-sm" type="button" id="ProcessConfirmBtn" data-meaning="Comfirm">Comfirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*工作中心开窗*@
+<div class="modal inmodal" id="WorkCenterDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:600px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <span style="font-size:20px" data-meaning="WorkCenterInformation">WorkCenter Information</span>
+                <button id="close" type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+            </div>
+            <div class="J-search">
+                <span style="margin:5px 5px 8px 10px; width:60px;" data-meaning="WorkCenterNo">WorkCenterNo</span>
+                <input type="text" class="search-input" style="width: 160px; margin:5px 5px 8px 0;" id="WorkCenterNo" autocomplete="off" />
+                <button class="btn btn-success btn-sm" id="WorkCenterSearch" data-meaning="Search">Search</button>
+            </div>
+            <div class="WorkCenterContent" style="margin:0 15px;">
+                <table id="WorkCenterTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionWorkCenterBar" style="margin:0 15px;"></div>
+            <div style="text-align:right;padding:5px 10px;">
+               
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" data-meaning="Cancel">Cancel</button>
+                <button class="btn btn-success btn-sm" type="button" id="WorkCenterConfirmBtn" data-meaning="Comfirm">Comfirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*辅助单位开窗*@
+<div class="modal inmodal" id="AuxUnitDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:600px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <span style="font-size:20px" data-meaning="UnitMasterFile">Unit Master File</span>
+                <button id="close" type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+            </div>
+            <div class="J-search">
+                <span style="margin:5px 5px 8px 10px; width:60px;" data-meaning="Code">Code</span>
+                <input type="text" class="search-input" style="width: 160px; margin:5px 5px 8px 0;" id="AuxUnitNo" autocomplete="off" />
+                <button class="btn btn-success btn-sm" id="AuxUnitSearch" data-meaning="Search">Search</button>
+            </div>
+            <div class="AuxUnitContent" style="margin:0 15px;">
+                <table id="AuxUnitTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionAuxUnitBar" style="margin:0 15px;"></div>
+            <div style="text-align:right;padding:5px 10px;">
+                
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" data-meaning="Cancel">Cancel</button>
+                <button class="btn btn-success btn-sm" type="button" id="AuxUnitConfirmBtn" data-meaning="Comfirm">Comfirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts{
+    <style>
+        .mf-table-wrapper {
+            overflow-x: auto;
+        }
+
+        #MainContent .fix-table, #MainContent .fix-head {
+            width: 250%;
+        }
+
+        .ItemContent .fix-table, .ItemContent .fix-head {
+            width: 130%;
+        }
+
+        .MainForm {
+            width: 100%;
+        }
+
+        .MainFormFirst td {
+            padding-bottom: 5px;
+            vertical-align: middle;
+        }
+
+        .MainForm .td_label {
+            text-align: right;
+            padding-right: 5px;
+        }
+    </style>
+    <script src="~/Content/js/knockout/knockout-3.0.0.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/pagination.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Rander.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Checker.js" type="text/javascript"></script>
+    <script src="~/ViewModels/MES/IntelligentManufacturing/SFC00002AlternativeProcess.js" type="text/javascript"></script>
+}

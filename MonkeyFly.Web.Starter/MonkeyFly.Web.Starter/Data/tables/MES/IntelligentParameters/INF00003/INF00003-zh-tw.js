@@ -1,0 +1,23 @@
+﻿{
+    "Account":"帳號",
+    "UserName":"姓名",
+    "EnglishName":"英文名",
+    "Emplno":"工號",
+    "Type":"職工類型",
+    "Email":"E-mail",
+    "Status":"狀態",
+    "CardCode":"卡號",
+    "Comments":"備註",
+    "CreatePerson": "建立人員",
+    "CreateDate": "建立日期",
+    "LastModifyPerson":"最後修改人員",
+    "LastModifyDate":"最後修改時間",
+    "setOrganize":"設置機構",
+    "setRole":"設置角色",
+    "normal":"正常",
+    "invalid":"作廢",
+    "PleaseSelectFile":"請選擇文件",
+     "DataIsNull": "  暫無資料",
+    "Department": "部門",
+    "PersonalAuthority": "個人權限"
+}

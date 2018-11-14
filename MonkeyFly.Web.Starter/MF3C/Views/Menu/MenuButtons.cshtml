@@ -1,0 +1,141 @@
+﻿@{
+    ViewBag.Title = "管理按钮库";
+    ViewBag.LanguageURL = "";
+    ViewBag.TipURL = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*参数类型列表*@
+<div id="tb_list" class="J-main">
+    <div id="container" class="J-toolbar">
+        <button class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="返回" onclick="model.backClick()"><i class="fa icon-arrow-left"></i>&nbsp; 返回</button>
+        <button class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="刷新" onclick="model.refreshClick()"><i class="fa icon-arrow_refresh"></i>&nbsp; 刷新</button>
+        <button class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="新增" onclick="model.addClick()"><i class="fa icon-add"></i>&nbsp; 新增</button>
+        <button class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="编辑" onclick="model.editClick()"><i class="fa icon-edit"></i>&nbsp; 编辑</button>
+        <button class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="删除" onclick="model.deleteClick()"><i class="fa icon-delete"></i>&nbsp; 删除</button>
+    </div>
+    <div class="J-content">
+        <table id="buttonsTable" data-toggle="true" data-mobile-responsive="true"></table>
+    </div>
+</div>
+
+@*添加按钮类型*@
+<div class="modal inmodal" id="AddDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <style>
+        .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+            border: 1px solid red;
+        }
+    </style>
+    <div class="modal-dialog" style="width:800px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">关闭</span>
+                </button>
+                <h6 class="modal-title">添加按钮库</h6>
+            </div>
+            <div class="modal-body">
+                <form id="addForm" class="form-horizontal m-t">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">* 编码：</label>
+                        <div class="col-sm-8">
+                            <input id="addCode" name="addCode" type="text" class="form-control" data-bind="value:form.Code" placeholder="必须填写" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">* 名称：</label>
+                        <div class="col-sm-8">
+                            <input id="addName" name="addName" type="text" class="form-control" data-bind="value:form.Name" placeholder="必须填写" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">* 图标：</label>
+                        <div class="col-sm-8">
+                            <input id="addIcon" name="addIcon" type="text" class="form-control" data-bind="value:form.Icon" placeholder="必须填写" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">* 排序：</label>
+                        <div class="col-sm-8">
+                            <input id="addSequencet" name="addSequence" class="form-control" data-bind="value:form.Sequence" placeholder="必须填写" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">备注说明：</label>
+                        <div class="col-sm-8">
+                            <textarea id="addComments" name="addComments" class="form-control" data-bind="value:form.Comments"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-success" id="addSave">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*编辑按钮库*@
+<div class="modal inmodal" id="EditDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <style>
+        .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+            border: 1px solid red;
+        }
+    </style>
+    <div class="modal-dialog" style="width:800px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">关闭</span>
+                </button>
+                <h6 class="modal-title">编辑按钮库</h6>
+            </div>
+            <div class="modal-body">
+                <form id="addForm" class="form-horizontal m-t">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">* 编码：</label>
+                        <div class="col-sm-8">
+                            <input id="editCode" name="editCode" type="text" class="form-control" data-bind="value:form.Code" placeholder="必须填写" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">* 名称：</label>
+                        <div class="col-sm-8">
+                            <input id="editName" name="editName" type="text" class="form-control" data-bind="value:form.Name" placeholder="必须填写" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">* 图标：</label>
+                        <div class="col-sm-8">
+                            <input id="editIcon" name="editIcon" type="text" class="form-control" data-bind="value:form.Icon" placeholder="必须填写" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">* 排序：</label>
+                        <div class="col-sm-8">
+                            <input id="editSequencet" name="editSequence" class="form-control" data-bind="value:form.Sequence" placeholder="必须填写" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">备注说明：</label>
+                        <div class="col-sm-8">
+                            <textarea id="editComments" name="editComments" class="form-control" data-bind="value:form.Comments"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-success" id="editSave">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <link href="~/Content/css/plugins/iCheck/blue.css" rel="stylesheet">
+    <script src="~/Content/js/hplus/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+    <script src="~/Content/js/knockout/knockout-3.0.0.js" type="text/javascript"></script>
+    <script src="~/ViewModels/MFC/MenuButtons.js" type="text/javascript"></script>
+}

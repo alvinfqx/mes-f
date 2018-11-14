@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "个人设定";
+    Layout = "~/Views/Shared/_LayoutLang.cshtml";
+}
+
+<div id="tb_list" class="J-main">
+    <div id="container" class="J-toolbar"></div>
+    <div class="J-content">
+        <table style="width:100%;">
+            <tr>
+                <td class="td_right"><span data-meaning="AccountNo"></span></td>
+                <td>
+                    <input type="text" class="search-input" style="width:60%" data-bind="value:Account,attr:{ title: Account }" disabled="disabled" />
+                </td>
+                <td class="td_right"><span data-meaning="WorkNumber"></span></td>
+                <td>
+                    <input type="text" class="search-input" style="width:60%" data-bind="value:Emplno,attr:{ title: Emplno }" disabled="disabled" />
+                </td>
+            </tr>
+            <tr>
+                <td class="td_right"><span data-meaning="Name"></span></td>
+                <td>
+                    <input type="text" class="search-input" style="width:60%" data-bind="value:UserName,attr:{ title: UserName }" disabled="disabled" />
+                </td>
+                <td class="td_right"><span data-meaning="EnglishName"></span></td>
+                <td>
+                    <input type="text" class="search-input" style="width:60%" data-bind="value:EnglishName,attr:{ title: EnglishName }" maxlength="60" />
+                </td>
+            </tr>
+            <tr>
+                <td class="td_right"><span data-meaning="DepartmentNo"></span></td>
+                <td>
+                    <input type="text" class="search-input" style="width:60%" data-bind="value:OrganizationCode,attr:{ title: OrganizationCode }" disabled="disabled" />
+                </td>
+                <td class="td_right"><span data-meaning="DepartmentDescription"></span></td>
+                <td>
+                    <input type="text" class="search-input" style="width:60%" data-bind="value:OrganizationName,attr:{ title: OrganizationName }" disabled="disabled" />
+                </td>
+            </tr>
+            <tr>
+                <td class="td_right"><span data-meaning="JobTitle"></span></td>
+                <td>
+                    <input type="text" class="search-input" style="width:60%" data-bind="value:JobTitle,attr:{ title: JobTitle }" disabled="disabled" />
+                </td>
+                <td class="td_right"><span data-meaning="Email"></span></td>
+                <td>
+                    <input type="text" class="search-input" style="width:60%" data-bind="value:Email,attr:{ title: Email }" maxlength="80" />
+                </td>
+            </tr>
+            <tr>
+                <td class="td_right"><span data-meaning="CardNumber"></span></td>
+                <td>
+                    <input type="text" class="search-input" style="width:60%" data-bind="value:CardCode,attr:{ title: CardCode }" disabled="disabled" />
+                </td>
+                <td class="td_right"><span data-meaning="Langwage"></span></td>
+                <td>
+                    <select class="search-select" style="width:60%;" data-bind="options: LangwageList, optionsText: 'text', optionsValue: 'value', optionsCaption: '',value:Langwage"></select>
+                </td>
+            </tr>
+            <tr>
+                <td class="td_right"><span data-meaning="Status"></span></td>
+                <td>
+                    <input type="text" class="search-input" style="width:60%" data-bind="value:Status,attr:{ title: Status }" disabled="disabled" />
+                </td>
+                <td class="td_right"><span data-meaning="Remark"></span></td>
+                <td>
+                    <input type="text" class="search-input" style="width:60%;" data-bind="value:Comments,attr:{ title: Comments }" disabled="disabled" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+@section scripts{
+    <style>
+        .td_right {
+            text-align: right;
+            padding-right: 5px;
+            width: 160px;
+            line-height:40px;
+        }
+    </style>
+    <script src="~/Content/js/knockout/knockout-3.0.0.js" type="text/javascript"></script>
+    <script src="~/ViewModels/MES/IntelligentParameters/INF00002.js" type="text/javascript"></script>
+}

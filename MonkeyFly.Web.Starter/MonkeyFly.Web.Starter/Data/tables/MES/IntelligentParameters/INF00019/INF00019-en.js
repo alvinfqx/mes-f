@@ -1,0 +1,22 @@
+﻿{
+    "Code":"Code",
+    "Description":"Description",
+    "Attribute":"Attribute",
+    "remarks":"Comments",
+    "state":"State",
+    "normal":"normal",
+    "Invalid":"Invalid",
+    "creator":"Creator",
+    "creationDate":"CreateTime",
+    "lastRevision":"Modifier",
+    "lastModifiedDate":"ModifiedTime",
+    "EmployeeCode":"Employee Name",
+    "Department":"Department",
+    "Language":"Language",
+    "CodeIsNull":"Code can not be empty!",
+    "NoFileSelected": "No file selected",
+    "DescriptionIsNull":"Description can not be empty!",
+    "yes":"Yes",
+    "no":"No",
+    "AlreadyUsedCanNotDelete":"Code Already Used Can Not Delete"
+}

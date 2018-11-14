@@ -1,0 +1,10 @@
+﻿{
+    "AddName":"请填写角色名称！",
+    "Sequence":"排序，请输入≥0的数字！",
+    "IsSelected":"请选择角色！",
+    "IsDeleted":"确认要删除选中的角色吗？",
+    "SaveSuccess":"保存成功！",
+    "SaveFail":"保存失败",
+    "TipTitle":"提示",
+    "WarningTitle":"警告"
+}

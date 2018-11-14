@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "SFC00002";
+    Layout = "~/Views/Shared/_LayoutLang.cshtml";
+}
+
+@*制令单制品制程明细-制程资源*@
+<div id="tb_lis" class="J-main">
+    <div id="container" class="J-toolbar">
+        <button class="btn btn-success btn-sm" onclick="backClick()"><i class="fa icon-arrow-left"></i> <span data-meaning="Back">Back</span></button>
+    </div>
+    <div style="height:40px;padding: 3px 3px 0;">
+        <ul class="nav nav-tabs" id="liTab">
+            <li class="active">
+                <a data-toggle="tab" data-href="#tab-1" aria-expanded="true" data-meaning="Equipment">Equipment</a>
+            </li>
+            <li>
+                <a data-toggle="tab" data-href="#tab-2" aria-expanded="false" data-meaning="Artificial">Artificial</a>
+            </li>
+            <li>
+                <a data-toggle="tab" data-href="#tab-2" aria-expanded="false" data-meaning="Other">Other</a>
+            </li>
+        </ul>
+    </div>
+    <div style="height: calc(100% - 81px);">
+        <iframe id="iframe" style="width:100%;height:100%;border:none;" src="/MES/IntelligentManufacturing/SFC00002ProcessResourcesEquipment"></iframe>
+        <iframe id="iframe2" style="width:100%;height:100%;border:none;display:none;" src=""></iframe>
+        <iframe id="iframe3" style="width:100%;height:100%;border:none;display:none;" src=""></iframe>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/ViewModels/MES/IntelligentManufacturing/SFC00002ProcessResources.js" type="text/javascript"></script>
+    <style>
+        .nav > li > a {
+            font-size: 14px !important;
+            font-weight: 500 !important;
+        }
+    </style>
+}

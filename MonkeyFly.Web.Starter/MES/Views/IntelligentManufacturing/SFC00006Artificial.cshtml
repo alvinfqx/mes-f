@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "SFC00006Artificial";
+    Layout = "~/Views/Shared/_LayoutLang.cshtml";
+}
+
+@*人工页签*@
+<div id="tb_list" class="J-main">
+    <div id="container" class="J-toolbar">
+        <button id="btn_refresh" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="刷新" onclick="model.refreshClick()"><i class="fa icon-arrow_refresh"></i> <span data-meaning="Refresh"> Refresh</span></button>
+        <button id="btn_add" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" onclick="model.addClick()"><i class="fa icon-add"></i> <span data-meaning="Add">Add</span></button>
+        <button id="btn_edit" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" onclick="model.editClick()"><i class="fa icon-edit"></i> <span data-meaning="Change"> Change</span></button>
+        <button id="btn_delete" class="btn btn-success btn-sm" onclick="model.deleteClick()"><i class="fa icon-delete"></i> <span data-meaning="Deletion">Deletion</span></button>
+        <button id="btn_save" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" onclick="model.saveClick()"><i class="fa icon-save"></i> <span data-meaning="Save"> Save</span></button>
+    </div>
+    <div class="J-search" id="search-workStation">
+        <label data-meaning="TaskCardNo" style="width:60px;">Task Card No.</label>
+        <input type="text" class="search-input" id="TackNo" style="width: 180px;" autocomplete="off" data-bind="value:RCCode,event:{change:RCChange}" disabled="disabled">
+
+        <label data-meaning="WorkOrderNumber">Work Order No.</label>
+        <input type="text" class="search-input" id="WorkOrderNumber" style="width: 150px;" autocomplete="off" data-bind="value: WorkOrderNo" readonly disabled="disabled">
+
+        <label data-meaning="WorkCenter">Work Center</label>
+        <input type="text" class="search-input" id="WorkCenter" style="width: 150px;" autocomplete="off" data-bind="value:WorkCenter" readonly disabled="disabled">
+
+        <label data-meaning="Part">Part</label>
+        <input type="text" class="search-input" id="Part" style="width: 150px;" autocomplete="off" data-bind="value:ManufacturingProcess" readonly disabled="disabled">
+
+
+
+        <div style="padding-top:5px;">
+            <label data-meaning="ItemDescription" style="width:60px;">ItemDescription </label>
+            <input type="text" class="search-input" id="ItemDescription" style="width: 180px;" autocomplete="off" data-bind="value:Process" readonly disabled="disabled">
+
+            <label data-meaning="ItemSpecification">ItemSpecification</label>
+            <input type="text" class="search-input" style="width:150px" id="ItemSpecification" autocomplete="off" data-bind="value:Shift" readonly disabled="disabled">
+            <label data-meaning="DispatchAmount">DispatchAmount</label>
+            <input type="text" id="DispatchAmount" class="search-input" data-bind="WorkStartDate" style="width: 149px; margin-right:4px;" autocomplete="off" readonly disabled="disabled" />
+        </div>
+
+    </div>
+    <div class="J-content">
+        <div id="ArtificialDetailsContent">
+            <table id="ArtificialDetailsTable"></table>
+        </div>
+        <div class="datagrid-pager page" id="ArtificialDetailPageBar"></div>
+    </div>
+</div>
+
+
+@*员工弹窗*@
+<div class="modal inmodal" id="ArtificialDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:620px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button id="close" type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="AccountMaster">Account Master</h6>
+            </div>
+            <div class="J-search">
+            </div>
+            <div style="margin:0 10px 5px 10px;">
+                <table id="artificialTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionartificialBar"></div>
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button" id="Comfirm" data-meaning="Comfirm" value="Comfirm">Comfirm</button>
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="Cancel" data-meaning="Cancel" value="Cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <style>
+        .mf-table-wrapper {
+            overflow-x: auto;
+        }
+        .J-search input {
+           margin-right: 10px;
+        }
+    </style>
+    <script src="~/Content/js/knockout/knockout-3.0.0.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/pagination.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Rander.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Checker.js" type="text/javascript"></script>
+    <script src="~/ViewModels/MES/IntelligentManufacturing/SFC00006Artificial.js" type="text/javascript"></script>
+}
+
+
+
+

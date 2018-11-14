@@ -1,0 +1,1837 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C70BB308-9862-4280-A4A7-77738FD07CA1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MonkeyFly.MES.Web</RootNamespace>
+    <AssemblyName>MonkeyFly.MES.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="MonkeyFly, Version=1.0.0.36, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\3rd Lib\MonkeyFly\MonkeyFly.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorGenerator.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RazorGenerator.Mvc.2.4.2\lib\net40\RazorGenerator.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.0.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
+    <Compile Include="Controllers\EquipmentManagementController.cs" />
+    <Compile Include="Controllers\IntelligentCoupletController.cs" />
+    <Compile Include="Controllers\IntelligentManufacturingController.cs" />
+    <Compile Include="Controllers\IntelligentParametersController.cs" />
+    <Compile Include="Controllers\QualityManagementController.cs" />
+    <Compile Include="Controllers\UtilController.cs" />
+    <Compile Include="MESAreaRegistration.cs" />
+    <Compile Include="MESAreaVirtualPathRegistration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\EquipmentManagement\EMS00001.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00001.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00001ConditionSet.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00001ConditionSet.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00007.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00007.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00007Equipment.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00007Equipment.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00008.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00008.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00008MaintenanceItem1.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00008MaintenanceItem.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00008MaintenanceList1.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00008MaintenanceList.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00008MaintenanceType1.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00008MaintenanceType.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00009.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00009.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00009Add.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00009Add.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00009Edit.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00009Edit.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00010.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00010.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00011.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00011.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00001EquipmentItemMaintenance.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00001EquipmentItemMaintenance.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00001EquipmentMasterFile.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00001EquipmentMasterFile.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00001EquipmentPicture.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00001EquipmentPicture.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00002.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00002.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00003.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00003.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00004.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00004.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00005.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00005.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00006.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00006.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\QCS00012.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QCS00012.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\QCS00012Equipment.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QCS00012Equipment.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\QCS00012Reason.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QCS00012Reason.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentCouplet\IOT00001.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IOT00001.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentCouplet\IOT00002.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IOT00002.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentCouplet\IOT00002Machine.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IOT00002Machine.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentManagement\EMS00007Reason.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMS00007Reason.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentCouplet\IOT00003.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IOT00003.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00001.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00001.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00001AlternativeProcess.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00001AlternativeProcess.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00001BOM.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00001BOM.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00001OperationMaterials.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00001OperationMaterials.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00001OperationRelationship.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00001OperationRelationship.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00001OperationRelationshipChart.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00001OperationRelationshipChart.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00001OperationResources.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00001OperationResources.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00001OperationResourcesArtificial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00001OperationResourcesArtificial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00001OperationResourcesEquipment.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00001OperationResourcesEquipment.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00001OperationResourcesOther.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00001OperationResourcesOther.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00001ProcessMaterials.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00001ProcessMaterials.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00001ProcessProcess.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00001ProcessProcess.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00001ProcessRelationship.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00001ProcessRelationship.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00001ProcessRelationshipChart.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00001ProcessRelationshipChart.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00001ProcessResources.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00001ProcessResources.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00001ProcessResourcesArtificial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00001ProcessResourcesArtificial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00001ProcessResourcesEquipment.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00001ProcessResourcesEquipment.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00001ProcessResourcesOther.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00001ProcessResourcesOther.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00001Resource.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00001Resource.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00002.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00002.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00002AlternativeProcess.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00002AlternativeProcess.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00002BOM.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00002BOM.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00002OperationMaterials.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00002OperationMaterials.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00002OperationRelationship.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00002OperationRelationship.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00002OperationRelationshipDiagram.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00002OperationRelationshipDiagram.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00002OperationResources.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00002OperationResources.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00002OperationResourcesArtificial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00002OperationResourcesArtificial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00002OperationResourcesEquipment.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00002OperationResourcesEquipment.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00002OperationResourcesOther.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00002OperationResourcesOther.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00002ProcessMaterials.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00002ProcessMaterials.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00002ProcessProcess.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00002ProcessProcess.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00002ProcessRelaDiagram.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00002ProcessRelaDiagram.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00002ProcessRelaDiagramView.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00002ProcessRelaDiagramView.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00002ProcessRelationship.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00002ProcessRelationship.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00002ProcessResources.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00002ProcessResources.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00002ProcessResourcesArtificial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00002ProcessResourcesArtificial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00002ProcessResourcesEquipment.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00002ProcessResourcesEquipment.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00002ProcessResourcesOther.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00002ProcessResourcesOther.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00002Resource.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00002Resource.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00003.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00003.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00004.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00004.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00004Artificial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00004Artificial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00004Equipment.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00004Equipment.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00004Other.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00004Other.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00004Print.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00004Print.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00004Resources.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00004Resources.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00004TaskAssignment.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00004TaskAssignment.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00005.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00005.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00005Print.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00005Print.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00006Abnormal.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00006Abnormal.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00006Artificial.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00006Artificial.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00006Equipment.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00006Equipment.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00006Finish.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00006Finish.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00006Material.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00006Material.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00006Other.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00006Other.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00006Print.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00006Print.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00006Resource.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00006Resource.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00007.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00007.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00006.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00006.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00008.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00008.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00010.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00010.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00012.generated.cs">
+      <DependentUpon>SFC00012.cshtml</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00011.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00011.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00013.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00013.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00014.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00014.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00015.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00015.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00016.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00016.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00017.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00017.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00017Print.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00017Print.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00018.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00018.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00018Print.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00018Print.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00019.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00019.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00019Print.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00019Print.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00019Product.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00019Product.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00019WorkCenter.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00019WorkCenter.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00020.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00020.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00021.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00021.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00021Print.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00021Print.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00022.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00022.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00022Material.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00022Material.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00022Reason.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00022Reason.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentManufacturing\SFC00023.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SFC00023.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00001.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00001.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00001Languages.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00001Languages.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00001PlantArea.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00001PlantArea.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00001Site.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00001Site.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00002.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00002.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00003.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00003.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00003Add.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00003Add.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00003Edit.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00003Edit.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00003PersonalAuthority.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00003PersonalAuthority.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00005.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00005.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00007.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00007.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00007Languages.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00007Languages.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00008.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00008.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00009.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00009.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00009ClassificationCode.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00009ClassificationCode.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00009ClassificationCodeLang.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00009ClassificationCodeLang.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00009ClassificationGroup.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00009ClassificationGroup.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00009ClassificationGroupLang.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00009ClassificationGroupLang.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00010.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00010.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00010Languages.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00010Languages.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00011.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00011.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00011Languages.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00011Languages.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00012.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00012.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00013.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00013.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00013Languages.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00013Languages.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00014.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00014.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00015.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00015.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00015SourceClass.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00015SourceClass.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00015SourceCode.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00015SourceCode.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00015SourceGroup.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00015SourceGroup.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00016.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00016.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00016DocumentSetup.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00016DocumentSetup.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00016DocumentType.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00016DocumentType.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00017.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00017.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00017ReasonCode.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00017ReasonCode.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00017ReasonGroupCode.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00017ReasonGroupCode.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00018.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00018.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00018ProcessMaster.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00018ProcessMaster.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00018WorkCenter.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00018WorkCenter.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00018WorkCenterProcess.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00018WorkCenterProcess.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00018WorkOrderMaster.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00018WorkOrderMaster.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00019.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00019.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00019Languages.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00019Languages.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00020.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00020.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00020Lang.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00020Lang.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00021.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00021.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00023.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00023.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\INF00024.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INF00024.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\LAN00000.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LAN00000.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\SCP00004.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SCP00004.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\TRN00001.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TRN00001.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\TRN00002.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TRN00002.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntelligentParameters\USE00001.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>USE00001.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QualityManagement\QCS00004Same.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QCS00004Same.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QualityManagement\QCS00004.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QCS00004.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QualityManagement\QCS00004CheckGroupCode.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QCS00004CheckGroupCode.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QualityManagement\QCS00004PartNo.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QCS00004PartNo.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QualityManagement\QCS00001.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QCS00001.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QualityManagement\QCS00002.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QCS00002.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QualityManagement\QCS00002IdentifyCategory.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QCS00002IdentifyCategory.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QualityManagement\QCS00002TestItems.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QCS00002TestItems.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QualityManagement\QCS00003.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QCS00003.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QualityManagement\QCS00005.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QCS00005.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QualityManagement\QCS00007.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QCS00007.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QualityManagement\QCS00008.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QCS00008.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QualityManagement\QCS00006.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QCS00006.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QualityManagement\QCS00009.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QCS00009.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QualityManagement\QCS00010.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QCS00010.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QualityManagement\QCS00011.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QCS00011.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Util\CNCLanguages.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CNCLanguages.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Util\JointChart.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JointChart.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Util\Languages.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Languages.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Util\Parameters.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Parameters.cshtml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00001.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00001.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00001Site.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00001Site.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00001PlantArea.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00001PlantArea.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00001Languages.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00001Languages.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00007.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00007.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00009.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00009.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00009ClassificationGroup.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00009ClassificationGroup.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00009ClassificationCode.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00009ClassificationCode.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00007Languages.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00007Languages.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00009ClassificationCodeLang.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00009ClassificationCodeLang.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00009ClassificationGroupLang.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00009ClassificationGroupLang.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\LAN00000.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>LAN00000.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00012.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00012.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Util\Languages.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Languages.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Util\Parameters.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Parameters.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00011.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00011.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00011Languages.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00011Languages.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00013.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00013.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00008.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00008.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00003.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00003.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00003Add.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00003Add.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00019.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00019.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Util\CNCLanguages.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>CNCLanguages.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00010.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00010.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00024.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00024.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00017.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00017.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00017ReasonGroupCode.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00017ReasonGroupCode.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00017ReasonCode.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00017ReasonCode.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\SCP00004.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SCP00004.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\USE00001.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>USE00001.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00015.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00015.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00015SourceClass.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00015SourceClass.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00015SourceCode.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00015SourceCode.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00015SourceGroup.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00015SourceGroup.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00023.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00023.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00021.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00021.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00014.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00014.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00005.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00005.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00001.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00001.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00001EquipmentMasterFile.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00001EquipmentMasterFile.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00001EquipmentItemMaintenance.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00001EquipmentItemMaintenance.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00001EquipmentPicture.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00001EquipmentPicture.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00002.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00002.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentCouplet\IOT00001.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>IOT00001.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00018.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00018.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00018WorkOrderMaster.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00018WorkOrderMaster.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00018ProcessMaster.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00018ProcessMaster.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00018WorkCenter.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00018WorkCenter.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\QualityManagement\QCS00003.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>QCS00003.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00016.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00016.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00016DocumentType.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00016DocumentType.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00016DocumentSetup.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00016DocumentSetup.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00010Languages.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00010Languages.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00004.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00004.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00005.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00005.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\QualityManagement\QCS00001.cshtml">
+      <LastGenOutput>QCS00001.generated.cs</LastGenOutput>
+      <Generator>RazorGenerator</Generator>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00006.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00006.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00003.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00003.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\QualityManagement\QCS00002.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>QCS00002.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\QualityManagement\QCS00002TestItems.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>QCS00002TestItems.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\QualityManagement\QCS00002IdentifyCategory.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>QCS00002IdentifyCategory.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\QualityManagement\QCS00004PartNo.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>QCS00004PartNo.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\QualityManagement\QCS00004CheckGroupCode.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>QCS00004CheckGroupCode.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\QualityManagement\QCS00004.cshtml">
+      <LastGenOutput>QCS00004.generated.cs</LastGenOutput>
+      <Generator>RazorGenerator</Generator>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00010.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00010.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00011.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00011.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00003Edit.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00003Edit.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00013Languages.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00013Languages.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00019Languages.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00019Languages.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\QualityManagement\QCS00009.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>QCS00009.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00001.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00001.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\QualityManagement\QCS00011.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>QCS00011.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00002.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00002.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00003.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00003.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00004.cshtml">
+      <LastGenOutput>SFC00004.generated.cs</LastGenOutput>
+      <Generator>RazorGenerator</Generator>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00004TaskAssignment.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00004TaskAssignment.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00004Print.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00004Print.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00001ProcessRelationship.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00001ProcessRelationship.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00005.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00005.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00006.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00006.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\QualityManagement\QCS00010.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>QCS00010.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00007.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00007.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00001ProcessMaterials.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00001ProcessMaterials.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00013.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00013.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00014.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00014.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00015.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00015.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00001AlternativeProcess.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00001AlternativeProcess.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00001ProcessProcess.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00001ProcessProcess.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00001ProcessResources.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00001ProcessResources.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00001ProcessResourcesArtificial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00001ProcessResourcesArtificial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00001ProcessResourcesEquipment.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00001ProcessResourcesEquipment.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00001ProcessResourcesOther.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00001ProcessResourcesOther.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00008.cshtml">
+      <LastGenOutput>SFC00008.generated.cs</LastGenOutput>
+      <Generator>RazorGenerator</Generator>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00016.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00016.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00012.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00012.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00001OperationMaterials.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00001OperationMaterials.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00001OperationResources.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00001OperationResources.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00001OperationResourcesArtificial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00001OperationResourcesArtificial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00001OperationResourcesEquipment.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00001OperationResourcesEquipment.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00001OperationResourcesOther.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00001OperationResourcesOther.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00005Print.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00005Print.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00001OperationRelationship.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00001OperationRelationship.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00001ProcessRelationshipChart.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00001ProcessRelationshipChart.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00001OperationRelationshipChart.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00001OperationRelationshipChart.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00006Print.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00006Print.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00002ProcessMaterials.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00002ProcessMaterials.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00002ProcessResources.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00002ProcessResources.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00002ProcessResourcesEquipment.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00002ProcessResourcesEquipment.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00002ProcessResourcesArtificial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00002ProcessResourcesArtificial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00002ProcessResourcesOther.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00002ProcessResourcesOther.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\QualityManagement\QCS00005.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>QCS00005.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00002ProcessProcess.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00002ProcessProcess.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00002OperationRelationship.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00002OperationRelationship.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00002AlternativeProcess.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00002AlternativeProcess.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00002ProcessRelationship.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00002ProcessRelationship.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00002OperationMaterials.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00002OperationMaterials.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00002OperationResources.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00002OperationResources.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00002OperationResourcesEquipment.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00002OperationResourcesEquipment.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00002OperationResourcesArtificial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00002OperationResourcesArtificial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00002OperationResourcesOther.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00002OperationResourcesOther.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\TRN00001.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>TRN00001.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00002BOM.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00002BOM.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentCouplet\IOT00003.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>IOT00003.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00002Resource.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00002Resource.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\QualityManagement\QCS00007.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>QCS00007.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\QualityManagement\QCS00008.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>QCS00008.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentCouplet\IOT00002.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>IOT00002.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\IntelligentParameters\TRN00002.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>TRN00002.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00011.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00011.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00009.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00009.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00010.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00010.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00004Resources.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00004Resources.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00004Artificial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00004Artificial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00004Equipment.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00004Equipment.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00004Other.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00004Other.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\QualityManagement\QCS00006.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>QCS00006.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00007Equipment.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00007Equipment.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00007Reason.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00007Reason.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00007.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00007.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00009Add.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00009Add.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00009Edit.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00009Edit.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00008MaintenanceItem.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00008MaintenanceItem1.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00008MaintenanceList.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00008MaintenanceList1.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00008MaintenanceType.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00008MaintenanceType1.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00008.cshtml">
+      <LastGenOutput>EMS00008.generated.cs</LastGenOutput>
+      <Generator>RazorGenerator</Generator>
+    </Content>
+    <Content Include="Views\EquipmentManagement\QCS00012.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>QCS00012.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\QCS00012Equipment.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>QCS00012Equipment.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\QCS00012Reason.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>QCS00012Reason.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00002ProcessRelaDiagram.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00002ProcessRelaDiagram.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00002ProcessRelaDiagramView.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00002ProcessRelaDiagramView.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Util\JointChart.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>JointChart.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00002OperationRelationshipDiagram.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00002OperationRelationshipDiagram.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00006Material.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00006Material.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00006Resource.cshtml">
+      <LastGenOutput>SFC00006Resource.generated.cs</LastGenOutput>
+      <Generator>RazorGenerator</Generator>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00006Equipment.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00006Equipment.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00006Artificial.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00006Artificial.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00006Other.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00006Other.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00006Abnormal.cshtml">
+      <LastGenOutput>SFC00006Abnormal.generated.cs</LastGenOutput>
+      <Generator>RazorGenerator</Generator>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00006Finish.cshtml">
+      <LastGenOutput>SFC00006Finish.generated.cs</LastGenOutput>
+      <Generator>RazorGenerator</Generator>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00001BOM.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00001BOM.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00001Resource.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00001Resource.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\EquipmentManagement\EMS00001ConditionSet.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EMS00001ConditionSet.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00003PersonalAuthority.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00003PersonalAuthority.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00020.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00020.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00002.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00002.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00018WorkCenterProcess.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00018WorkCenterProcess.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentParameters\INF00020Lang.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>INF00020Lang.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00017.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00017.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00017Print.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00017Print.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00018.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00018.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00018Print.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00018Print.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00019.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00019.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00019Product.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00019Product.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00019WorkCenter.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00019WorkCenter.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\QualityManagement\QCS00004Same.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>QCS00004Same.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentCouplet\IOT00002Machine.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>IOT00002Machine.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00023.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00023.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00020.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00020.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00021.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00021.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00019Print.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00019Print.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00021Print.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00021Print.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00022.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00022.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00022Material.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00022Material.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\IntelligentManufacturing\SFC00022Reason.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SFC00022Reason.generated.cs</LastGenOutput>
+    </Content>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58723</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:58723/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

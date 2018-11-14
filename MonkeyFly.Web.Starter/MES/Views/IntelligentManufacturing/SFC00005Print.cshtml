@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "SFC00005Print";
+    Layout = "~/Views/Shared/_LayoutLang.cshtml";
+}
+
+@*打印页面*@
+<div id="tb_list" class="J-main">
+    <div id="container" class="J-toolbar">
+        <button class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" onclick="model.backClick()"><i class="fa icon-arrow-left"></i> <span data-meaning="Cancel">Cancel</span></button>
+        <button class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" onclick="model.printClick()"><i class="fa icon-add"></i> <span data-meaning="Print">Print</span></button>
+    </div>
+    <div class="J-content">
+        <div>
+            <div class="title1" style="text-align:center;">
+                <h2 data-meaning="TaskCardPrint">Task Card Print</h2>
+            </div>
+            <div id="items" style="text-align:center; margin-left:17px;"></div>
+        </div>
+        <div id="gridlist" class="wrapper" style="width: 100%; height: 100%; text-align:center; margin: 5px 45px 5px 30px;">
+            <table id="TaskCardPrint" style="border:2px solid black; border-bottom:none;">
+                <tr>
+                    <td style="width:150px;"><span data-meaning="MoNo">Mo No.</span></td>
+                    <td style="width:230px;"><span id="MoNo"></span></td>
+                    <td colspan="4" rowspan="11" style="width:540px;">3</td>
+                </tr>
+                <tr>
+                    <td style="width:150px;"><span data-meaning="ItemNo">Item No.</span></td>
+                    <td style="width:230px;"><span id="ItemNo"></span></td>
+                </tr>
+                <tr>
+                    <td style="width:150px;"><span data-meaning="GoodsName">Goods Name</span></td>
+                    <td style="width:230px;"><span id="GoodsName"></span></td>
+                </tr>
+                <tr>
+                    <td style="width:150px;"><span data-meaning="DispatchAmount">Dispatch Amount</span></td>
+                    <td style="width:230px;"><span id="DispatchAmount"></span></td>
+                </tr>
+                <tr>
+                    <td style="width:150px;"><span data-meaning="WorkCenter" style="font-weight:800;">Work Center</span></td>
+                    <td style="width:230px;"><span id="WorkCenter" style="font-weight:800;"></span></td>
+                </tr>
+                <tr>
+                    <td style="width:150px;"><span data-meaning="ManufacturingProcess" style="font-weight:800;">Manufacture Process</span></td>
+                    <td style="width:230px;"><span id="ManufacturingProcess" style="font-weight:800;"></span></td>
+                </tr>
+                <tr>
+                    <td style="width:150px;"><span data-meaning="Process" style="font-weight:800;">Process</span></td>
+                    <td style="width:230px;"><span id="Process" style="font-weight:800;"></span></td>
+                </tr>
+                <tr>
+                    <td style="width:150px;"><span data-meaning="UnderWorkCenter">Under Work Center</span></td>
+                    <td style="width:230px;"><span id="UnderWorkCenter"></span></td>
+                </tr>
+                <tr>
+                    <td style="width:150px;"><span data-meaning="UnderCreateProcess">Under Create Process</span></td>
+                    <td style="width:230px;"><span id="UnderCreateProcess"></span></td>
+                </tr>
+                <tr>
+                    <td style="width:150px;"><span data-meaning="UnderProcess">Under Process</span></td>
+                    <td style="width:230px;"><span id="UnderProcess"></span></td>
+                </tr>
+                <tr>
+                    <td style="width:150px;"><span data-meaning="OrderNo">Order No.</span></td>
+                    <td style="width:230px;"><span id="OrderNo"></span></td>
+                </tr>
+                <tr>
+                    <td style="width:150px; border-bottom:none;"><span data-meaning="Client">Client</span></td>
+                    <td style="width:230px; border-bottom:none;"><span id="Client"></span></td>
+                    <td style="width:100px; border-bottom:none;"><span data-meaning="FinishNo">Finish No.</span></td>
+                    <td style="width:170px; border-bottom:none;"><span id="FinishNo"></span></td>
+                    <td style="width:100px; border-bottom:none;"><span data-meaning="FinProQty">FinPro Qty.</span></td>
+                    <td style="width:170px; border-bottom:none;"><span id="FinProQty"></span></td>
+                </tr>
+            </table>
+            <table id="Equipmentable" style="border:2px solid black; border-top:none;">
+                <tr>
+                    <td style="width:130px;"><span data-meaning="SourceClass">Source Class</span></td>
+                    <td style="width:170px;"><span data-meaning="EquipmentCode">Equipment Code</span></td>
+                    <td style="width:430px;"><span data-meaning="EquipmentDescription">Equipment Dept.</span></td>
+                    <td style="width:170px; border-right:2px solid black;"><span data-meaning="MainResource">Main Resource</span></td>
+                </tr>
+                @*<tr>
+                        <td style="width:130px; border-bottom:2px solid black;">2</td>
+                        <td style="width:790px;" colspan="4" rowspan="3">3</td>
+                    </tr>*@
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <style>
+        #TaskCardPrint {
+            table-layout: fixed;
+        }
+
+        #Equipmentable {
+            table-layout: fixed;
+        }
+
+        #TaskCardPrint tr {
+            line-height: 29px;
+        }
+
+        #TaskCardPrint td {
+            border: 1px solid black;
+            word-break: break-word;
+        }
+
+        #Equipmentable tr {
+            line-height: 29px;
+        }
+
+        #Equipmentable td {
+            border: 1px solid black;
+            word-break: break-word;
+        }
+
+        .title3 {
+            text-align: center;
+            display: inline-block;
+            width: 24%;
+        }
+    </style>
+    <script src="~/Content/js/knockout/knockout-3.0.0.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/pagination.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Rander.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Checker.js" type="text/javascript"></script>
+    <script src="~/ViewModels/MES/IntelligentManufacturing/SFC00005Print.js" type="text/javascript"></script>
+}
+
+
+
+

@@ -1,0 +1,23 @@
+﻿{
+    "Account":"Account No.",
+    "UserName":"Name",
+    "EnglishName":"English Name",
+    "Emplno":"Work Number",
+    "Type":"Job Title",
+    "Email":"E-mail",
+    "Status":"Card Number",
+    "CardCode":"CardCode",
+    "Comments":"Remark",
+    "CreatePerson": "Created By",
+    "CreateDate": "Created Date",
+    "LastModifyPerson":"Last Changed By",
+    "LastModifyDate":"Last Modified D.",
+    "setOrganize":"Set Organize",
+    "setRole":"Set Role",
+    "normal":"Normal",
+    "invalid":"Invalid",
+    "PleaseSelectFile":"Please select the file",
+    "DataIsNull": "  No Information",
+    "Department": "Department",
+    "PersonalAuthority": "Personal Rights"
+}

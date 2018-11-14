@@ -1,0 +1,134 @@
+﻿@{
+    ViewBag.Title = "角色管理";
+    ViewBag.LanguageURL = "/Data/Language/MES-MFC/Role/Role";
+    ViewBag.TipURL = "/Data/tips/MES-MFC/Role/Role";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*角色列表*@
+<div id="tb_list" class="J-main">
+    <div id="container" class="J-toolbar"></div>
+    <div class="J-content">
+        <table id="roleTable" data-toggle="true" data-mobile-responsive="true"></table>
+    </div>
+</div>
+
+@*添加角色*@
+<div class="modal inmodal" id="AddDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <style>
+        .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+            border: 1px solid red;
+        }
+    </style>
+    <div class="modal-dialog" style="width:800px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="Add Role">Add Role</h6>
+            </div>
+            <div class="modal-body">
+                <form id="addForm" class="form-horizontal m-t">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" data-meaning="* RoleName:">* RoleName:</label> 
+                        <div class="col-sm-8">
+                            <input id="addName" name="addName" type="text" class="form-control" maxlength="120" data-meaning="Please enter a role name" placeholder="Please enter a role name" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" data-meaning="Sequence:">Sequence:</label>
+                        <div class="col-sm-8">
+                            <input id="addSequence" name="addSequence" type="text" class="form-control" maxlength="6" /> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" data-meaning="Status:">Status：</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" name="Status" id="Status">
+                             
+
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" data-meaning="Description:">Description:</label>
+                        <div class="col-sm-8">
+                            <textarea id="addComments" name="addComments" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </form> 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal" data-meaning="Close">Close</button>
+                <button type="button" class="btn btn-success" id="addSave" data-meaning="Save">Save</button> 
+            </div>
+        </div>  
+    </div>
+</div>
+
+@*编辑角色*@
+<div class="modal inmodal" id="EditDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <style>
+        .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+            border: 1px solid red;
+        }
+    </style>
+    <div class="modal-dialog" style="width:800px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="Edit Role">Edit Role</h6>
+            </div>
+            <div class="modal-body">
+                <form id="editForm" class="form-horizontal m-t">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" data-meaning="* RoleName:">* RoleName:</label> 
+                        <div class="col-sm-8">
+                            <input id="editName" name="editName" type="text" class="form-control" data-meaning="Please enter a role name" placeholder="Please enter a role name" maxlength="120" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" data-meaning="Sequence:">Sequence:</label>
+                        <div class="col-sm-8">
+                            <input id="editSequence" name="editSequence" type="text" class="form-control" maxlength="6" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" data-meaning="Status:">Status：</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" name="Status" id="editStatus">
+                                
+                            </select>
+                        </div>
+
+                    </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" data-meaning="Description:">Description:</label>
+                            <div class="col-sm-8">
+                                <textarea id="editComments" name="editComments" class="form-control"></textarea>
+                            </div>
+                        </div>
+               </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal" data-meaning="Close">Close</button>
+                <button type="button" class="btn btn-success" id="editSave" data-meaning="Save">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <link href="~/Content/css/plugins/iCheck/blue.css" rel="stylesheet">
+    <script src="~/Content/js/hplus/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+    <script src="~/Content/js/knockout/knockout-3.0.0.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Rander.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Checker.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/table.js" type="text/javascript"></script>
+    <script src="~/ViewModels/MFC/Role.js" type="text/javascript"></script>
+}

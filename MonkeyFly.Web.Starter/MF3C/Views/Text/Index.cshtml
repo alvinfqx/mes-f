@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "测试页面";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts{
+    @*@System.Web.Optimization.Scripts.Render("~/Resource/MFC/System.js")*@
+    <script src="~/ViewModels/MFC/System.js?t=@(DateTime.Now.ToString())"></script>
+    <script type="text/javascript">
+    </script>
+    <style>
+        .mf-layer {
+            box-sizing: content-box;
+            height: 100%;
+        }
+            .mf-layer .col-sm-12 {
+                box-sizing: content-box;
+                height: 100%;
+                padding-right:20px;
+            }
+
+
+            .mf-layer .ibox {
+                box-sizing: content-box;
+                height: calc(100% - 25px);
+            }
+
+            .mf-layer .ibox-content {
+                height: calc(100% - 35px);
+                overflow-y: auto;
+            }
+    </style>
+}
+<div class="gray-bg" style="height:100%;">
+
+    <div class="wrapper wrapper-content animated fadeIn" style="box-sizing: content-box;height:calc(100% - 30px);padding:15px 20px 15px 10px">
+        <div class="row mf-layer">
+            <div class="col-sm-12">
+                <div class=" ibox float-e-margins" style="padding-right:20px;">
+                    <div class="ibox-title">
+                        <i class="fa fa-gear" style="font-size: 1.5em; margin-right: 0.4em;"></i>
+                        <button onclick="msg.info('消息', '正确')" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="消息提示"><i class="fa fa-exclamation"></i> 提示</button>
+                        <button onclick="msg.error('确定删除', '将无法恢复')" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="删除提示"><i class="fa fa-warning"></i> 删除</button>
+                
+                    </div>
+                    <div class="ibox-content">
+
+                        <h2>
+                            Bootstrap<br />
+                        </h2>
+                        <p>
+                            简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。
+                        </p>
+                        <p>
+                            简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。
+                        </p>
+                        <p>
+                            简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。
+                        </p>
+                        <p>
+                            简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。                                              
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

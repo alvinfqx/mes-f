@@ -1,0 +1,355 @@
+﻿@{
+    ViewBag.Title = "QCS00010";
+    Layout = "~/Views/Shared/_LayoutLang.cshtml";
+}
+
+@*客诉分析与改善*@
+<div id="tb_list" class="J-main">
+    <div id="container" class="J-toolbar"></div>
+    <div class="J-search">
+        <span data-meaning="StartDocumentNo" style="margin:0 5px;">StartDocumentNo</span>
+        <input type="text" id="StartCode" class="search-input" style="width: 120px;" data-bind="value: StartCode" autocomplete="off" />
+        <button type="button" class="btn btn-success btn-xs" onclick="model.SearchCode('#StartCode')" style="margin-right:4px;"><span class="fa fa-desktop"></span></button>
+        <span data-meaning="EndDocumentNo" style="margin:0 5px;">EndDocumentNo</span>
+        <input type="text" id="EndCode" class="search-input" style="width: 120px;" data-bind="value: EndCode" autocomplete="off" />
+        <button type="button" class="btn btn-success btn-xs" onclick="model.SearchCode('#EndCode')" style="margin-right:4px;"><span class="fa fa-desktop"></span></button>
+        <span data-meaning="StartCustomerNo" style="margin:0 5px;">StartCustomerNo</span>
+        <input type="text" id="StartCustomer" class="search-input" style="width: 120px;" data-bind="value: StartCustomer" autocomplete="off" />
+        <button type="button" class="btn btn-success btn-xs" onclick="model.SearchCustomer('#StartCustomer', null, '0')" style="margin-right:4px;"><span class="fa fa-desktop"></span></button>
+        <span data-meaning="EndCustomerNo" style="margin:0 5px;">EndCustomerNo</span>
+        <input type="text" id="EndCustomer" class="search-input" style="width: 120px;" data-bind="value: EndCustomer" autocomplete="off" />
+        <button type="button" class="btn btn-success btn-xs" onclick="model.SearchCustomer('#EndCustomer', null, '0')" style="margin-right:4px;"><span class="fa fa-desktop"></span></button>                 
+    </div>
+    <div style="margin:5px 5px 0px 5px;">
+        <span data-meaning="StartOrderNo" style="margin:0 5px;">StartOrderNo</span>
+        <input type="text" id="StartOrder" class="search-input" style="width: 110px;" data-bind="value: StartOrder" autocomplete="off" />      
+        <span data-meaning="EndOrderNo" style="margin:0 5px;">EndOrderNo</span>
+        <input type="text" id="EndOrder" class="search-input" style="width: 110px;" data-bind="value: EndOrder" autocomplete="off" />  
+        <span data-meaning="StartDocumentDate" style="margin:0 5px;">StartDocumentDate</span>
+        <input id="StartDate" class="search-input" data-bind="value:StartDate" style="width: 100px;" autocomplete="off" />
+        <span data-meaning="EndDocumentDate" style="margin:0 5px;">EndDocumentDate</span>
+        <input id="EndDate" style="width: 100px;" class="search-input" data-bind="value:EndDate" autocomplete="off" />  
+        &nbsp;
+        <span data-meaning="Status">Status</span>&nbsp;
+        <div id="SStatus" data-bind="value:Status" style="display: inline-block; padding: 3px 5px; border:1px solid #ccc"></div>    
+    </div>
+    <div class="J-content" id="table-body">
+        <table id="QCS00010Table"></table>
+    </div>
+    <div class="datagrid-pager page" id="paginagionBar"></div>
+</div>
+
+@*客诉单据弹窗*@
+<div class="modal inmodal" id="CodeDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:650px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button id="close" type="button" class="close" data-dismiss="modal" onclick="model.clear()">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="CustomerComplaintList">Customer Complaint List</h6>
+            </div>
+            <div class="J-search">
+                    <span data-meaning="ComplaintNo" style="margin:5px 5px 8px 10px; width:60px;">Complaint No.</span>
+                    <input id="ComplaintNo" type="text" class="search-input" style="width: 160px; margin:5px 5px 8px 0;" autocomplete="off" />
+                    <button class="btn btn-success btn-sm" type="button" onclick="model.ComplaintNoSearch()" id="Find" data-meaning="Search" value="Search">Search</button>
+                </div>
+            <div id="table-bodyUse" style="margin:0 15px;">
+                <table id="DocumentTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionDocumentBar" style="margin:0 15px;"></div>
+            <div class="modal-footer" style="text-align:right;">
+                @*  onclick="model.clearInput('#ItemCode')" *@
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="DocumentCancel" data-meaning="Cancel" value="Cancel" onclick="model.clear()">Cancel</button>
+                <button class="btn btn-success btn-sm" type="button" id="DocumentCommit" data-meaning="Comfirm" value="Comfirm" onclick="model.clear()">Commit</button>
+                @*  onclick="model.clearInput('#ItemCode')" *@
+            </div>
+        </div>
+    </div>
+</div>
+
+@*客户代号弹窗*@
+<div class="modal inmodal" id="CustomerDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:650px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button id="close" type="button" class="close" data-dismiss="modal" onclick="model.clear()">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close" >Close</span>
+                </button>
+                <h6 id="ListName" class="modal-title" data-meaning="CustomerList">Customer List</h6>
+            </div>
+            <div class="J-search" id="CustomerSearch">
+                <span data-meaning="CustomerNo" style="margin:5px 5px 8px 10px; width:60px;">Customer No</span>
+                <input id="TxtCustomerSearch" type="text" class="search-input" style="width: 160px; margin:5px 5px 8px 0;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" type="button" onclick="model.DialogCustomerSearch()" id="CustomerFind" data-meaning="Search" value="Search">Search</button>
+            </div>
+            <div id="table-bodyUse" style="margin:0 15px;">
+                <table id="CustomerTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionCustomerBar" style="margin:0 15px;"></div>
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="cancel" data-meaning="Cancel" value="Cancel" onclick="model.clear()">Cancel</button>
+                <button class="btn btn-success btn-sm" type="button" id="CustomerCommit" data-meaning="Comfirm" value="Comfirm" onclick="model.clear()">Commit</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*查看附件弹窗*@
+<div class="modal inmodal" id="FilesDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:650px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button id="close" type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 id="ListName" class="modal-title" data-meaning="FilesList">Files List</h6>
+            </div>
+            
+            <div id="table-bodyUse" style="margin:0 15px;">
+                <table id="FilesTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionFilesBar" style="margin:0 15px;"></div>
+            <div class="modal-footer" style="text-align:right;">
+                
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="cancel" data-meaning="Cancel" value="Cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--客訴原因彈窗-->
+<div class="modal inmodal" id="ReasonDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:700px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button id="close" type="button" class="close" onclick="model.ReasonCleartableClick()">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 id="ListName" class="modal-title" data-meaning="ComplaintReason">Reason List</h6>
+            </div>
+            <div class="J-search" id="CustomerSearch">
+                <span data-meaning="ReasonGroupCode" style="margin:5px 5px 8px 10px; width:60px;">原因群码</span>
+                <input id="TxtReasonSearch" type="text" class="search-input" style="width: 160px; margin:5px 5px 8px 0;" autocomplete="off" />
+                <button type="button" class="btn btn-success btn-xs" onclick="model.ReasonGroupSearch('#TxtReasonSearch')" style="margin-right:4px;"><span class="fa fa-desktop"></span></button>
+                <button class="btn btn-success btn-sm" type="button" onclick="model.DialogReasonSearch()" id="ReasonFind" data-meaning="Search" value="Search">Search</button>
+            </div>
+            <div id="table-bodyUse" style="margin:0 15px;">
+                <table id="ReasonTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionReasonBar" style="margin:0 15px;"></div>
+            <div class="modal-footer" style="text-align:right;">
+                <button id="CallCancel" class="btn btn-success btn-sm" type="button" data-meaning="Cancel" onclick="model.ReasonCleartableClick()" value="Cancel">Cancel</button>
+                <button id="CallAdd" class="btn btn-success btn-sm" type="button" data-meaning="Add" onclick="model.ReasonAddReasonClick()" value="Add">Add</button>
+                <button id="CallChange" class="btn btn-success btn-sm" type="button" data-meaning="Change" onclick="model.ReasonChangeReasonClick()" value="Change">Change</button>
+                <button id="CallDeletion" class="btn btn-success btn-sm" type="button" data-meaning="Deletion" onclick="model.ReasonDeleteReasonClick()" value="Deletion">Deletion</button>
+                <button id="CallImport" class="btn btn-success btn-sm" type="button" data-meaning="Import" onclick="model.ImportClick()" value="Export">Export</button>
+                <button id="CallExcel" class="btn btn-success btn-sm" type="button" data-meaning="Export" onclick="model.exportClick()" value="Export">Export</button>
+                <button id="CallComfirm" class="btn btn-success btn-sm" type="button" data-meaning="Comfirm" onclick="model.ReasonSaveReasonClick()" value="Comfirm">Comfirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--處理對策-->
+<div class="modal inmodal" id="MethodDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:650px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button id="close" type="button" class="close" onclick="model.MethodCleartableClick()">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 id="ListName" class="modal-title" data-meaning="ComplaintMethod">Method List</h6>
+            </div>
+
+            <div id="table-bodyUse" style="margin:0 15px;">
+                <table id="MethodTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionMethodBar" style="margin:0 15px;"></div>
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" title="UploadFile" onclick="model.UploadFileClick()"><i class="fa icon-add"></i><span data-meaning="UploadFile"> 上傳檔案</span></button>
+                <button id="MethodCancel" class="btn btn-success btn-sm" type="button" data-meaning="Cancel" onclick="model.MethodCleartableClick()" value="Cancel">Cancel</button>
+                <button id="MethodAdd" class="btn btn-success btn-sm" type="button" data-meaning="Add" onclick="model.AddMethodClick()" value="Add">Add</button>
+                <button id="MethodChange" class="btn btn-success btn-sm" type="button" data-meaning="Change" onclick="model.ChangeMethodClick()" value="Change">Change</button>
+                <button id="MethodDeletion" class="btn btn-success btn-sm" type="button" data-meaning="Deletion" onclick="model.DeleteMethodClick()" value="Deletion">Deletion</button>
+                <button id="MethodDeletion" class="btn btn-success btn-sm" type="button" data-meaning="Save" onclick="model.DelSaveMethodClick()" value="Save">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*原因碼开窗*@
+<div class="modal inmodal" id="ReasonCodeDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:600px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <span style="font-size:20px" data-meaning="ReasonCode">ReasonCode</span>
+                <button id="close" type="button" class="close" data-dismiss="modal" onclick="model.clear()">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+            </div>
+            <div class="J-search">
+                <span style="margin:5px 5px 8px 10px; width:60px;" data-meaning="ReasonCode">ReasonCode</span>
+                <input type="text" class="search-input" style="width: 160px; margin:5px 5px 8px 0;" id="RReasonCode" autocomplete="off" />
+                <button class="btn btn-success btn-sm" id="ReasonCodeSearch" onclick="model.ReasonCodeSearch()" data-meaning="Search">Search</button>
+            </div>
+            <div class="ReasonCodeContent" style="margin:0 15px;">
+                <table id="ReasonCodeTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionReasonCodeBar" style="margin:0 15px;"></div>
+            <div style="text-align:right;padding:5px 10px;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" data-meaning="Cancel" onclick="model.clear()">Cancel</button>
+                <button class="btn btn-success btn-sm" type="button" id="ReasonCodeConfirmBtn" data-meaning="Comfirm" onclick="model.clear()">Comfirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*原因群碼开窗*@
+<div class="modal inmodal" id="ReasonGroupDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:600px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <span style="font-size:20px" data-meaning="ReasonGroupCode">ReasonGroup</span>
+                <button id="close" type="button" class="close" data-dismiss="modal" onclick="model.clear()">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+            </div>
+            <div class="ReasonGroupContent" style="margin:0 15px;">
+                <table id="ReasonGroupTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionReasonGroupBar" style="margin:0 15px;"></div>
+            <div style="text-align:right;padding:5px 10px;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" data-meaning="Cancel" onclick="model.clear()">Cancel</button>
+                <button class="btn btn-success btn-sm" type="button" id="ReasonGroupConfirmBtn" data-meaning="Comfirm" onclick="model.clear()">Comfirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*查看處理對策上傳檔案弹窗*@
+<div class="modal inmodal" id="UploadFileDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" style="width:550px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <span style="font-size:20px" data-meaning="UploadFile">UploadFile</span>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Cancel">Cancel</span>
+                </button>
+            </div>
+            <div style="margin:0 15px;">
+                <table id="UploadFileTable"></table>
+                <div style="padding:5px; text-align:center;">
+                    <input id="AddFile" type="file" style="display:none" />
+                </div>
+            </div>
+            <div class="datagrid-pager page" id="paginagionUploadFileBar"></div>
+            <div style="text-align:right;padding:5px 10px;">
+                <button class="btn btn-success btn-sm" data-dismiss="modal" data-meaning="Cancel">Cancel</button>
+                <button class="btn btn-success btn-sm" id="AddBrowse" onclick="model.AddBrowse()" data-meaning="Browse">Browse</button>
+                <button class="btn btn-success btn-sm" style="display:none" id="AddComfirm" onclick="model.UploadConfirmClick()" data-meaning="Comfirm">Comfirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增處理對策-->
+<div class="modal inmodal" id="AddDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" style="width:600px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-body" style="background: #fff !important;">
+                <div class="modal-header" style="padding:10px !important">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Cancel">Cancel</span>
+                    </button>
+                    <h6 id="inputTitle" class="modal-title" data-meaning="AddComplaintMethod">新增處理對策</h6>
+                </div>
+                <div class="row mf-layer">
+                    <div class="col-md-12">
+                        <div class="ibox float-e-margins" style="margin-bottom: 0px;">
+                            <div class="ibox-content">
+                                <table style="text-align:center">
+                                    <tr style="height:40px">
+                                        <td style="text-align:right; width:100px;"><span style="color:red;">*</span><span style="padding-right:5px" data-meaning="Sequence">排序</span></td>
+                                        <td style="text-align:left; width:153px;"><input id="Sequence" maxlength="20" type="text" class="search-input" style="width:150px;" autocomplete="off" disabled></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:right; width:80px;"><span style="color:red;">*</span><span style="padding-right:5px" data-meaning="Method">處理對策</span></td>
+                                        <td style="text-align:left; width:150px;">
+                                            <textarea id="ComplaintMethod" autocomplete="off" cols="60" style="height:90px"></textarea>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-footer" style="padding-bottom: 0px;">
+                                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" data-meaning="Cancel" style="margin-bottom:0px;" onclick="model.clearAddValue()">Cancel</button>
+                                <button class="btn btn-success btn-sm" id="SaveMethod" type="button" data-meaning="Comfirm" onclick="model.SaveMethodClick()">Comfirm</button>
+                                <button class="btn btn-success btn-sm" id="AddSaveMethod" type="button"  data-meaning="Comfirm" onclick="model.AddSaveMethodClick()">Comfirm</button>
+                                @*<button type="button" class="btn btn-white" data-dismiss="modal" data-meaning="Cancel" onclick="model.clearAddValue()">Cancel</button>
+                                <button type="button" class="btn btn-success" id="SaveMethod" onclick="model.SaveMethodClick()" style="margin-right:10px" data-meaning="Save">Save</button>
+                                <button type="button" class="btn btn-success" id="AddSaveMethod" onclick="model.AddSaveMethodClick()" style="margin-right:10px" data-meaning="Save">Save</button>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--匯入客訴原因-->
+<div class="modal inmodal" id="ImportDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <style>
+        .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+            border: 1px solid red;
+        }
+    </style>
+    <div class="modal-dialog" style="width:400px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <span style="font-size:20px" data-meaning="Import">Import</span>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Cancel">Cancel</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div>
+                        <button class="btn btn-success btn-sm" id="BtnBrowse">
+                            <span data-meaning="Browse">Browse</span>
+                        </button>
+                        <input id="BtnFile" type="file" style="opacity:0" />
+                    </div>
+                    <div style="padding:5px;">
+                        <span id="FileName"></span>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align:right;padding:5px 10px;">
+                <button class="btn btn-success btn-sm" data-dismiss="modal" data-meaning="Cancel">Cancel</button>
+                <button class="btn btn-success btn-sm" id="BtnImport" data-meaning="Comfirm">Comfirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <style>
+        .mf-table-wrapper {
+            overflow-x: auto;
+        }
+
+        #table-body .fix-table, #table-body .fix-head {
+            width: 240%;
+        }
+
+        /*table-bodyUse .fix-table, #table-bodyUse .fix-head {
+            width: 180%;
+        }*/
+
+        #CheckSetContent .fix-table, #CheckSetContent .fix-head {
+            width: 180%;
+        }
+    </style>
+    <link href="~/Content/css/plugins/iCheck/blue.css" rel="stylesheet" />
+    <script src="~/Content/js/hplus/plugins/iCheck/icheck.min.js"></script>
+    <script src="~/Content/js/knockout/knockout-3.0.0.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/pagination.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Rander.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Checker.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/FrozenColumn.js" type="text/javascript"></script>
+    <script src="~/ViewModels/MES/QualityManagement/QCS00010.js" type="text/javascript"></script>
+}
+

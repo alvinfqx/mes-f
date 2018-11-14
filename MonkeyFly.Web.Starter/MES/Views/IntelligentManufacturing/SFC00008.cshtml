@@ -1,0 +1,566 @@
+﻿@{
+    ViewBag.Title = "SFC00008 完工调整作业";
+    Layout = "~/Views/Shared/_LayoutLang.cshtml";
+}
+
+<!--<h2>SFC00008</h2>-->
+@*完工调整*@
+<div class="tb_list" id="J-main">
+    <div id="container" class="J-toolbar"></div>
+    <div class="J-search">
+        @*完工调整单号*@
+        &nbsp;
+        <span data-meaning="CompletedNo">AdjustmentNo</span>
+        &nbsp;
+        <input type="text" class="search-input" autocomplete="off" style="width: 160px;" data-bind="value: CompletedNo" id="InspectionCode" />
+
+    </div>
+    <div class="J-content" id="table-body">
+        <table id="AdjustmentTable"></table>
+    </div>
+    <div class="datagrid-pager page" id="paginationBar"></div>
+</div>
+
+@*新增弹窗*@
+<div class="modal inmodal" id="AddDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" style="width:880px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-body" style="background: #fff !important;">
+                <div class="modal-header" style="padding:10px !important">
+                    <button type="button" class="close" data-dismiss="modal" onclick="model.ClearAddValue();">
+                        <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Cancel" onclick="model.ClearAddValue();">Cancel</span>
+                    </button>
+                    <h6 id="inputTitle" class="modal-title" data-meaning="CompletedAdjustment">Add Completed Adjustment</h6>
+                </div>
+                <div class="row mf-layer">
+                    <div class="col-md-12">
+                        <div class="ibox float-e-margins" style="margin-bottom: 0px;">
+                            <div class="ibox-content">
+                                <table style="text-align:center" id="addTable">
+                                    <tr style="height:40px">
+                                        <td style="text-align:right; width:100px;"><span style="color:red;">*</span><span style="padding-right:5px" data-meaning="AdjustmentNoSelect">Adjustment No</span></td>
+                                        <td style="text-align:right; width:170px;"> <select class="search-select"  style="text-align:left; width: 170px !important;"  autocomplete="off"  id="AutoType" data-bind="options: typeData, optionsText: 'text', optionsValue: 'value',event: {click: getAutoNum},value:AddCompletedNo "  ></select> </td>
+                                        <td style="text-align:right; width:100px;"><span style="color:red;">*</span><span style="padding-right:5px" data-meaning="CompletedNo">Completed No</span></td>
+                                        <td style="text-align:left; width:153px;"><input id="AddCode" type="text" class="search-input"  disabled autocomplete="off"></td>
+                                        <td style="text-align:right; width:80px;"><span style="color:red;">*</span><span style="padding-right:5px" data-meaning="DocDate">Document Date</span></td>
+                                        <td style="text-align:left; width:153px;">
+                                            <input id="AddDate" type="text" class="search-input" autocomplete="off" onchange="model.getAutoNum()"  readonly="readonly">
+                                        </td>
+                              
+                                    </tr>                     
+                                    <tr style="height:40px">
+                                        <td style="width:100px; text-align:right;"><span style="color:red;">*</span><span style="padding-right:5px" data-meaning="OldCompletedNo">OldCompletedNo</span> </td>
+                                        <td style="text-align:left; width:139px;">
+                                            <input id="AddOldComId" type="text" class="search-input" style="display:none;" autocomplete="off">
+                                            <input id="AddOldComCode" type="text" class="search-input" style="width:140px;" disabled>
+                                            <button type="button" id="AddOldComCodebtn" class="btn btn-success btn-xs" onclick="model.SearchOldCompletedNo()" style="margin-right:4px;"><span class="fa fa-desktop"></span></button>
+                                        </td>
+                                        <td style="text-align:right; width:80px;"><span style="padding-right:5px" data-meaning="TaskNo">Task No </span></td>
+                                        <td style="text-align:left; width:153px;"><input type="text" disabled class="search-input" id="addTaskNo"/></td>
+                                        <td style="text-align:right; width:80px;"><span style="padding-right:5px" data-meaning="WorkOrderNum">Work Order Number </span></td>
+                                        <td style="text-align:left; width:153px;"><input type="text" disabled class="search-input" id="addWorkOrderNum"/></td>
+                                       </tr>
+                                    <tr style="height:40px">
+                                        <td style="text-align:right; width:80px;"><span style="padding-right:5px" data-meaning="Part">Part No </span></td>
+                                        <td style="text-align:left; width:153px;"><input type="text" disabled class="search-input" id="addPart" /></td>
+
+                                        <td style="text-align:right; width:80px;"><span style="padding-right:5px" data-meaning="ItemDescription">Item Description</span></td>
+                                        <td style="text-align:left; width:153px;"><input type="text" disabled class="search-input" id="addItemDescription"/></td>
+                                        <td style="text-align:right; width:80px;"><span style="padding-right:5px" data-meaning="ItemSpecification">Item Specification </span></td>
+                                        <td style="text-align:left; width:153px;"><input type="text" disabled class="search-input" id="addItemSpecification"/></td>
+                                        
+                                     </tr>
+                                    <tr style="height:40px">
+                                        <td style="text-align:right; width:80px;"><span style="padding-right:5px" data-meaning="ManufacturingUnit">Manufacturing Unit</span></td>
+                                        <td style="text-align:left; width:153px;"><input type="text" disabled class="search-input" id="addManufacturingUnit" /></td>
+
+                                       <td style="text-align:right; width:80px;"><span style="padding-right:5px" data-meaning="AuxiliaryUnit">AuxiliaryUnit </span></td>
+                                        <td style="text-align:left; width:153px;"><input type="text" disabled class="search-input" id="addAuxiliaryUnit"/></td>
+                                        <td style="text-align:right; width:80px;"><span style="padding-right:5px" data-meaning="UnitRate">Unit Rate </span></td>
+                                        <td style="text-align:left; width:153px;"><input type="text" disabled class="search-input" id="addUnitRate"/></td>
+                                        
+                                    </tr>
+                            
+                                    <tr style="height:40px">
+                                        <td style="text-align:right; width:80px;"><span style="padding-right:5px" data-meaning="FinishQty">Finish Quantity </span></td>
+                                        <td style="text-align:left; width:153px;"><input maxlength="16" class="search-input" value="0" id="addFinishQty" /></td>
+
+                                        <td style="text-align:right; width:80px;"><span style="padding-right:5px" data-meaning="ScrappedQty">Scrapped Quantity </span></td>
+                                        <td style="text-align:left; width:153px;"><input   maxlength="16" class="search-input"  value="0"  id="addScrappedQty"/></td>
+                                        <td style="text-align:right; width:80px;"><span style="padding-right:5px" data-meaning="DifferenceQty">Difference Quantity </span></td>
+                                        <td style="text-align:left; width:153px;"><input   maxlength="16" class="search-input"  value="0"  id="addDifferenceQty"/></td>
+                                       
+                                    </tr>
+                                    <tr style="height:40px">
+                                        <td style="text-align:right; width:80px;"><span style="padding-right:5px" data-meaning="RepairQty">Repaired Quantity </span></td>
+                                        <td style="text-align:left; width:153px;"><input maxlength="16" class="search-input" value="0" id="addRepairQty" /></td>
+
+                                         <td style="text-align:right; width:80px;"><span style="padding-right:5px" data-meaning="ValidLaborHour">ValidLabor Hour</span></td>
+                                        <td style="text-align:left; width:153px;"><input type="text" maxlength="16" onblur="model.isValidHour(this)"  value="00:00:00"  class="search-input" id="addValidLaborHour"  /></td>
+                                        <td style="text-align: right; width: 100px;"><span style="text-align: center; width: 100px; padding-right:5px" data-meaning="InvalidLaborHour">InvalidLabor Hour</span></td>
+                                        <td style="text-align:left; width:153px;"><input type="text" maxlength="16" onblur="model.isValidHour(this)"  value="00:00:00"  class="search-input" id="addInvalidLaborHour"  /></td>
+                                       
+                                    </tr>
+                             
+                                    <tr style="height:40px;">
+                                        <td style="text-align: right; width: 100px;"><span style="padding-right:5px" data-meaning="ValidMachineHour">ValidMachine Hour</span></td>
+                                        <td style="text-align:left; width:153px;"><input type="text" maxlength="16" onblur="model.isValidHour(this)" value="00:00:00" class="search-input" id="addValidMachine" /></td>
+
+                                        <td style="text-align: right; width: 100px;"><span style="padding-right:5px" data-meaning="InvalidMachineHour">InvalidMachine  Hour</span></td>
+                                        <td style="text-align:left; width:153px;"><input type="text" maxlength="16" onblur="model.isValidHour(this)"  value="00:00:00"  class="search-input" id="addInvalidMachine" onclick="model.judgeNum(this)"/></td>                      
+                                        <td style="text-align:right; width:80px;"><span style="padding-right:5px" data-meaning="Remark">Remark</span></td>
+                                        <td style="text-align:left;" colspan="3"><input type="text"  maxlength="120" class="search-input" style="width:170px;" id="addRemark"/></td>
+
+                                     </tr>
+
+                                  
+                                </table>
+                            </div>
+                            <div class="modal-footer" style="text-align:right;">
+                                <button type="button" class="btn btn-success btn-sm" data-dismiss="modal" data-meaning="Cancel" style="margin-bottom:0px;" onclick="model.ClearAddValue();">Cancel</button>
+                                <button type="button" class="btn btn-success btn-sm" id="AddCode" onclick="model.AddSaveClick()" data-meaning="Save">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*原完工單號*@
+<div class="modal inmodal" id="OldCompletedNoDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <style>
+        .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+            border: 1px solid red;
+        }
+    </style>
+    <div class="modal-dialog" style="width:800px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <span  class="modal-title"  data-meaning="OldCompletedNo">OldCompletedNo</span>
+                <button type="button" class="close" data-dismiss="modal" onclick="model.clearInput('#OldCompletedNoInput')">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Cancel">Cancel</span>
+                </button>
+            </div>
+            <div class="J-search">
+                <span style="font-size:12px;margin: 0 7px;" data-meaning="OldCompletedNo">
+                    OldCompleted No
+                </span>
+         
+                <input type="text" id="OldCompletedNoInput" data-bind="value: OldCompletedNo" class="search-input" style="width: 130px; margin:5px 5px 8px 0;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" type="button" onclick="model.OldCompNoSearch()" id="Find" data-meaning="Search" value="Search">Search</button>
+            </div>
+            <div id="OldCompletedNo" class="modal-body">
+                <table id="OldCompletedNoTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="pagiOldCompletedNoBar" style="padding-bottom:5px!important"></div>
+
+            <div style="text-align:right;padding:5px 10px;" class="modal-footer">
+                <button class="btn btn-success btn-sm" data-dismiss="modal" data-meaning="Cancel" onclick="model.clearInput('#OldCompletedNoInput')">Cancel</button>
+                <button class="btn btn-success btn-sm" id="OldCompletedNoConfirmBtn"  data-meaning="Confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*导入*@
+<div class="modal inmodal" id="ImportDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <style>
+        .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+            border: 1px solid red;
+        }
+    </style>
+    <div class="modal-dialog" style="width:400px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <span  class="modal-title"  data-meaning="Import">Import</span>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Cancel">Cancel</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div>
+                        <button class="btn btn-success btn-sm" id="BtnBrowse">
+                            <span data-meaning="Browse">Browse</span>
+                        </button>
+                        <input id="BtnFile" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" style="opacity:0;position: absolute; top: 25px;" />
+                    </div>
+                    <div style="padding:5px;">
+                        <span id="FileName"></span>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align:right;padding:5px 10px;">
+                <button class="btn btn-success btn-sm" data-dismiss="modal" data-meaning="Cancel">Cancel</button>
+                <button class="btn btn-success btn-sm" id="BtnImport" data-meaning="Confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*资源报工开窗*@
+<div class="modal inmodal" id="resourceReportDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:641px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding: 16px !important;">
+                <span data-meaning="ResourceReporting" class="modal-title" >
+                    Resource Report
+                </span>
+                <button class="close" onclick="model.CancelResourceReportingClick()" >
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+            </div>
+
+            <div id="resourceContent">
+                <table id="resourceReportTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionRReportBar" style="margin:0 15px;"></div>
+
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button"  onclick="model.CancelResourceReportingClick()" data-meaning="Cancel">Cancel</button>
+                <button id="CallAdd" class="btn btn-success btn-sm" type="button" data-meaning="Add" onclick="model.AddRReportClick()" value="Add">Add</button>
+                <button id="CallChange" class="btn btn-success btn-sm" type="button" data-meaning="Change" onclick="model.ChangeRReportClick()" value="Change">Change</button>
+                <button id="CallDeletion" class="btn btn-success btn-sm" type="button" data-meaning="Deletion" onclick="model.DeleteRReportClick()" value="Deletion">Deletion</button>              
+                <button class="btn btn-success btn-sm" type="button" data-meaning="Confirm" onclick="model.ConfirmRReportClick()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*资源报工--设备/人员弹窗列表*@
+<div class="modal inmodal" id="ResourceDataDialog" tabindex="0" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:550px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:5px 10px 5px 5px  !important">
+                <button type="button" class="close" data-dismiss="modal" onclick="model.clearInput('#SourceCodeID')">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <span class="modal-title"  data-meaning="SourceCode">Source Code</span>
+            </div>
+            <div class="J-search">
+                <span data-meaning="EquipmentOrMan" style="margin:5px 5px 8px 10px; width:60px;">EquipmentOrMan</span>
+                <select class="search-select" id="SelectResourceType" style="width: 100px;" autocomplete="off">
+                    <option value="L" data-meaning="Man">Man</option>
+                    <option value="M" data-meaning="Equipment">Equipment</option>
+                </select>
+                <button class="btn btn-success btn-sm" type="button" onclick="model.DialogEquipmentOrManSearch()" data-meaning="Search" value="Search">Search</button>
+            </div>
+            <div class="modal-body" style="padding: 0px 5px 2px!important;background-color:#fff;">
+                
+                <table id="ResourceDataTable" data-toggle="true" data-mobile-responsive="true"></table>
+            </div>
+            <div id="paginagionResourceDataBar" class="datagrid-pager page" style="padding-bottom:5px!important"></div>
+            <div class="modal-footer" style="padding: 5px !important">
+                <button type="button" class="btn btn-success btn-sm" data-dismiss="modal" data-meaning="Cancel" onclick="model.clearInput('#SourceCodeID')">Cancel</button>
+                <button type="button" class="btn btn-success btn-sm" id="ResourceDataComfirm" data-meaning="Confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*异常说明按钮弹窗*@
+<div class="modal inmodal" id="ExceptionDescriptionDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:650px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding: 16px !important">
+                <span data-meaning="ExceptionDescription"  class="modal-title" >
+                    Exception Description
+                </span>
+                <button class="close"  onclick="model.CancelUnusualQtyClick()" >
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+            </div>
+            <div id="InvalidHourContent">
+                <table id="ExceptionDescriptionTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="pagiExceptionDesBar" style="margin:0 15px;"></div>
+
+            <div class="modal-footer" style="text-align:right;" id="opr_btns">
+                <button class="btn btn-success btn-sm" type="button"  data-meaning="Cancel" onclick="model.CancelUnusualQtyClick()">Cancel</button>
+                <button id="UnusualQtyAdd" class="btn btn-success btn-sm" type="button" data-meaning="Add" onclick="model.AddExcDesClick()" value="Add">Add</button>
+                <button id="UnusualQtyChange" class="btn btn-success btn-sm" type="button" data-meaning="Change" onclick="model.ChangeExcDesClick()" value="Change">Change</button>
+                <button id="UnusualQtyDeletion" class="btn btn-success btn-sm" type="button" data-meaning="Deletion" onclick="model.DeleteExcDesClick()" value="Deletion">Deletion</button>
+                <button class="btn btn-success btn-sm" type="button" id="UnusualQtyComfirm" data-meaning="Confirm" onclick="model.ConfirmExcDesClick()">Confirm</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+@*无效工时弹窗列表*@
+<div class="modal inmodal" id="InvalidHourDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:700px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding: 16px; !important">
+                <span data-meaning="InvalidHour"  class="modal-title" >
+                    Invalid Hour
+                </span>
+                <button class="close"  onclick="model.CancelInvHClick()">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+            </div>
+            <div id="InvalidHourContent">
+                <table id="InvalidHourTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="pagiInvalidHourBar" style="margin:0 15px;"></div>
+
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button"  data-meaning="Cancel" onclick="model.CancelInvHClick()">Cancel</button>
+                <button id="InvalidHourAdd" class="btn btn-success btn-sm" type="button" data-meaning="Add" onclick="model.AddInvHClick()" value="Add">Add</button>
+                <button id="InvalidHourlChange" class="btn btn-success btn-sm" type="button" data-meaning="Change" onclick="model.ChangeInvHClick()" value="Change">Change</button>
+                <button id="InvalidHourDeletion" class="btn btn-success btn-sm" type="button" data-meaning="Deletion" onclick="model.DeleteInvHClick()" value="Deletion">Deletion</button>
+                <button class="btn btn-success btn-sm" type="button" id="InvalidHCommit" data-meaning="Confirm" onclick="model.ConfirmInvHClick()">Confirm</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+@*批号属性*@
+<div class="modal inmodal" id="BatchAttributeDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:890px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding: 16px; !important">
+                <span data-meaning="BatchAttribute"  class="modal-title" >
+                    BatchAttribute
+                </span>
+                <button class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+            </div>
+            <div id="BatchAttributeContent">
+                <table id="BatchAttributeTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="pagiBatchAttrBar" style="margin:0 15px;"></div>
+
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" data-meaning="Cancel" onclick="model.CancelEv('#BatchAttributeDialog')">Cancel</button>
+                @*<button id="AddLotAttr" class="btn btn-success btn-sm" type="button" data-meaning="Add" onclick="model.AddLot()">Add</button>*@
+              
+                <button id="CallChange" class="btn btn-success btn-sm" type="button" data-meaning="Change" onclick="model.ChangeBatchAttrClick()" value="Change">Change</button>
+                @*<button id="CallDeletion" class="btn btn-success btn-sm" type="button" data-meaning="Deletion" onclick="model.DelBatchAttrClick()" value="Deletion">Deletion</button>*@
+                <button class="btn btn-success btn-sm" type="button" id="CallCommit" data-meaning="Confirm" onclick="model.ConfirmBatchAttrClick()">Confirm</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+@*料品属性弹窗列表*@
+<div class="modal inmodal" id="ItemPropertyDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:800px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding: 16px; !important">
+                <span data-meaning="DataValue"  class="modal-title" >
+                    Item Property
+                </span>
+                <button class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+            </div>
+            <div id="ItemPropertyContent">
+                <table id="ItemPropertyTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="pagiItemPropertyBar" style="margin:0 15px;"></div>
+
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" data-meaning="Cancel">Cancel</button>
+               <button class="btn btn-success btn-sm" type="button" data-meaning="Change" onclick="model.ChangeItemPropertyClick()" value="Change">Change</button>
+                <button class="btn btn-success btn-sm" type="button" id="ItemPropertyCommit" data-meaning="Confirm" onclick="model.ConfirmItemPropertyClick()">Confirm</button>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+@*表格内原因码弹窗1列表*@
+<div class="modal inmodal" id="ReasonCodeDialog1" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:600px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button type="button" class="close" data-dismiss="modal" onclick="model.clearInput('#ReasonCode1')">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="ReasonFile">Reason Code File</h6>
+            </div>
+            <div class="J-search">
+                <span data-meaning="ReasonFile" style="margin:5px 5px 8px 10px; width:60px;">Reason  Code</span>
+                <input id="ReasonCode1" type="text" class="search-input" style="width: 160px; margin:5px 5px 8px 0;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" type="button" onclick="model.ReasonCodeSearch1()" id="Find" data-meaning="Search" value="Search">Search</button>
+            </div>
+            <div style="margin:0 15px;">
+                <table id="ReasonTable1"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionReasonBar1" style="margin:0 15px;"></div>
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="cancel" onclick="model.clearInput('#ReasonCode1')" data-meaning="Cancel" value="Cancel">Cancel</button>
+                <button class="btn btn-success btn-sm" type="button" id="ReasonCodeCommit1" data-meaning="Confirm" onclick="model.clearInput('#ReasonCode1')" value="Confirm">Commit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*表格内原因码弹窗列表*@
+<div class="modal inmodal" id="ReasonCodeDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:600px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button type="button" class="close" data-dismiss="modal" onclick="model.clearInput('#InputReasonCode')">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="ReasonFile">Reason Code File</h6>
+            </div>
+            <div class="J-search">
+                <span data-meaning="ReasonFile" style="margin:5px 5px 8px 10px; width:60px;">Reason  Code</span>
+                <input id="InputReasonCode" type="text" class="search-input" style="width: 160px; margin:5px 5px 8px 0;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" type="button" onclick="model.ReasonCodeSearch()" id="Find" data-meaning="Search" value="Search">Search</button>
+            </div>
+            <div id="table-bodyReasonCode" style="margin:0 15px;">
+                <table id="ReasonTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionReasonBar" style="margin:0 15px;"></div>
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="cancel" onclick="model.clearInput('#InputReasonCode')" data-meaning="Cancel" value="Cancel">Cancel</button>
+                <button class="btn btn-success btn-sm" type="button" id="ReasonCodeCommit" data-meaning="Confirm" onclick="model.clearInput('#InputReasonCode')" value="Confirm">Commit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*表格内原因群码弹窗列表*@
+<div class="modal inmodal" id="GroupDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:680px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button id="close" type="button" class="close" data-dismiss="modal" onclick="model.clearInput('#ReasonGroupCode')">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="GroupFile">Reason Group Code File</h6>
+            </div>
+            <div class="J-search">
+                <span data-meaning="ReasonGroupCode" style="margin:5px 5px 8px 10px; width:60px;">Reason Group Code</span>
+                <input id="ReasonGroupCode" type="text" class="search-input" style="width: 160px; margin:5px 5px 8px 0;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" type="button" onclick="model.GroupSearch()" id="Find" data-meaning="Search" value="Search">Search</button>
+            </div>
+            <div id="table-bodyGroup" style="margin:0 15px;">
+                <table id="GroupTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionGroupBar" style="margin:0 15px;"></div>
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="cancel" onclick="model.clearInput('#ReasonGroupCode')" data-meaning="Cancel" value="Cancel">Cancel</button>
+                <button class="btn btn-success btn-sm" type="button" id="GroupCommit" data-meaning="Confirm" onclick="model.clearInput('#ReasonGroupCode')" value="Confirm">Commit</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+@*表格内资料值弹窗*@
+<div class="modal inmodal" id="DatavalueDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:600px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button type="button" class="close" data-dismiss="modal" onclick="model.clearInput('#Datavalue')">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="DataValue">Item Property</h6>
+            </div>
+            <div class="J-search">
+                <span data-meaning="ItemProperty" style="margin:5px 5px 8px 10px; width:60px;">Item Property</span>
+                <input id="Datavalue" type="text" class="search-input" style="width: 160px; margin:5px 5px 8px 0;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" type="button" onclick="model.DatavalueSearch()" id="Find" data-meaning="Search" value="Search">Search</button>
+            </div>
+            <div id="table-bodyDatavalue" style="margin:0 15px;">
+                <table id="DatavalueTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="pagiDatavalueBar" style="margin:0 15px;"></div>
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" onclick="model.clearInput('#Datavalue')" data-meaning="Cancel" value="Cancel">Cancel</button>
+                <button class="btn btn-success btn-sm" type="button" id="DataValueCommit" data-meaning="Confirm" onclick="model.clearInput('#Datavalue')" value="Confirm">Commit</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*导入*@
+<div class="modal inmodal" id="importDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <style>
+        .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+            border: 1px solid red;
+        }
+    </style>
+    <div class="modal-dialog" style="width: 400px;">
+        <div class="modal-content animated bounceInRight">
+            <div style="padding: 16px !important" class="modal-header">
+                <span  class="modal-title"  data-meaning="Import">
+                    Import
+                </span>
+                <button class="close" data-dismiss="close">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Cancel">Cancel</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div>
+                        <button class="btn btn-success btn-sm" id="Browse">
+                            <span data-meaning="Browse">Browse</span>
+                        </button>
+                        <input type="file" style="opacity: 0;" />
+                    </div>
+                    <div style="padding: 5px;">
+                        <span id="FileName"></span>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align:right; padding:5px 10px;">
+                <button class="btn btn-success btn-sm" data-meaning="Cancel">Cancel</button>
+                <button class="btn btn-success btn-sm" data-meaning="Confirm" id="BtnImport">
+                    Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+  @section scripts{
+<style>
+
+
+      #AddOldComCodebtn{
+          margin-bottom:0 !important;
+          margin-right:0 !important;
+      }
+
+    .mf-table-wrapper {
+        overflow-x: auto;
+    }
+
+    #table-body .fix-table, #table-body .fix-head {
+        width: 322%;
+    }
+
+    #resourceContent .fix-table, #resourceContent .fix-head {
+        width: 100%;
+    }
+
+    #OldCompletedNo .fix-table, #OldCompletedNo .fix-head {
+        width: 160%;
+    }
+
+    #InvalidHourContent .fix-table, #InvalidHourContent .fix-head{
+        width: 100%;
+    }
+</style>
+
+<script src="~/Content/js/knockout/knockout-3.0.0.js" type="text/javascript"></script>
+<script src="~/Content/js/current/pagination.js" type="text/javascript"></script>
+<script src="~/Content/js/current/Rander.js" type="text/javascript"></script>
+<script src="~/Content/js/current/Checker.js" type="text/javascript"></script>
+<script src="~/ViewModels/MES/IntelligentManufacturing/SFC00008.js" type="text/javascript"></script>
+                                    }

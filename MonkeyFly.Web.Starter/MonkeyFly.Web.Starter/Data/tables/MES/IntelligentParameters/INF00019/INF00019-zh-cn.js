@@ -1,0 +1,22 @@
+﻿{
+    "Code":"项目代号",
+    "Description":"项目说明",
+    "Attribute":"属性",
+    "remarks":"备注",
+    "state":"状态",
+    "normal":"正常",
+    "Invalid":"作废",
+    "creator":"建立人员",
+    "creationDate":"建立日期",
+    "lastRevision":"最后修改人员",
+    "lastModifiedDate":"最后修改日期",
+    "Department":"部门",
+    "Language":"语系",
+    "Public":"是否共用",
+    "NoFileSelected": "未选择文件",
+    "CodeIsNull":"代号不能为空！",
+    "DescriptionIsNull":"说明不能为空！",
+    "yes":"是",
+    "no":"否",
+    "AlreadyUsedCanNotDelete":"已使用，无法删除"
+}

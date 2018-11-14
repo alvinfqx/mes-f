@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "料品維護维护";
+    ViewBag.LanguageURL = "/Data/Language/MES/IntelligentParameters/INF00010/INF00010";
+    ViewBag.TipURL = "/Data/tips/MES/IntelligentParameters/INF00010/INF00010";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*语系列表*@
+<div id="tb_list" class="J-main">
+    <div id="container" class="J-toolbar">
+        <button class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" onclick="model.backClick()"><i class="fa icon-arrow-left"></i> <span data-meaning="Cancel"> Cancel</span></button>
+        <button class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" onclick="model.addClick()"><i class="fa icon-add"></i> <span data-meaning="Add"> Add</span></button>
+        <button class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" onclick="model.editClick()"><i class="fa icon-edit"></i> <span data-meaning="Edit"> Edit</span></button>
+        <button class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" onclick="model.deleteClick()"><i class="fa icon-delete"></i> <span data-meaning="Delete"> Delete</span></button>
+        <button class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" onclick="model.comfirmClick()"><i class="fa icon-save"></i> <span data-meaning="Comfirm"> Comfirm</span></button>
+    </div>
+    <div class="J-search">
+
+    </div>
+    <div class="J-content">
+        <table id="LanguagesTable" data-toggle="true" data-mobile-responsive="true"></table>
+    </div>
+</div>
+
+@section scripts{
+    <style>
+        .information {
+            width: 200px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        .mf-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .fix-table, .fix-head {
+            width: 140%;
+        }
+    </style>
+    <link href="~/Content/css/plugins/iCheck/blue.css" rel="stylesheet">
+    <script src="~/Content/js/hplus/plugins/iCheck/icheck.min.js"></script>
+    <script src="~/Content/js/current/Rander.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Checker.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/table.js" type="text/javascript"></script>
+    <script src="~/ViewModels/MES/IntelligentParameters/INF00010Languages.js" type="text/javascript"></script>
+}

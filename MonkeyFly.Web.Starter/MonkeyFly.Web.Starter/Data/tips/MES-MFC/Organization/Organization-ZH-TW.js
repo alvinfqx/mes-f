@@ -1,0 +1,15 @@
+﻿{
+    "AddParentID":"請在組織結構選擇上級機構",
+    "AddName":"請填寫機構名稱",
+    "SaveSuccess":"保存成功！",
+    "SaveFail":"保存失敗",
+    "IsChild":"不能將自己或下級設為上級單位！",
+    "EditParentID":"請在組織結構選擇上級機構",
+    "EditName":"請填寫機構名稱",
+    "SelectNode":"請先選擇壹個單位！",
+    "DeleteTip":"確認要刪除選中的單位嗎？",
+    "IsSelected":"此用戶已被選擇！",
+    "TemporaryUser":"請定義臨時委托人！",
+    "TipTitle":"提示",
+    "WarningTitle":"警告"
+}

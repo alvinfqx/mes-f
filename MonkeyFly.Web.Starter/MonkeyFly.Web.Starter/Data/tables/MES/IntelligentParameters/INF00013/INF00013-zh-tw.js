@@ -1,0 +1,20 @@
+﻿{
+    "ClassCode":"班別代號",
+    "ClassDescription":"班別說明",
+    "Remarks":"備註",
+    "Status":"狀態",
+    "CreatePerson": "建立人員",
+    "CreateDate": "建立日期",
+    "LastModifyPerson":"最後修改人員",
+    "LastModifyDate":"最後修改日期",
+    "Language":"語系",
+    "Public":"是否共用",
+    "Description":"說明",
+    "Normal":"正常",
+    "Obsolete":"作廢",
+    "yes":"是",
+    "no":"否",
+    "ClassCodeIsNull":"請填寫班別代號",
+    "ClassDescriptionIsNull":"請填寫班別說明",
+    "UseTheCalendar":"使用行事曆"
+}

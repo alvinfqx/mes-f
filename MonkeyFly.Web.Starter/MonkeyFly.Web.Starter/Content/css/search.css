@@ -1,0 +1,109 @@
+﻿.search-input {
+    height: 27px;
+    padding: 3px 10px;
+    font-size: 12px;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+    .search-input:focus {
+        border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    }
+
+    .search-input[disabled] {
+        background-color: #eee;
+    }
+
+.search-select {
+    height: 25.5px;
+    font-size: 12px;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.checkbox-select {
+    padding: 5px;
+    margin-right: 5px;
+}
+
+.search-select:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+}
+
+.search-select[disabled] {
+    background-color: #eee;
+}
+
+.J-main {
+    height: 100%;
+}
+
+.J-toolbar {
+    padding: 5px;
+    border-bottom: 1px solid #e4eaec;
+}
+
+    .J-toolbar .J-barspan {
+        float: right;
+        position: relative;
+        top: -20px;
+    }
+
+.J-search {
+    padding: 5px 5px 0px;
+}
+
+.J-content {
+    padding: 5px 5px 0px;
+}
+
+.J-actionbtn {
+    margin-bottom: 3px !important;
+}
+
+    .J-actionbtn:last-child {
+        margin-bottom: 0px !important;
+    }
+
+.J-required {
+    color: red;
+    margin-right: 3px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 5px 0px 1px;
+}
+
+/*调整tab样式*/
+.nav > li > a {
+    border: none;
+}
+
+.nav-tabs > li > a {
+    padding: 5px 10px 5px 10px;
+}
+
+.fixed-table-container .bs-checkbox .th-inner {
+    padding: 0px;
+}

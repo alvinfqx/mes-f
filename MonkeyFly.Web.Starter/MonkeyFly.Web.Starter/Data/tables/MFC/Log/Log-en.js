@@ -1,0 +1,16 @@
+﻿{
+    "Account":"Account",
+    "UserName":"Name",
+    "HostIP":"HostIP",
+    "HostName":"HostName",
+    "LogonCity":"LogonCity",
+    "LogonTime":"LogonTime",
+    "Position":"Position",
+    "Target":"Target",
+    "Type":"Type",
+    "Message":"Message",
+    "CreateTime":"CreateTime",
+    "filename":"filename",
+    "size":"size",
+    "id":"operating"
+}

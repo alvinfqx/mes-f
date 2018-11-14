@@ -1,0 +1,192 @@
+﻿
+@{
+    ViewBag.Title = "SFC00019WorkCenter";
+    Layout = "~/Views/Shared/_LayoutLang.cshtml";
+}
+
+@*工作中心*@
+<div id="tb_list" class="J-main">
+    <div id="container" class="J-toolbar">
+        <button id="btn_refresh" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="刷新" onclick="model.refreshClick()"><i class="fa icon-arrow_refresh"></i> <span data-meaning="Refresh"> Refresh</span></button>
+        <button id="btn_search" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="查询" onclick="model.searchClick()"><i class="fa fa-search"></i> <span data-meaning="Search"> Search</span></button>
+        <button id="btn_print" class="btn btn-success btn-sm" data-toggle="tooltip"  title="打印" data-placement="left" onclick="model.printClick()"><i class="fa icon-printer"></i> <span data-meaning="PrintBtn"> Print</span></button>
+</div>
+    <div class="J-search">
+        <div class="row">
+            <div class="item col-md-3 col-sm-3">
+                <lable data-meaning="StartWorkCenter">Start WorkCenter</lable>
+                <input type="text" class="search-input" id="StartWorkCenter" style="width: 120px;" />
+                <input type="text" class="search-input" id="StartWorkCenterID" style="width: 120px;display:none;" />
+                <button type="button" class="btn btn-success btn-xs" onclick="model.SearchWCCode('#StartWorkCenter')" style="margin-right:4px;"><span class="fa fa-desktop"></span></button>
+            </div>
+
+            <div class="item  col-md-3 col-sm-3">
+                <lable data-meaning="EndWorkCenter">End WorkCenter</lable>
+                <input type="text" class="search-input" id="EndWorkCenter" style="width: 120px;" />
+                <input type="text" class="search-input" id="EndWorkCenterID" style="width: 120px;display:none;" />
+                <button type="button" class="btn btn-success btn-xs" onclick="model.SearchWCCode('#EndWorkCenter')" style="margin-right:4px;"><span class="fa fa-desktop"></span></button>
+            </div>
+
+            <div class="item col-md-3 col-sm-3">
+                <lable data-meaning="StartItemCode">Start Item Code</lable>
+                <input type="text" class="search-input" id="StartItemCode" style="width: 120px;" />
+                <input type="text" class="search-input" id="StartItemCodeID" style="width: 120px;display:none;" />
+                <button type="button" class="btn btn-success btn-xs" onclick="model.SearchItemCode('#StartItemCode')" style="margin-right:4px;"><span class="fa fa-desktop"></span></button>
+            </div>
+
+            <div class="item col-md-3 col-sm-3">
+                <lable data-meaning="EndItemCode">End Item Code</lable>
+                <input type="text" class="search-input" id="EndItemCode" style="width: 120px;" />
+                <input type="text" class="search-input" id="EndItemCodeID" style="width: 120px;display:none;" />
+                <button type="button" class="btn btn-success btn-xs" onclick="model.SearchItemCode('#EndItemCode')" style="margin-right:4px;"><span class="fa fa-desktop"></span></button>
+            </div>
+
+           
+        </div>
+        <div class="row">
+            <div class="item col-md-3 col-sm-3">
+                <lable data-meaning="StartOrderNumber">Start Order Number</lable>
+                <input type="text" class="search-input" id="StartOrderNumber" style="width: 120px;" />
+                <input type="text" class="search-input" id="StartOrderNumberID" style="width: 120px;display:none;" />
+                <button type="button" class="btn btn-success btn-xs" onclick="model.SearchCode('#StartOrderNumber', '#StartSequence')" style="margin-right:4px;"><span class="fa fa-desktop"></span></button>
+            </div>
+            <div class="item col-md-3 col-sm-3">
+                <lable data-meaning="EndOrderNumber">End Order Number</lable>
+                <input type="text" class="search-input" id="EndOrderNumber" @*data-bind="value:EndOrderNumber"*@ style="width: 120px;" />
+                <input type="text" class="search-input" id="EndOrderNumberID" style="width: 120px;display:none;" />
+                <button type="button" class="btn btn-success btn-xs" onclick="model.SearchCode('#EndOrderNumber', '#EndSequence')" style="margin-right:4px;"><span class="fa fa-desktop"></span></button>
+            </div>
+            <div class="item col-md-3 col-sm-3">
+                <lable data-meaning="StartSingleDate">Start Single Date</lable>
+                <input type="text" class="search-input" data-bind="value:StartDateOfOrder" id="StartDateOfOrder" readonly style="width: 135px;margin-right:3px" autocomplete="off" />
+            </div>
+            <div class="item col-md-3 col-sm-3">
+                <lable data-meaning="EndSingleDate">End Single Date</lable>
+                <input type="text" class="search-input" data-bind="value:EndDateOfOrder" id="EndDateOfOrder" onchange="model.checkDate()" readonly style="width: 140px;margin-right:3px" autocomplete="off" />
+            </div>
+        </div>
+    </div>
+    <div class="J-content" id="table-body">
+        <table id="WorkCenterTable" data-toggle="true" data-mobile-responsive="true"></table>
+    </div>
+    <div class="datagrid-pager page" id="paginagionBarW"></div>
+</div>
+
+
+@* 工作中心弹窗 *@
+<div class="modal inmodal" id="WorkCenterDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:842px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button id="close" type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="WorkCenterFile">Work Center File</h6>
+            </div>
+            <div class="J-search">
+                <span data-meaning="WorkCenter" style="margin:5px 5px 8px 10px; width:60px;">WorkCenter</span>
+                <input id="TxtWCSearch" type="text" class="search-input" style="width: 160px; margin:5px 5px 8px 0;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" type="button" onclick="model.DialogWCSearch()" data-meaning="Search" value="Search">Search</button>
+            </div>
+            <div id="table-bodyWC" style="margin:0 15px;">
+                <table id="DialogWorkCenterTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionBarWC" style="margin:0 15px;"></div>
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="cancel" data-meaning="Cancel" value="Cancel">Cancel</button>
+                <button class="btn btn-success btn-sm" type="button" id="WCCommit" data-meaning="Comfirm" value="Comfirm">Commit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* 料品代号弹窗 *@
+<div class="modal inmodal" id="PartDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:800px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button id="close" type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="ItemMasterFile">Item Master File</h6>
+            </div>
+            <div class="J-search">
+                <span data-meaning="ItemNo" style="margin:5px 5px 8px 10px; width:60px;">Item No</span>
+                <input id="TxtPartSearch" type="text" class="search-input" style="width: 160px; margin:5px 5px 8px 0;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" type="button" onclick="model.DialogPartSearch()" id="CustomerFind" data-meaning="Search" value="Search">Search</button>
+            </div>
+            <div id="table-bodyPart" style="margin:0 15px;">
+                <table id="PartTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionPartBar" style="margin:0 15px;"></div>
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="cancel" data-meaning="Cancel" value="Cancel">Cancel</button>
+                <button class="btn btn-success btn-sm" type="button" id="PartCommit" data-meaning="Confirm" value="Comfirm">Commit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* 制令单号弹窗 *@
+<div class="modal inmodal" id="CodeDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:842px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button id="close" type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="MoNoMasterFile">MoNo Master File</h6>
+            </div>
+            <div class="J-search">
+                <span data-meaning="MoNo" style="margin:5px 5px 8px 10px; width:60px;">Mo No</span>
+                <input id="TxtMoNoSearch" type="text" class="search-input" style="width: 160px; margin:5px 5px 8px 0;" autocomplete="off" />
+                <button class="btn btn-success btn-sm" type="button" onclick="model.DialogMoNoSearch()" data-meaning="Search" value="Search">Search</button>
+            </div>
+            <div id="table-bodyMono" style="margin:0 15px;">
+                <table id="MoNoTable"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionMoNoBar" style="margin:0 15px;"></div>
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="cancel" data-meaning="Cancel" value="Cancel">Cancel</button>
+                <button class="btn btn-success btn-sm" type="button" id="MoNoCommit" data-meaning="Comfirm" value="Comfirm">Commit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <style>
+     
+          #tb_list .J-search{
+                text-align: center;
+        }
+
+     
+
+        .item{
+            margin-bottom: 10px;
+        }
+
+        #table-body .mf-table-wrapper {
+            overflow-x: auto;
+        }
+
+        #table-body .fix-table, #table-body .fix-head {
+            width: 130%;
+        }
+
+    </style>
+    <script src="~/Content/js/hplus/plugins/layer/laydate/laydate.js"></script>
+    <script src="~/Content/js/knockout/knockout-3.0.0.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/pagination.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Rander.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/Checker.js" type="text/javascript"></script>
+    <script src="~/Content/js/current/table.js" type="text/javascript"></script>
+    <script src="~/ViewModels/MES/IntelligentManufacturing/SFC00019WorkCenter.js" type="text/javascript"></script>
+
+}
+
+
+
+

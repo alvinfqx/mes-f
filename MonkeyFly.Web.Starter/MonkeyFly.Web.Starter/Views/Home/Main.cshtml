@@ -1,0 +1,209 @@
+﻿
+@{
+    Layout = null;
+}
+
+<script>
+    function logout() {
+        sessionStorage.clear();
+        window.location.href = "/Logon";
+    }
+
+    var token = sessionStorage.getItem('token');
+    (function Authorize() {
+        if (!token) {
+            logout();
+        }
+    })();
+
+    var language = sessionStorage.getItem("language");
+    var username = sessionStorage.getItem("username");
+    var promptBtn, tips;
+    function setProgram(text) {
+        var arr = text.split('/');
+        if (arr[arr.length - 1] == "Wellcome") {
+            document.getElementById("program").innerHTML = "";
+            return;
+        }
+        document.getElementById("program").innerHTML = "PN: " + arr[arr.length - 1];
+    }
+</script>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>MES System</title>
+    <link href="~/Content/images/logo/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Content/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="~/Content/css/animate.min.css" rel="stylesheet">
+    <link href="~/Content/css/icon.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery/jquery-1.10.2.min.js" type="text/javascript"></script>
+    @System.Web.Optimization.Scripts.Render("~/Content/js/index")
+    <style>
+        body {
+            margin: 0;
+            font-size: 12px;
+        }
+        .view-topbar {
+            position: fixed;
+            width: 100%;
+            height: 36px;
+            background: #3c8dbc;
+        }
+        .view-body {
+            position: absolute;
+            width: 100%;
+            top: 36px;
+            bottom: 0px;
+            background-color: #fff;
+        }
+        .view-sidebar {
+            width: 0px;
+            display: none;
+            position: fixed;
+            top: 36px;
+            bottom: 0px;
+            background-color: #065f93;
+            overflow-x: hidden;
+        }
+        .view-sidebar-mini {
+            width: 50px;
+            display: block;
+        }
+        .view-sidebar-full {
+            width: 180px;
+            display: block;
+        }
+        .view-page {
+            width: auto;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            bottom: 0px;
+            right: 0px;
+            background: #fff;
+        }
+        .view-page-full {
+            width: calc(100% - 50px);
+            left: 50px;
+        }
+        .view-page-mini {
+            width: calc(100% - 180px);
+            left: 180px;
+        }
+        .view-sidebar .sidebar-fold {
+            height: 30px;
+            width: 100%;
+            background: #4A5064;
+            color: #aeb9c2;
+            text-align: center;
+            line-height: 30px !important;
+            cursor: pointer;
+        }
+
+        .view-topbar-info {
+            color: #fff;
+            text-align:right;
+            margin:8px 10px;
+        }
+            .view-topbar-info span {
+                margin-right: 16px;
+            }
+            .view-topbar-info .view-topbar-btn {
+                cursor: pointer;
+            }
+
+        .view-page-content {
+            display:block;
+            height: calc(100% - 26px);
+        }
+        .view-page-footer {
+            border-top: 1px solid #e7eaec;
+            padding: 4px 5px 3px;
+            color: #676a6c;
+        }
+    </style>
+</head>
+<body>
+    <div class="view-topbar">
+        <div class="view-topbar-info"></div>
+    </div>
+    <div class="view-body">
+        <div class="view-sidebar view-sidebar-full">
+            <div class="sidebar-fold fa fa-bars"></div>
+            <div class="view-sidebar-nav"></div>
+        </div>
+        <div class="view-page view-page-mini">
+            <div class="view-page-content"></div>
+            <div class="view-page-footer">
+                <div class="pull-left" id="program"></div>
+                <div class="pull-right" id="copyright"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    $(".sidebar-fold").click(function () {
+        if ($(".view-sidebar").hasClass("view-sidebar-full")) {
+            $(".view-sidebar").removeClass("view-sidebar-full");
+            $(".view-sidebar").addClass("view-sidebar-mini");
+            $(".view-page").removeClass("view-page-mini");
+            $(".view-page").addClass("view-page-full");
+        }
+        else {
+            $(".view-sidebar").removeClass("view-sidebar-mini");
+            $(".view-sidebar").addClass("view-sidebar-full");
+            $(".view-page").removeClass("view-page-full");
+            $(".view-page").addClass("view-page-mini");
+        }
+    });
+
+    //切换页面模式
+    function changeModel() {
+        window.location.href = "/Home";
+    }
+
+    //获取翻译信息
+    function getField(url, name) {
+        if (!language || !(url && name)) {
+            return;
+        }
+        var data;
+        var url = url + "/" + name + "-" + language + ".js";
+        $.ajax({
+            url: url,
+            async: false,
+            dataType: 'json',
+            success: function (items) {                    
+                data = items;
+            },
+            error: function (data) {
+                console.error("GetField: can't get " + url + ":" + name);
+            }
+        });   
+        return data;
+    };
+
+    $(document).ready(function () {
+        var fields = getField("/Data/options/home", "home");
+        mf.ajax({
+            type: 'get',
+            url: '/Util/GetCompany',
+            success: function (data) {
+                var info = "";
+                info += '<span>' + fields.UserName + username + '</span>';
+                info += '<span>'+ fields.CompanyNo +data.Code+'</span>';
+                info += '<span>'+ fields.CompanyName +data.Name+'</span>';
+                info += '<span class="view-topbar-btn" onclick="changeModel()"><i class="fa fa-exchange"></i> '+fields.Exchange+'</span>';
+                info += '<span class="view-topbar-btn" onclick="logout()"><i class="fa fa fa-sign-out"></i> '+fields.Logout+'</span>';
+                $(".view-topbar-info").html(info);
+                $("#copyright").html('<span>&copy; ' + fields.Copyright + '</span>');
+            }
+        });
+    });
+</script>
+

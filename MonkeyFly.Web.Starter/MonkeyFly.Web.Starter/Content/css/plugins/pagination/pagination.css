@@ -1,0 +1,67 @@
+﻿.page {
+  padding-top: 0px;
+}
+.page table {
+  float: right;
+  height: 27px;
+}
+.page td {
+  border: 0;
+}
+.page-btn-separator {
+  float: left;
+  height: 24px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #fff;
+  margin: 3px 1px;
+}
+.page .page-num {
+  border-width: 1px;
+  border-style: solid;
+  margin: 0 2px;
+  width: 26px;
+  height: 19px;
+}
+.page-page-list {
+  margin: 0px 5px;
+  width: auto;
+  height: auto;
+  border-width: 1px;
+  border-style: solid;
+}
+.page-info {
+  float: left;
+  margin: 0 0 0 6px;
+  padding: 0;
+  line-height: 27px;
+  font-size: 12px;
+}
+.page span {
+  font-size: 12px;
+}
+.page-first {
+  background: url('/Content/images/page_icons.png') no-repeat 0 0;
+}
+.page-prev {
+  background: url('/Content/images/page_icons.png') no-repeat -16px 0;
+}
+.page-next {
+  background: url('/Content/images/page_icons.png') no-repeat -32px 0;
+}
+.page-last {
+  background: url('/Content/images/page_icons.png') no-repeat -48px 0;
+}
+.page-load {
+  background: url('/Content/images/page_icons.png') no-repeat -64px 0;
+}
+.page-page-list,
+.page .page-num {
+  border-color: #95B8E7;
+}
+.page a.l-btn span span span.l-btn-empty {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: 16px;
+    line-height: 16px;
+}

@@ -1,0 +1,250 @@
+﻿
+@{
+    ViewBag.Title = "EMS00003";
+    Layout = "~/Views/Shared/_LayoutLang.cshtml";
+}
+
+@*设备巡检维护*@
+    <div id="tb_list" class="J-main">
+        <div id="container" class="J-toolbar">
+        </div>
+        <div class="J-search">
+            <span data-meaning="EquipmentCode">Equipment Code</span>
+            <input id="equipmentCode" type="text" class="search-input" style="width:170px;" />
+            &nbsp;&nbsp;
+            <input type="text" id="startDate" class="search-input" placeholder="StartDate" data-meaning="StartDate" data-bind="value:StartDate" autocomplete="off" readonly/>
+            
+            <input type="text" id="endDate" class="search-input" placeholder="EndDate" data-meaning="EndDate" data-bind="value:EndDate" autocomplete="off" readonly/>
+        </div>
+        <div class="J-content" style="width:100%">
+            <div style="width:48%;float:left;" id="LeftContent">
+                <table id="EMS00003TableLeft" data-toggle="true" data-mobile-responsive="true"></table>
+            </div>
+            <div style="width:50%;margin-left:2%; float:left;" id="RightContent">
+                <table id="EMS00003TableRight"  data-toggle="true" data-mobile-responsive="true"></table>
+            </div>
+        </div>
+        
+    </div>
+
+@*新增弹窗*@
+    <div class="modal inmodal" id="AddDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" style="width:650px;">
+        <div class="modal-content animated bounceInRight" style="margin-right: 25px;">
+            <div class="modal-body" style="background: #fff !important;">
+                <div class="modal-header" style="padding:10px !important">
+                    <button type="button" class="close" data-dismiss="modal" onclick="model.clearAddValue()">
+                        <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Cancel">Cancel</span>
+                    </button>
+                    <h6 id="inputTitle" class="modal-title" data-meaning="AddInspectionRecords">Add Inspection Records</h6>
+                </div>
+                <div class="row mf-layer">
+                    <div class="col-md-12">
+                        <div class="ibox float-e-margins" id="AddCt" style="margin-bottom: 0px;">
+                            <div class="ibox-content">
+                                <table style="text-align:center">
+                                    <tr style="height:40px">
+                                        <td style="text-align:right; width:100px;"><span style="padding-right:5px" data-meaning="InspectionNumber">Inspection No.</span></td>
+                                        <td style="text-align:left; width:153px;"><input id="AddInspectionNo" maxlength="20" type="text" class="search-input" style="width:150px;" autocomplete="off" disabled="disabled"></td>
+                                        <td style="text-align:right; width:80px;"><span style="color:red;">*</span><span style="padding-right:5px" data-meaning="EquipmentCode">Equipment Code </span></td>
+                                        <td style="text-align:left; width:224px;">
+                                            <input id="AddCode"type="text" class="search-input" style="width:178px;" autocomplete="off" readonly>
+                                            <button type="button" class="btn btn-success btn-xs" onclick="model.AddEquipmentCode()" style="margin-right:4px;"><span class="fa fa-desktop"></span></button>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:40px">
+                                        <td style="text-align:right; width:100px;"><span style="padding-right:5px" data-meaning="EquipmentName">Equipment Name</span></td>
+                                        <td style="text-align:left; width:153px;">
+                                            <input id="AddEquipmentName" maxlength="20" data-bind="value:EquipmentName" type="text" class="search-input" style="width:150px;" autocomplete="off" disabled="disabled">
+                                        </td>
+                                        <td style="text-align:right; width:80px;"><span style="color:red;">*</span><span style="padding-right:5px" data-meaning="Date">Date</span></td>
+                                        <td style="text-align:left; width:180px;">
+                                            <input id="AddDate" data-bind="value:Date" type="text" class="search-input" style="width:180px;" autocomplete="off" readonly>   
+                                        </td>
+                                    </tr>
+                                    <tr style="height:40px">
+                                        <td style="text-align:right;width:100px;"><span style="padding-right:5px" data-meaning="Shift">Shift</span></td>
+                                        <td style="text-align:left;">
+                                            <input id="AddShift" maxlength="120" data-bind="value:Shift" type="text" class="search-input" style="width: 120px; " autocomplete="off" readonly/>
+                                            <button type="button" class="btn btn-success btn-xs" onclick="model.AddShift()" style="margin-right:4px;"><span class="fa fa-desktop"></span></button>
+                                        </td>
+                                        <td style="text-align:right; width:80px;"><span style="padding-right:5px" data-meaning="TaskNo">Task No</span></td>
+                                        <td style="text-align:left; width:228px;">
+                                            <input id="AddRC" data-bind="value:UserName" type="text" class="search-input" style="width:180px;" autocomplete="off" readonly>
+                                            <input id="ItmeID" type="text" class="search-input" style="width:180px;display:none;" autocomplete="off" readonly>
+                                            <button type="button" class="btn btn-success btn-xs" onclick="model.AddTaskNo()" style="margin-right:4px;"><span class="fa fa-desktop"></span></button>
+                                        </td>
+
+                                    </tr>
+                                    <tr style="height:40px">
+                                        <td style="text-align:right; width:100px;"><span style="padding-right:5px" data-meaning="ProductCode">Product Code</span></td>
+                                        <td style="text-align:left; width:153px;"><input id="ProductCode" data-bind="value:CallOrganizationID" type="text" class="search-input" style="width:150px;" autocomplete="off" disabled="disabled"></td>
+                                        <td style="text-align:right; width:80px;"><span style="padding-right:5px" data-meaning="ProductName">Product Name</span></td>
+                                        <td style="text-align:left; width:180px;"><input id="ProductName" type="text" class="search-input" style="width:180px;" autocomplete="off" disabled="disabled"></td> 
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-footer" style="padding-bottom: 0px;">
+                                <button type="button" class="btn btn-success btn-sm" data-dismiss="modal" data-meaning="Cancel"  style="margin-bottom:0;" onclick="model.clearAddValue()">Cancel</button>
+                                <button type="button" class="btn btn-success btn-sm" id="AddCalendar" onclick="model.AddRecordClick()" style="margin-right:10px" data-meaning="Comfirm">Comfirm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*设备代号弹窗*@
+    <div class="modal inmodal" id="getEquipmentCodeDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="width:550px;">
+            <div class="modal-content animated bounceInRight">
+                <div class="modal-header" style="padding:16px !important">
+                    <button id="close" type="button" class="close" data-dismiss="modal" onclick="model.clearItemCode()">
+                        <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                    </button>
+                    <h6 class="modal-title" data-meaning="EquipmentCode">Equipment Code</h6>
+                </div>
+                <div class="J-search">
+                    <span data-meaning="EquipmentCode" style="margin:5px 5px 8px 10px; width:60px;">Equipment Code</span>
+                    <input id="EquCode" type="text" class="search-input" style="width: 130px; margin:5px 5px 8px 0;" autocomplete="off" />
+                    <button class="btn btn-success btn-sm" type="button" onclick="model.CodeSearch()" id="FindEquipmentCode" data-meaning="Search" value="Search">Search</button>
+                </div>
+                <div id="EquCodeContent" style="margin:0 15px;">
+                    <table id="CodeTable" data-toggle="true" data-mobile-responsive="true"></table>
+                </div>
+                <div class="datagrid-pager page" id="paginagionGetEquipment" style="margin:0 15px;"></div>
+                <div class="modal-footer" style="text-align:right;">
+                    <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="cancel" data-meaning="Cancel" onclick="model.clearItemCode()">Cancel</button>
+                    <button class="btn btn-success btn-sm" type="button" id="equipmentCodeCommit" data-meaning="Comfirm" >Comfirm</button>   
+                </div>
+            </div>
+        </div>
+    </div>
+
+@*班别弹窗*@
+    <div class="modal inmodal" id="AddShiftDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="width:550px;">
+            <div class="modal-content animated bounceInRight">
+                <div class="modal-header" style="padding:16px !important">
+                    <button id="close" type="button" class="close" data-dismiss="modal" @**onclick="model.clearInput('#AddBeginEquipmentCode', '#AddEndEquipmentCode')"*@>
+                        <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                    </button>
+                    <h6 class="modal-title" data-meaning="ShiftMasterFile">Shift Master File</h6>
+                </div>
+                <div class="J-search">
+                    <span data-meaning="ShiftNo" style="margin:5px 5px 8px 10px; width:60px;">Shift No.</span>
+                    <input id="AddShiftCode" type="text" class="search-input" style="width: 130px; margin:5px 5px 8px 0;" autocomplete="off" />
+                    <button class="btn btn-success btn-sm" type="button" onclick="model.AddShifIdSearch()" data-meaning="Search" value="Search">Search</button>
+                </div>
+                <div style="margin:0 10px 5px 10px;">
+                    <table id="AddShiftTable"></table>
+                </div>
+                <div class="datagrid-pager page" id="paginagionShift" style="margin:0 15px;"></div>
+                <div class="modal-footer" style="text-align:right;">
+                    <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="Cancel" data-meaning="Cancel" onclick="model.clearShift()">Cancel</button>
+                    <button class="btn btn-success btn-sm" type="button" id="AddShiftComfirm" data-meaning="Comfirm">Comfirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@*任务单弹窗*@
+<div class="modal inmodal" id="TaskNoDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width:550px;">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding:16px !important">
+                <button id="close" type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                </button>
+                <h6 class="modal-title" data-meaning="TaskNo">Task No.</h6>
+            </div>
+            <div class="J-search">
+                
+            </div>
+            <div id="TaskNoContent" style="margin:0 15px;">
+                <table id="TaskNoTable" data-toggle="true" data-mobile-responsive="true"></table>
+            </div>
+            <div class="datagrid-pager page" id="paginagionTaskNo" style="margin:0 15px;"></div>
+            <div class="modal-footer" style="text-align:right;">
+                <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="cancel" data-meaning="Cancel">Cancel</button>
+                <button class="btn btn-success btn-sm" type="button" id="TaskNoCommit" data-meaning="Comfirm" onclick="model.TaskNoComfirm()">Comfirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@*明细表设备项目栏弹窗*@
+    <div class="modal inmodal" id="AddItemDialog" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="width:550px;">
+            <div class="modal-content animated bounceInRight">
+                <div class="modal-header" style="padding:16px !important">
+                    <button id="close" type="button" class="close" data-dismiss="modal" @**onclick="model.clearInput('#AddBeginEquipmentCode', '#AddEndEquipmentCode')"*@>
+                        <span aria-hidden="true">&times;</span><span class="sr-only" data-meaning="Close">Close</span>
+                    </button>
+                    <h6 class="modal-title" data-meaning="ProjectInformation">Project Information</h6>
+                </div>
+                <div class="J-search">
+                    <span data-meaning="ProjectCode" style="margin:5px 5px 8px 10px; width:60px;">Project Code</span>
+                    <input id="AddProjectCode" type="text" class="search-input" style="width: 130px; margin:5px 5px 8px 0;" autocomplete="off" />
+                    <button class="btn btn-success btn-sm" type="button" onclick="model.AddItemCodeSearch()" data-meaning="Search" value="Search">Search</button>
+                </div>
+                <div style="margin:0 10px 5px 10px;"  id="AddItemContent">
+                    <table id="AddItemTable"></table>
+                </div>
+                <div class="datagrid-pager page" id="paginagionItem" style="margin:0 15px;"></div>
+                <div class="modal-footer" style="text-align:right;">
+                    <button class="btn btn-success btn-sm" type="button" data-dismiss="modal" id="Cancel" data-meaning="Cancel" onclick="model.clearEquipmentCode()">Cancel</button>
+                    <button class="btn btn-success btn-sm" type="button" id="AddItemComfirm" data-meaning="Comfirm" onclick="model.ItemComfirmClick()">Comfirm</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    @section scripts{
+        <style>
+            .mf-table-wrapper {
+                overflow-x: auto;
+            }
+
+            #LeftContent .fix-table, #LeftContent .fix-head {
+                width: 220%;
+            }
+
+            #RightContent .fix-table, #RightContent .fix-head {
+                width: 325%;
+            }
+            /*#EquCodeContent .fix-table, #EquCodeContent .fix-head {
+                width: 220%;
+            }*/
+            #with-btn-sub-cell {
+                margin-right: 2px;
+            }
+            #AddItemContent .fix-table, #AddItemContent .fix-head {
+                width: 135%;
+            }
+            #TaskNoContent .fix-head,#TaskNoContent .fix-table {
+                width: 130%;
+            }
+            #AddCt .btn {
+                margin-bottom:0px!important;
+            }
+        </style>
+        <link href="~/Content/js/datetimepicker/bootstrap-datetimepicker.css" rel="stylesheet" />
+        <script src="~/Content/js/datetimepicker/bootstrap-datetimepicker.zh-cn.js"></script>
+        <script src="~/Content/js/datetimepicker/bootstrap-datetimepicker.zh-tw.js"></script>
+        <script src="~/Content/js/hplus/plugins/layer/laydate/laydate.js"></script>
+        <script src="~/Content/js/knockout/knockout-3.0.0.js" type="text/javascript"></script>
+        <script src="~/Content/js/current/pagination.js" type="text/javascript"></script>
+        <script src="~/Content/js/current/Rander.js" type="text/javascript"></script>
+        <script src="~/Content/js/current/Checker.js" type="text/javascript"></script>
+        <script src="~/ViewModels/MES/EquipmentManagement/EMS00003.js" type="text/javascript"></script>
+    }

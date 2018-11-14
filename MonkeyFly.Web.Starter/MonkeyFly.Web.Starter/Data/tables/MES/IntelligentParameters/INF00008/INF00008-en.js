@@ -1,0 +1,21 @@
+﻿{
+    "Code":"Customer No.",
+    "Name":"Customer Name",
+    "Remarks":"Remark",
+    "Status":"Status",
+    "CreatePerson": "Created By",
+    "CreateDate": "Created Date",
+    "LastModifyPerson":"Last Modified User",
+    "LastModifyDate":"Last Modified Date",
+    "Contact":"Contact Person",
+    "Email":"E-mail",
+    "ClerkCode":"Salesman No.",
+    "ClerkName":"Salesman Name",
+    "ClassifyOne":"Classify One",
+    "ClassifyTwo":"Classify Two",
+    "EmployeeCode":"Employee No.",
+    "EmployeeCode":"Employee Name",
+    "Department":"Department",
+    "CodeIsNull":"Customer No. can not be empty",
+    "NameIsNull":"Customer Name can not be empty"
+}

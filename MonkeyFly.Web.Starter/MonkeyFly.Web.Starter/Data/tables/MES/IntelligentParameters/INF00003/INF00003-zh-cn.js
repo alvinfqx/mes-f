@@ -1,0 +1,23 @@
+﻿{
+    "Account":"帐号",
+    "UserName":"姓名",
+    "EnglishName":"英文名",
+    "Emplno":"工号",
+    "Type":"职工类型",
+    "Email":"E-mail",
+    "Status":"状态",
+    "CardCode":"卡号",
+    "Comments":"备注",
+    "CreatePerson": "建立人员",
+    "CreateDate": "建立日期",
+    "LastModifyPerson":"最后修改人员",
+    "LastModifyDate":"最后修改日期",
+    "setOrganize":"设置机构",
+    "setRole":"设置角色",
+    "normal":"正常",
+    "invalid":"作废",
+    "PleaseSelectFile":"请选择文件",
+    "DataIsNull": "  暂无资料",
+    "Department": "部门",
+    "PersonalAuthority": "个人权限"
+}

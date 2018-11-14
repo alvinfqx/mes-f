@@ -1,0 +1,21 @@
+﻿{
+    "info": "提示",
+    "selectFirst": "請先選擇",
+    "SaveSuccess": "保存成功",
+    "SaveFail": "保存失敗",
+    "SaveOrNot": "是否保存操作?",
+    "SaveData": "請先保存",
+    "IsSave":"請保存操作結果",
+    "IsSelect":"請選擇記錄",
+    "DeleteRecord":"是否要刪除記錄",
+    "SuccessfulOperation":"成功操作",
+    "IsNumber": "請輸入不為0的數字",
+    "NothingToSave": "沒有要保存的",
+    "WarningTitle":"警告",
+    "IsDeleted":"確認要刪除選中的記錄嗎？",
+    "TipTitle":"提示" ,
+    "Browse":"浏览",
+    "Close":"关闭",
+    "No file selected":" 未選擇文件",
+    "NoDataExport": "沒有數據導出!"
+  }
